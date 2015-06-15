@@ -1,0 +1,26 @@
+{
+  "name": "rps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "flux": "^2.0.3",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
+    "events": "^1.0.2",
+    "object-assign": "^3.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-watch": "^4.2.4",
+    "reactify": "^1.1.1",
+    "rimraf": "^2.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "WD",
+  "license": "ISC"
+}
