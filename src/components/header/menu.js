@@ -8,7 +8,7 @@ var Menu =  React.createClass({
     render: function () {
         return (
             <ul className="nav navbar-nav">
-                { this.props.loggedIn ? <li><Link to="projects">Projects</Link></li> : ''}
+                { this.props.loggedIn ? <li><Link to="employees-grid">Employees Grid</Link></li> : ''}
             </ul>
         )
     }

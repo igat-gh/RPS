@@ -4,11 +4,14 @@
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
+    "es6-promise": "^2.3.0",
+    "events": "^1.0.2",
     "flux": "^2.0.3",
+    "moment": "^2.10.3",
+    "object-assign": "^3.0.0",
     "react": "^0.13.3",
     "react-router": "^0.13.3",
-    "events": "^1.0.2",
-    "object-assign": "^3.0.0"
+    "superagent": "^1.2.0"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

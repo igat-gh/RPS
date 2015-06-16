@@ -1,8 +1,7 @@
 var React = require('react');
 var Router = require('react-router');
 var AuthStore = require('../../stores/app-auth-store');
-var AuthAction = require('../../actions/app-auth-action');
-
+var AuthAction = require('../../actions/app-auth-actions');
 
 var Login = React.createClass({
     contextTypes: {
@@ -13,21 +12,20 @@ var Login = React.createClass({
     },
     getInitialState: function () {
         return {loginError: false};
-
     },
     componentDidMount: function () {
         AuthStore.addChangeListener(this._onChange);
+    },
+    componentWillUnmount: function () {
+        AuthStore.removeChangeListener(this._onChange);
     },
     componentDidUpdate: function () {
         if (Login.attemptedTransition) {
             var transition = Login.attemptedTransition;
             transition.retry();
         } else {
-            this.context.router.replaceWith('/projects');
+            this.context.router.replaceWith('/employees-grid');
         }
-    },
-    componentWillUnmount: function () {
-        AuthStore.removeChangeListener(this._onChange);
     },
     handleSubmit: function (event) {
         event.preventDefault();

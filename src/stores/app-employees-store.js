@@ -5,17 +5,13 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var _authData = {
-    authToken: null,
-    loggedIn: false
-};
+var _employees = [];
 
-function loadAuthData(data) {
-    _authData.authToken = data.token;
-    _authData.loggedIn = data.loggedIn;
+function loadEmployees(data) {
+    _employees = data.employees;
 }
 
-var AuthStore = assign({}, EventEmitter.prototype,
+var EmployeesStore = assign({}, EventEmitter.prototype,
     {
         emitChange: function () {
             this.emit(CHANGE_EVENT);
@@ -26,23 +22,21 @@ var AuthStore = assign({}, EventEmitter.prototype,
         removeChangeListener: function (callback) {
             this.removeListener(CHANGE_EVENT, callback)
         },
-        getState: function () {
-            return _authData;
+        getEmployeesState: function () {
+            return {employees: _employees};
         },
         dispatcherIndex: AppDispatcher.register(function (payload) {
             var action = payload.action;
             switch (action.actionType) {
-                case AppConstants.AUTH_LOG_IN:
-                case AppConstants.AUTH_LOG_OUT:
-                    loadAuthData(action.data);
+                case AppConstants.RECEIVE_EMPLOYEES:
+                    loadEmployees(action.data);
                     break;
                 default : return true;
             }
-            AuthStore.emitChange();
+            EmployeesStore.emitChange();
             return true;
         })
     }
 );
 
-module.exports = AuthStore;
-
+module.exports = EmployeesStore;

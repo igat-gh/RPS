@@ -1,6 +1,6 @@
 var React = require('react');
 var AuthStore = require('../../stores/app-auth-store');
-var AuthAction = require('../../actions/app-auth-action');
+var AuthAction = require('../../actions/app-auth-actions');
 
 var Logout = React.createClass({
     //statics: {

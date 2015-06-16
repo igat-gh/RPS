@@ -5,15 +5,17 @@ var DefaultRoute = Router.DefaultRoute;
 
 APP = require('./components/app/app').APP;
 
-var Login = require('./components/auth/app-login');
-var Logout = require('./components/auth/app-logout');
-var Projects = require('./components/projects/projects-view');
+var Home = require('./components/home/home');
+var Login = require('./components/auth/login');
+var Logout = require('./components/auth/logout');
+var EmployeesGrid = require('./components/employees/employees-grid');
 
 var routes = (
     <Route name="app" path="/" handler={APP}>
+        <DefaultRoute handler={Home}/>
         <Route name="login" handler={Login} />
         <Route name="logout" handler={Logout} />
-        <Route name="projects" handler={Projects} />
+        <Route name="employees-grid" handler={EmployeesGrid} />
     </Route>
 );
 
