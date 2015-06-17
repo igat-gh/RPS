@@ -1,8 +1,10 @@
 var React = require('react');
-var moment = require('moment');
 var AppActions = require('../../actions/app-actions');
 var EmployeesStore = require('../../stores/app-employees-store');
 var AuthenticationMixin = require('../../mixins/AuthenticationMixin');
+
+var Filters = require('./filters');
+var MarkedRow = require('./marked-row');
 
 var EmployeesGrid = React.createClass({
     mixins: [AuthenticationMixin],
@@ -11,6 +13,7 @@ var EmployeesGrid = React.createClass({
     },
     componentWillMount: function () {
         AppActions.loadEmployees();
+        //AppActions.loadMarkers();
     },
     componentDidMount: function () {
         EmployeesStore.addChangeListener(this._onChange);
@@ -25,33 +28,34 @@ var EmployeesGrid = React.createClass({
         var rows = [];
         this.state.employees.forEach(function (employee) {
             employee.projects.forEach(function (project, index) {
-                var toBeOrNotToBe = index ? null : <td rowSpan={employee.projects.length}>{employee.name}</td>;
-                rows.push(
-                    <tr key={Math.random().toString(36).substring(7)}>
-                        {toBeOrNotToBe}
-                        <td>{project.title}</td>
-                        <td>{moment(project.date_start).format('MMMM Do YYYY')}</td>
-                        <td>{moment(project.date_end).format('MMMM Do YYYY')}</td>
-                    </tr>
-                );
+                var rowProps = {
+                    projectsLength: employee.projects.length,
+                    projectIndex: index,
+                    employeeName: employee.name,
+                    project: project
+                };
+                rows.push(<MarkedRow data={rowProps} key={'' + employee.id + project.id}/>);
             });
         });
         return (
             <div>
                 <h1>Employees Grid</h1>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Employees</th>
-                            <th>Projects</th>
-                            <th>Start</th>
-                            <th>End</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {rows}
-                    </tbody>
-                </table>
+                <Filters />
+                <div className="row">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Employees</th>
+                                <th>Projects</th>
+                                <th>Start</th>
+                                <th>End</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {rows}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }
