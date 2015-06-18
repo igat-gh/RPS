@@ -14,20 +14,20 @@ var MarkedRow = React.createClass({
                 {toBeOrNotToBe}
                 <td style={style}>{data.project.title}</td>
                 <td style={style}>{Moment(data.project.date_start).format('MMMM Do YYYY')}</td>
-                <td style={style}>{Moment(data.project.date_end).format('MMMM Do YYYY')}</td>
+                <td style={style}>{data.project.date_end ? Moment(data.project.date_end).format('MMMM Do YYYY') : '(not set)'}</td>
             </tr>
         )
     },
     getBgColor: function () {
-        var project = this.props.data.project;
-        // TODO: delegate this hardcoded functionality
-        if (project.title === 'Selfeducation') {
-            return '#FF765F';
-        }
-        var timeLeft = Moment.duration(project.date_end - Moment()).asMilliseconds();
-        var duration = Moment.duration(7, 'days').asMilliseconds();
+        // TODO: Delegate this hardcoded functionality. Think about how to store markers in db and how to present them in json structure
+        var project = this.props.data.project,
+            timeLeft = Moment.duration(project.date_end - Moment()),
+            duration = Moment.duration(7, 'days');
         if (timeLeft > 0 && timeLeft <= duration) {
             return '#FFD086';
+        }
+        if (1 === project.id) {
+            return '#FF765F';
         }
         return 'transparent';
     }

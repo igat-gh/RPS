@@ -8,19 +8,19 @@ var _employees = [
         name: 'David Flanagan',
         projects: [
             {
-                id: 1,
+                id: 3,
                 title: 'Itransition RFX Processing',
                 date_start: +moment('2015-03-25'),
-                date_end: +moment('2015-06-29')
+                date_end: null
             },
             {
-                id: 2,
+                id: 1,
                 title: 'Selfeducation',
                 date_start: +moment('2014-03-25'),
-                date_end: +moment('2015-07-29')
+                date_end: null
             },
             {
-                id: 3,
+                id: 6,
                 title: 'DSM',
                 date_start: +moment('2014-03-14'),
                 date_end: +moment('2015-06-22')
@@ -32,7 +32,7 @@ var _employees = [
         name: 'John Doe',
         projects: [
             {
-                id: 1,
+                id: 3,
                 title: 'Itransition RFX Processing',
                 date_start: +moment('2015-06-01'),
                 date_end: +moment('2015-06-15')
@@ -44,13 +44,13 @@ var _employees = [
         name: 'John Smith',
         projects: [
             {
-                id: 2,
+                id: 1,
                 title: 'Selfeducation',
                 date_start: +moment('2015-04-30'),
                 date_end: +moment('2015-12-25')
             },
             {
-                id: 1,
+                id: 3,
                 title: 'Itransition RFX Processing',
                 date_start: +moment('2015-02-25'),
                 date_end: +moment('2016-03-25')
@@ -62,21 +62,21 @@ var _employees = [
         name: 'Martin Fuller',
         projects: [
             {
-                id: 3,
+                id: 4,
                 title: 'DSM',
                 date_start: +moment('2014-03-14'),
-                date_end: +moment('2015-06-25')
+                date_end: +moment('2015-09-25')
             },
             {
-                id: 2,
+                id: 5,
                 title: 'IRIS',
                 date_start: +moment('2014-03-25'),
                 date_end: +moment('2015-07-29')
             },
             {
-                id: 1,
-                title: 'Awesome project',
-                date_start: +moment('2015-03-25'),
+                id: 2,
+                title: 'Absence',
+                date_start: +moment('2015-05-25'),
                 date_end: +moment('2015-06-29')
             }
         ]
@@ -86,19 +86,19 @@ var _employees = [
         name: 'David Flanagan',
         projects: [
             {
-                id: 1,
+                id: 3,
                 title: 'Itransition RFX Processing',
                 date_start: +moment('2015-03-25'),
                 date_end: +moment('2015-06-29')
             },
             {
-                id: 2,
+                id: 6,
                 title: 'WD Hiring Activities',
                 date_start: +moment('2014-03-25'),
                 date_end: +moment('2015-07-29')
             },
             {
-                id: 3,
+                id: 4,
                 title: 'DSM',
                 date_start: +moment('2014-03-14'),
                 date_end: +moment('2015-06-22')
@@ -110,10 +110,10 @@ var _employees = [
         name: 'John Doe',
         projects: [
             {
-                id: 1,
+                id: 3,
                 title: 'Itransition RFX Processing',
                 date_start: +moment('2015-06-01'),
-                date_end: +moment('2015-06-15')
+                date_end: +moment('2015-07-15')
             }
         ]
     },
@@ -122,13 +122,13 @@ var _employees = [
         name: 'John Smith',
         projects: [
             {
-                id: 2,
+                id: 1,
                 title: 'Selfeducation',
                 date_start: +moment('2015-04-30'),
                 date_end: +moment('2015-12-25')
             },
             {
-                id: 1,
+                id: 3,
                 title: 'Itransition RFX Processing',
                 date_start: +moment('2015-02-25'),
                 date_end: +moment('2016-03-25')
@@ -140,20 +140,20 @@ var _employees = [
         name: 'Martin Fuller',
         projects: [
             {
-                id: 3,
+                id: 4,
                 title: 'DSM',
                 date_start: +moment('2014-03-14'),
                 date_end: +moment('2015-06-25')
             },
             {
-                id: 2,
+                id: 1,
                 title: 'Selfeducation',
                 date_start: +moment('2014-03-25'),
                 date_end: +moment('2015-07-29')
             },
             {
-                id: 1,
-                title: 'Awesome project',
+                id: 2,
+                title: 'Absence',
                 date_start: +moment('2015-03-25'),
                 date_end: +moment('2015-06-29')
             }

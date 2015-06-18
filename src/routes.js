@@ -10,6 +10,11 @@ var Login = require('./components/auth/login');
 var Logout = require('./components/auth/logout');
 var EmployeesGrid = require('./components/employees/employees-grid');
 
+/**
+ * Application routing
+ * For more info about routing visit https://github.com/rackt/react-router
+ * @type {XML}
+ */
 var routes = (
     <Route name="app" path="/" handler={APP}>
         <DefaultRoute handler={Home}/>

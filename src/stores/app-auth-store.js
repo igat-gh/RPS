@@ -3,18 +3,35 @@ var AppConstants = require('../constants/app-constants');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
+/**
+ *
+ * @type {string}
+ */
 var CHANGE_EVENT = 'change';
 
+/**
+ *
+ * @type {{authToken: null|string, loggedIn: boolean}}
+ * @private
+ */
 var _authData = {
     authToken: null,
     loggedIn: false
 };
 
+/**
+ *
+ * @param data
+ */
 function loadAuthData(data) {
     _authData.authToken = data.token;
     _authData.loggedIn = data.loggedIn;
 }
 
+/**
+ * AuthStore stores the state of the user authentication.
+ * For more info about Stores visit https://facebook.github.io/flux/docs/overview.html#stores
+ */
 var AuthStore = assign({}, EventEmitter.prototype,
     {
         emitChange: function () {
@@ -29,7 +46,7 @@ var AuthStore = assign({}, EventEmitter.prototype,
         getState: function () {
             return _authData;
         },
-        dispatcherIndex: AppDispatcher.register(function (payload) {
+        dispatchToken: AppDispatcher.register(function (payload) {
             var action = payload.action;
             switch (action.actionType) {
                 case AppConstants.AUTH_LOG_IN:

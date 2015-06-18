@@ -1,7 +1,7 @@
 var React = require('react');
 var RouteHandler = require('react-router').RouteHandler;
 var AuthStore = require('../../stores/app-auth-store');
-var AuthAction = require('../../actions/app-auth-actions');
+var AuthAction = require('../../actions/auth-actions');
 
 var Template = require('./app-template');
 var Header = require('../header/header');

@@ -4,7 +4,7 @@ var assign = require('object-assign');
 
 /**
  * A singleton that operates as the central hub for application updates.
- * For more information visit https://facebook.github.io/flux/
+ * For more information visit https://facebook.github.io/flux/docs/dispatcher.html
  */
 var AppDispatcher = assign(new Dispatcher(), {
     /**

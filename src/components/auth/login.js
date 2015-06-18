@@ -1,7 +1,7 @@
 var React = require('react');
 var Router = require('react-router');
 var AuthStore = require('../../stores/app-auth-store');
-var AuthAction = require('../../actions/app-auth-actions');
+var AuthAction = require('../../actions/auth-actions');
 
 var Login = React.createClass({
     contextTypes: {

@@ -1,3 +1,8 @@
+/**
+ * Authentication Service
+ *
+ * @type {{logout: Function, getToken: Function, loggedIn: Function, onChange: Function}}
+ */
 var Auth = {
     login (email, pass, callback) {
         callback = arguments[arguments.length - 1];
