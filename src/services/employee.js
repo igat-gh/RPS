@@ -98,8 +98,8 @@ var _employees = [
                 date_end: +moment('2015-07-29')
             },
             {
-                id: 4,
-                title: 'DSM',
+                id: 5,
+                title: 'IRIS',
                 date_start: +moment('2014-03-14'),
                 date_end: +moment('2015-06-22')
             }
@@ -140,8 +140,8 @@ var _employees = [
         name: 'Martin Fuller',
         projects: [
             {
-                id: 4,
-                title: 'DSM',
+                id: 3,
+                title: 'Itransition RFX Processing',
                 date_start: +moment('2014-03-14'),
                 date_end: +moment('2015-06-25')
             },

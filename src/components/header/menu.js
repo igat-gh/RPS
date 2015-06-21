@@ -2,8 +2,8 @@ var React = require('react');
 var Link = require('react-router').Link;
 
 var Menu =  React.createClass({
-    componentWillReceiveProps: function(nextProps) {
-        this.props.loggedIn = nextProps.loggedIn;
+    propTypes: {
+        loggedIn: React.PropTypes.bool.isRequired
     },
     render: function () {
         return (

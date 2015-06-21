@@ -4,8 +4,8 @@ var Link = require('react-router').Link;
 var Menu = require('./menu');
 
 var Header = React.createClass({
-    componentWillReceiveProps: function(nextProps) {
-        this.props.loggedIn = nextProps.loggedIn;
+    propTypes: {
+        loggedIn: React.PropTypes.bool.isRequired
     },
     render: function () {
         return (
@@ -21,8 +21,8 @@ var Header = React.createClass({
                                 <li>
                                     {
                                         this.props.loggedIn
-                                        ? (<Link to="logout">Log out</Link>)
-                                        : (<Link to="login">Sign in</Link>)
+                                            ? (<Link to="logout">Log out</Link>)
+                                            : (<Link to="login">Sign in</Link>)
                                     }
                                 </li>
                             </ul>
