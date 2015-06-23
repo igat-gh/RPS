@@ -8,18 +8,19 @@ var Filters = React.createClass({
     handleClick: function (event) {
         event.stopPropagation();
         var element = event.target, filterType, filterOption;
-        filterType = element.getAttribute('data-filter-type');
+        filterType = element.dataset.filterType;
         if (!filterType) {
             return;
         }
-        filterOption = element.getAttribute('data-filter-option');
+        filterOption = element.dataset.filterOption;
         AppActions.filterEmployees(filterType, filterOption);
     },
     render: function () {
+        console.log('filters');
         return (
             <p onClick={this.handleClick} className="row">
                 Filters: &nbsp;
-                <button data-filter-type={FiltersConstants.TYPE_RESET} className="btn btn-default" type="button">All</button>
+                <button data-filter-type={FiltersConstants.TYPE_ALL} className="btn btn-default" type="button">All</button>
                 <button data-filter-type={FiltersConstants.TYPE_PROJECT} data-filter-option={1} className="btn btn-default" type="button">Selfeducation</button>
                 <button data-filter-type={FiltersConstants.TYPE_PROJECT} data-filter-option={2} className="btn btn-default" type="button">Absence</button>
                 <button data-filter-type={FiltersConstants.TYPE_TIME} data-filter-option={Moment.duration(1, 'weeks')} className="btn btn-default" type="button">1 week</button>

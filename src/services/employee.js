@@ -35,7 +35,7 @@ var _employees = [
                 id: 3,
                 title: 'Itransition RFX Processing',
                 date_start: +moment('2015-06-01'),
-                date_end: +moment('2015-06-15')
+                date_end: +moment('2015-07-20')
             }
         ]
     },
@@ -77,7 +77,7 @@ var _employees = [
                 id: 2,
                 title: 'Absence',
                 date_start: +moment('2015-05-25'),
-                date_end: +moment('2015-06-29')
+                date_end: +moment('2015-06-20')
             }
         ]
     },
@@ -155,7 +155,7 @@ var _employees = [
                 id: 2,
                 title: 'Absence',
                 date_start: +moment('2015-03-25'),
-                date_end: +moment('2015-06-29')
+                date_end: +moment('2015-06-20')
             }
         ]
     }

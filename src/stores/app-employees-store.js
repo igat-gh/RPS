@@ -70,7 +70,7 @@ function filterEmployees(type, option) {
                 });
             });
             break;
-        case FiltersConstants.TYPE_RESET:
+        case FiltersConstants.TYPE_ALL:
         default :
             _currentFilter = undefined;
             _filteredEmployees = [];
@@ -95,7 +95,7 @@ var EmployeesStore = assign({}, EventEmitter.prototype,
         getEmployeesState: function () {
             var state = {employees: _employees};
             if (_currentFilter) {
-                state = {employees: _filteredEmployees};
+                state.employees = _filteredEmployees;
             }
             return state;
         },
