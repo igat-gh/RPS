@@ -19,8 +19,8 @@
 ### Directory
 * **app/**: Where you put your application files.
 * **assets/**: Where you put your static files (f. ex. images, fonts, css themes).
-* **build/**: Where your automatically builds to. This is where you launch your app in development.
-* **dist/**: Where the deployed code exists, ready for production.
+* **build/**: Where your automatically builds to. This is where you launch your app in development (git ignores this folder).
+* **dist/**: Where the deployed code exists, ready for production (git ignores this folder).
 * **misc/**: Where you put any other files for the project needs (f. ex. code style setting for WebStorm).
 * **styles/**: Where you put your styles.
 
