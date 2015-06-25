@@ -16,6 +16,8 @@ var glob = require('glob');
 var livereload = require('gulp-livereload');
 var jshint = require('gulp-jshint');
 var react = require('gulp-react');
+var less = require('gulp-less');
+var sourcemaps = require('gulp-sourcemaps');
 
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
@@ -92,7 +94,10 @@ var cssTask = function (options) {
             var start = new Date();
             console.log('Building CSS bundle');
             gulp.src(options.src)
+                .pipe(sourcemaps.init())
+                .pipe(less())
                 .pipe(concat('main.css'))
+                .pipe(sourcemaps.write())
                 .pipe(gulp.dest(options.dest))
                 .pipe(notify(function () {
                     console.log('CSS bundle built in ' + (Date.now() - start) + 'ms');
@@ -102,6 +107,7 @@ var cssTask = function (options) {
         gulp.watch(options.src, run);
     } else {
         gulp.src(options.src)
+            .pipe(less())
             .pipe(concat('main.css'))
             .pipe(cssmin())
             .pipe(gulp.dest(options.dest));
@@ -119,6 +125,16 @@ var htmlTask = function (options) {
         }));
 };
 
+var assetsTask = function (options) {
+    var start = new Date();
+    console.log('Building Assets bundle');
+    gulp.src(options.src)
+        .pipe(gulp.dest(options.dest))
+        .pipe(notify(function () {
+            console.log('Assets bundle built in ' + (Date.now() - start) + 'ms');
+        }));
+};
+
 // Development build
 gulp.task('default', function () {
 
@@ -130,13 +146,19 @@ gulp.task('default', function () {
 
     cssTask({
         development: true,
-        src: './src/styles/**/*.css',
+        src: ['./src/styles/**/*.css', './src/styles/**/*.less'],
         dest: './build/dev'
     });
 
     htmlTask({
         development: true,
         src: './src/app/index.html',
+        dest: './build/dev'
+    });
+
+    assetsTask({
+        development: true,
+        src: './src/assets/**/*',
         dest: './build/dev'
     });
 });
@@ -152,13 +174,19 @@ gulp.task('deploy', function () {
 
     cssTask({
         development: false,
-        src: './src/styles/**/*.css',
+        src: ['./src/styles/**/*.css', './src/styles/**/*.less'],
         dest: './build/prod'
     });
 
     htmlTask({
         development: false,
         src: './src/app/index.html',
+        dest: './build/prod'
+    });
+
+    assetsTask({
+        development: false,
+        src: './src/assets/**/*',
         dest: './build/prod'
     });
 });
