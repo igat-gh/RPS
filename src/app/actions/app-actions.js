@@ -20,7 +20,6 @@ var AppActions = {
             };
             AppDispatcher.handleViewAction(payload);
         });
-
     },
     filterEmployees: function (type, option) {
         var payload = {
@@ -31,12 +30,7 @@ var AppActions = {
             }
         };
         AppDispatcher.handleViewAction(payload);
-    }/*,
-     loadMarkers: function () {
-     MarkersService.fetch().then(function (markers) {
-     MarkersService.setMarkers(markers);
-     })
-     }*/
+    }
 };
 
 module.exports = AppActions;

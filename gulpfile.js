@@ -119,50 +119,52 @@ var htmlTask = function (options) {
         }));
 };
 
+// Development build
 gulp.task('default', function () {
 
     browserifyTask({
         development: true,
-        src: './app/main.js',
-        dest: './build'
+        src: './src/app/main.js',
+        dest: './build/dev'
     });
 
     cssTask({
         development: true,
-        src: ['./assets/css/**/*.css', './styles/**/*.css'],
-        dest: './build'
+        src: './src/styles/**/*.css',
+        dest: './build/dev'
     });
 
     htmlTask({
         development: true,
-        src: './assets/index.html',
-        dest: './build'
+        src: './src/app/index.html',
+        dest: './build/dev'
     });
 });
 
+// Production build
 gulp.task('deploy', function () {
 
     browserifyTask({
         development: false,
-        src: './app/main.js',
-        dest: './dist'
+        src: './src/app/main.js',
+        dest: './build/prod'
     });
 
     cssTask({
         development: false,
-        src: ['./assets/css/**/*.css', './styles/**/*.css'],
-        dest: './dist'
+        src: './src/styles/**/*.css',
+        dest: './build/prod'
     });
 
     htmlTask({
         development: false,
-        src: './assets/index.html',
-        dest: './dist'
+        src: './src/app/index.html',
+        dest: './build/prod'
     });
 });
 
 gulp.task('jshint', function () {
-    gulp.src('./app/**/*.js')
+    gulp.src('./src/app/**/*.js')
         .pipe(react())
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
