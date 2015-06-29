@@ -52,7 +52,7 @@ var Auth = {
 /* Fake request */
 function pretendRequest (email, pass, callback) {
     setTimeout(function () {
-        if (email === 'i.atroshkin@itransition.com' && pass === 'password') {
+        if (email === 'example@email.com' && pass === 'password') {
             callback({
                 authenticated: true,
                 token: Math.random().toString(36).substring(7)

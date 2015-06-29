@@ -48,7 +48,7 @@ var Login = React.createClass({
                             <div className={fieldGroupClassName}>
                                 <label ref="email" placeholder="email" className="control-label"
                                        htmlFor="auth-email-input">Email</label>
-                                <input type="text" ref="email" defaultValue="i.atroshkin@itransition.com"
+                                <input type="text" ref="email" defaultValue="example@email.com"
                                        className="form-control" id="auth-email-input"/>
                             </div>
                             <div className={fieldGroupClassName}>
