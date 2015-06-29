@@ -30,5 +30,10 @@ In the frontend uses [React](http://facebook.github.io/react/) for the views, th
 Also uses custom bootstrap [theme](http://bootswatch.com/paper/) and LESS as a CSS preprocessor. 
 
 ### Useful stuff
+* Comprehensive [Guide](http://tylermcginnis.com/reactjs-tutorial-a-comprehensive-guide-to-building-apps-with-react/) to Building Apps with React.js
 * Flux Architecture [series](https://egghead.io/series/react-flux-architecture).
+* Flux & React [Best Practices](http://racingtadpole.com/blog/flux-react-best-practices/)
 * A [collection](https://react.zeef.com/nick.raienko) of awesome React tools, resources, videos and shiny things.
+
+### Project materials
+Wiki [page](https://wiki.itransition.com/display/RPS/Resource+Planning+System+Home)
