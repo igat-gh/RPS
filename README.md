@@ -31,6 +31,7 @@ Also uses custom bootstrap [theme](http://bootswatch.com/paper/) and LESS as a C
 
 ### Useful stuff
 * Comprehensive [Guide](http://tylermcginnis.com/reactjs-tutorial-a-comprehensive-guide-to-building-apps-with-react/) to Building Apps with React.js
+* React.js [documentation](http://tftf.ru/stati/javascript/reactjs/) translated to Russian. 
 * Flux Architecture [series](https://egghead.io/series/react-flux-architecture).
 * Flux & React [Best Practices](http://racingtadpole.com/blog/flux-react-best-practices/)
 * A [collection](https://react.zeef.com/nick.raienko) of awesome React tools, resources, videos and shiny things.
