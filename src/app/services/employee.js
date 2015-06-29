@@ -72,7 +72,7 @@ var _employees = [
                 id: 5,
                 title: 'IRIS',
                 date_start: +moment('2014-03-25'),
-                date_end: +moment('2015-07-29')
+                date_end: +moment().add(7, 'd')
             },
             {
                 id: 2,
@@ -95,8 +95,8 @@ var _employees = [
             {
                 id: 6,
                 title: 'WD Hiring Activities',
-                date_start: +moment('2014-03-25'),
-                date_end: +moment('2015-07-29')
+                date_start: +moment('2015-04-14'),
+                date_end: +moment().add(7, 'd')
             },
             {
                 id: 5,

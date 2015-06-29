@@ -136,7 +136,7 @@ var assetsTask = function (options) {
 };
 
 // Development build
-gulp.task('default', function () {
+gulp.task('default', ['jshint'], function () {
 
     browserifyTask({
         development: true,
@@ -164,7 +164,7 @@ gulp.task('default', function () {
 });
 
 // Production build
-gulp.task('deploy', function () {
+gulp.task('deploy', ['jshint'], function () {
 
     browserifyTask({
         development: false,
