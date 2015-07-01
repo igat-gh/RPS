@@ -1,5 +1,6 @@
 var React = require('react');
 var Moment = require('moment');
+var Settings = require('../../settings');
 
 var MarkedRow = React.createClass({
     componentWillReceiveProps: function (nextProps) {
@@ -13,9 +14,9 @@ var MarkedRow = React.createClass({
             <tr>
                 {toBeOrNotToBe}
                 <td className={className}>{data.project.title}</td>
-                <td className={className}>{Moment(data.project.date_start).format('MMMM Do YYYY')}</td>
-                <td className={className}>{data.project.date_end ? Moment(data.project.date_end).format('MMMM Do YYYY') :
-                                   '(not set)'}</td>
+                <td className={className}>{Moment(data.project.date_start).format(Settings.date.format)}</td>
+                <td className={className}>{data.project.date_end ? Moment(data.project.date_end).format(Settings.date.format) :
+                    Settings.date.notSet}</td>
             </tr>
         );
     },
