@@ -9,29 +9,54 @@ var MarkedRow = React.createClass({
     render: function () {
         var data = this.props.data;
         var toBeOrNotToBe = data.projectIndex > 0 ? null : <td rowSpan={data.projectsLength}>{data.employeeName}</td>;
-        var className = this.getBgColor();
+        var className = this.getMarker();
+        function getTitle() {
+            return data.project.title;
+        }
+        function getDateStart() {
+            return Moment(data.project.date_start).format(Settings.date.format);
+        }
+        function getDateEnd() {
+            var dateEnd;
+            if (!data.project.date_end) {
+                return Settings.date.notSet;
+            }
+            dateEnd = Moment(data.project.date_end).format(Settings.date.format);
+            return dateEnd;
+        }
+        function getTimeLeft() {
+            var timeLeft;
+            if (!data.project.date_end) {
+                return Settings.date.notSet;
+            }
+            timeLeft = Moment.duration(data.project.date_end - Moment()).humanize(true);
+            return timeLeft;
+        }
         return (
             <tr>
                 {toBeOrNotToBe}
-                <td className={className}>{data.project.title}</td>
-                <td className={className}>{Moment(data.project.date_start).format(Settings.date.format)}</td>
-                <td className={className}>{data.project.date_end ? Moment(data.project.date_end).format(Settings.date.format) :
-                    Settings.date.notSet}</td>
+                <td className={className}>{getTitle()}</td>
+                <td className={className}>{getDateStart()}</td>
+                <td className={className}>{getDateEnd()}</td>
+                <td className={className}>{getTimeLeft()}</td>
             </tr>
         );
     },
-    getBgColor: function () {
-        /* TODO: Delegate this hardcoded functionality. Think about how to store markers in db and how to present them in json structure */
-        var project = this.props.data.project,
-            timeLeft = Moment.duration(project.date_end - Moment()),
-            duration = Moment.duration(7, 'days');
-        if (timeLeft > 0 && timeLeft <= duration) {
-            return 'warning';
+    getMarker: function () {
+        /* TODO: Delegate this hardcoded functionality. Think about how to store markers in db (or maybe config) and how to present them in json structure */
+        var project = this.props.data.project;
+        var timeLeft = Moment.duration(project.date_end - Moment());
+        var durationToInform = Moment.duration(7, 'days');
+
+        if (timeLeft > 0 && timeLeft <= durationToInform) {
+            return Settings.marker.color.warning;
         }
+
         if (1 === project.id) {
-            return 'danger';
+            return Settings.marker.color.danger;
         }
-        return '';
+
+        return Settings.marker.color.default;
     }
 });
 

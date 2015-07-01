@@ -1,7 +1,15 @@
 var Settings = {
     date: {
-        format: 'MMMM D, YYYY',
-        notSet: '(not set)'
+        // List of all available formats you can find here: http://momentjs.com/docs/#/displaying/format/
+        format: 'MM/DD/YYYY',
+        notSet: '(undefined)'
+    },
+    marker: {
+        color: {
+            default: 'default',
+            danger: 'danger',
+            warning: 'warning'
+        }
     }
 };
 
