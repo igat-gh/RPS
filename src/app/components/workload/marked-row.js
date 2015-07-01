@@ -8,13 +8,13 @@ var MarkedRow = React.createClass({
     render: function () {
         var data = this.props.data;
         var toBeOrNotToBe = data.projectIndex > 0 ? null : <td rowSpan={data.projectsLength}>{data.employeeName}</td>;
-        var style = {backgroundColor: this.getBgColor()};
+        var className = this.getBgColor();
         return (
             <tr>
                 {toBeOrNotToBe}
-                <td style={style}>{data.project.title}</td>
-                <td style={style}>{Moment(data.project.date_start).format('MMMM Do YYYY')}</td>
-                <td style={style}>{data.project.date_end ? Moment(data.project.date_end).format('MMMM Do YYYY') :
+                <td className={className}>{data.project.title}</td>
+                <td className={className}>{Moment(data.project.date_start).format('MMMM Do YYYY')}</td>
+                <td className={className}>{data.project.date_end ? Moment(data.project.date_end).format('MMMM Do YYYY') :
                                    '(not set)'}</td>
             </tr>
         );
@@ -25,12 +25,12 @@ var MarkedRow = React.createClass({
             timeLeft = Moment.duration(project.date_end - Moment()),
             duration = Moment.duration(7, 'days');
         if (timeLeft > 0 && timeLeft <= duration) {
-            return '#FFD086';
+            return 'warning';
         }
         if (1 === project.id) {
-            return '#FF765F';
+            return 'danger';
         }
-        return 'transparent';
+        return '';
     }
 });
 
