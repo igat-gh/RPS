@@ -74,7 +74,7 @@ function filterEmployees (type, option) {
                         return false;
                     }
                     diff = Moment.duration(project.date_end - Moment());
-                    duration = Moment.duration(+option);
+                    duration = Moment.duration(option);
                     return diff <= duration;
                 });
             });
