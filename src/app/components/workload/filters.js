@@ -18,28 +18,26 @@ var Filters = React.createClass({
         AppActions.filterEmployees(filterType, filterOption);
     },
     render: function () {
-        /* jshint ignore:start */
         return (
             <p className="btn-group center-block">
-                <Link to={`/workload`} className="btn btn-default">All</Link>
-                <Link to={`/workload/filter/${FiltersConstants.TYPE_PROJECT}/1`} className="btn btn-default">
+                <Link to="/workload" className="btn btn-default">All</Link>
+                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, option: 1}} className="btn btn-default">
                     Selfeducation
                 </Link>
-                <Link to={`/workload/filter/${FiltersConstants.TYPE_PROJECT}/2`} className="btn btn-default">
+                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, option: 2}} className="btn btn-default">
                     Absence
                 </Link>
-                <Link to={`/workload/filter/${FiltersConstants.TYPE_TIME}/${Moment.duration(1, 'weeks')}`}
+                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_TIME, option: Moment.duration(1, 'weeks')}}
                       className="btn btn-default">1 week
                 </Link>
-                <Link to={`/workload/filter/${FiltersConstants.TYPE_TIME}/${Moment.duration(2, 'weeks')}`}
+                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_TIME, option: Moment.duration(2, 'weeks')}}
                       className="btn btn-default">2 week
                 </Link>
-                <Link to={`/workload/filter/${FiltersConstants.TYPE_TIME}/${Moment.duration(1, 'month')}`}
+                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_TIME, option: Moment.duration(1, 'month')}}
                       className="btn btn-default">1 month
                 </Link>
             </p>
         );
-        /* jshint ignore:end */
     }
 });
 
