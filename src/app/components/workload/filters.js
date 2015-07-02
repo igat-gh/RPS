@@ -6,34 +6,28 @@ var FiltersConstants = require('../../constants/filters-constants');
 var Moment = require('moment');
 
 var Filters = React.createClass({
-    handleClick: function (event) {
-        console.log(event);
-        event.stopPropagation();
-        var element = event.target, filterType, filterOption;
-        filterType = element.dataset.filterType;
-        if (!filterType) {
-            return;
-        }
-        filterOption = element.dataset.filterOption;
-        AppActions.filterEmployees(filterType, filterOption);
-    },
     render: function () {
         return (
             <p className="btn-group center-block">
                 <Link to="/workload" className="btn btn-default">All</Link>
-                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, option: 1}} className="btn btn-default">
+                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, option: 1}}
+                      className="btn btn-default">
                     Selfeducation
                 </Link>
-                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, option: 2}} className="btn btn-default">
+                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, option: 2}}
+                      className="btn btn-default">
                     Absence
                 </Link>
-                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_TIME, option: Moment.duration(1, 'weeks')}}
+                <Link to="workload-filter"
+                      params={{type: FiltersConstants.TYPE_TIME, option: Moment.duration(1, 'weeks')}}
                       className="btn btn-default">1 week
                 </Link>
-                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_TIME, option: Moment.duration(2, 'weeks')}}
+                <Link to="workload-filter"
+                      params={{type: FiltersConstants.TYPE_TIME, option: Moment.duration(2, 'weeks')}}
                       className="btn btn-default">2 week
                 </Link>
-                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_TIME, option: Moment.duration(1, 'month')}}
+                <Link to="workload-filter"
+                      params={{type: FiltersConstants.TYPE_TIME, option: Moment.duration(1, 'month')}}
                       className="btn btn-default">1 month
                 </Link>
             </p>

@@ -39,7 +39,6 @@ var _currentFilter;
  */
 function loadEmployees (employeesList) {
     employeesList.map(function (employee) {
-        console.log(employee.projects);
         employee.projects = employee.projects.filter(function (project) {
             if (!project.date_end) {
                 return true;

@@ -1,6 +1,7 @@
 var React = require('react');
 var Moment = require('moment');
 var Settings = require('../../settings');
+require('moment-duration-format');
 
 var MarkedRow = React.createClass({
     componentWillReceiveProps: function (nextProps) {
@@ -19,7 +20,7 @@ var MarkedRow = React.createClass({
         function getDateEnd() {
             var dateEnd;
             if (!data.project.date_end) {
-                return Settings.date.notSet;
+                return Settings.date.undefined;
             }
             dateEnd = Moment(data.project.date_end).format(Settings.date.format);
             return dateEnd;
@@ -27,9 +28,9 @@ var MarkedRow = React.createClass({
         function getTimeLeft() {
             var timeLeft;
             if (!data.project.date_end) {
-                return Settings.date.notSet;
+                return Settings.duration.undefined;
             }
-            timeLeft = Moment.duration(data.project.date_end - Moment()).humanize(true);
+            timeLeft = Moment.duration(data.project.date_end - Moment()).format(Settings.duration.format);
             return timeLeft;
         }
         return (

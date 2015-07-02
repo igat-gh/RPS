@@ -10,7 +10,6 @@ var AuthStore = require('../stores/app-auth-store');
 var AuthenticationMixin = {
     statics: {
         willTransitionTo: function (transition, params) {
-            console.log(params);
             if (!AuthStore.getState().loggedIn) {
                 Login.attemptedTransition = transition;
                 transition.redirect('/login');
