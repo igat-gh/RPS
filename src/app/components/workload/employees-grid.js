@@ -1,13 +1,24 @@
 var React = require('react');
 var AppActions = require('../../actions/app-actions');
 var EmployeesStore = require('../../stores/app-employees-store');
-var AuthenticationMixin = require('../../mixins/authentication-mixin');
+var AuthStore = require('../../stores/app-auth-store');
+//var AuthenticationMixin = require('../../mixins/authentication-mixin');
 
 var Filters = require('./filters');
 var MarkedRow = require('./marked-row');
+var Login = require('../auth/login');
 
 var EmployeesGrid = React.createClass({
-    mixins: [AuthenticationMixin],
+    statics: {
+        willTransitionTo: function (transition, params) {
+            if (!AuthStore.getState().loggedIn) {
+                Login.attemptedTransition = transition;
+                transition.redirect('/login');
+                return;
+            }
+            AppActions.filterEmployees(params.type, params.option);
+        }
+    },
     getInitialState: function () {
         return EmployeesStore.getEmployeesState();
     },

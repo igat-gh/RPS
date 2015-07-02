@@ -2,12 +2,15 @@ var Login = require('../components/auth/login');
 var AuthStore = require('../stores/app-auth-store');
 
 /**
- * AuthenticationMixin
+ * AuthenticationMixin.
+ * Use for auth protected components.
+ *
  * @type {{statics: {willTransitionTo: Function}}}
  */
 var AuthenticationMixin = {
     statics: {
-        willTransitionTo: function (transition) {
+        willTransitionTo: function (transition, params) {
+            console.log(params);
             if (!AuthStore.getState().loggedIn) {
                 Login.attemptedTransition = transition;
                 transition.redirect('/login');

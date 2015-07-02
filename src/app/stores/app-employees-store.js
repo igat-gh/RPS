@@ -14,14 +14,14 @@ var CHANGE_EVENT = 'change';
 
 /**
  *
- * @type {Array} List of workload
+ * @type {Array} List of employees
  * @private
  */
 var _employees = [];
 
 /**
  *
- * @type {Array} List of filtered workload
+ * @type {Array} List of filtered employees
  * @private
  */
 var _filteredEmployees = [];
@@ -34,10 +34,19 @@ var _filteredEmployees = [];
 var _currentFilter;
 
 /**
- *
+ * Filter not ended projects for each employee
  * @param employeesList Array
  */
 function loadEmployees (employeesList) {
+    employeesList.map(function (employee) {
+        console.log(employee.projects);
+        employee.projects = employee.projects.filter(function (project) {
+            if (!project.date_end) {
+                return true;
+            }
+            return project.date_end > Moment();
+        });
+    });
     _employees = employeesList;
 }
 
@@ -48,33 +57,31 @@ function loadEmployees (employeesList) {
  */
 function filterEmployees (type, option) {
     switch (type) {
-    case FiltersConstants.TYPE_PROJECT:
-        _currentFilter = FiltersConstants.TYPE_PROJECT;
-        _filteredEmployees = _employees.filter(function (employee) {
-            return employee.projects.find(function (project) {
-                return project.id === +option;
+        case FiltersConstants.TYPE_PROJECT:
+            _currentFilter = FiltersConstants.TYPE_PROJECT;
+            _filteredEmployees = _employees.filter(function (employee) {
+                return employee.projects.find(function (project) {
+                    return project.id === +option;
+                });
             });
-        });
-        break;
-    case FiltersConstants.TYPE_TIME:
-        _currentFilter = FiltersConstants.TYPE_TIME;
-        _filteredEmployees = _employees.filter(function (employee) {
-            return employee.projects.some(function (project) {
-                var diff, duration;
-                if (!project.date_end) {
-                    return false;
-                }
-                diff = Moment.duration(project.date_end - Moment());
-                duration = Moment.duration(+option);
-                return diff <= duration;
+            break;
+        case FiltersConstants.TYPE_TIME:
+            _currentFilter = FiltersConstants.TYPE_TIME;
+            _filteredEmployees = _employees.filter(function (employee) {
+                return employee.projects.some(function (project) {
+                    var diff, duration;
+                    if (!project.date_end) {
+                        return false;
+                    }
+                    diff = Moment.duration(project.date_end - Moment());
+                    duration = Moment.duration(+option);
+                    return diff <= duration;
+                });
             });
-        });
-        break;
-    case FiltersConstants.TYPE_ALL:
-        /* falls through */
-    default :
-        _currentFilter = undefined;
-        _filteredEmployees = [];
+            break;
+        default :
+            _currentFilter = undefined;
+            _filteredEmployees = [];
     }
 }
 
@@ -103,14 +110,14 @@ var EmployeesStore = assign({}, EventEmitter.prototype,
         dispatchToken: AppDispatcher.register(function (payload) {
             var action = payload.action;
             switch (action.actionType) {
-            case AppConstants.RECEIVE_EMPLOYEES:
-                loadEmployees(action.data.employees);
-                break;
-            case AppConstants.FILTER_EMPLOYEES:
-                filterEmployees(action.data.type, action.data.option);
-                break;
-            default :
-                return true;
+                case AppConstants.RECEIVE_EMPLOYEES:
+                    loadEmployees(action.data.employees);
+                    break;
+                case AppConstants.FILTER_EMPLOYEES:
+                    filterEmployees(action.data.type, action.data.option);
+                    break;
+                default :
+                    return true;
             }
             EmployeesStore.emitChange();
             return true;

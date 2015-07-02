@@ -13,6 +13,7 @@ var Workload = require('./components/workload/employees-grid');
 /**
  * Application routing
  * For more info about routing visit https://github.com/rackt/react-router
+ *
  * @type {XML}
  */
 var routes = (
@@ -20,7 +21,10 @@ var routes = (
         <DefaultRoute handler={Home}/>
         <Route name="login" handler={Login}/>
         <Route name="logout" handler={Logout}/>
-        <Route name="workload" handler={Workload}/>
+        <Route name="workload" handler={Workload}>
+            <Route path="/workload/filter/:type/:option" handler={Workload}/>
+            <DefaultRoute handler={Workload}/>
+        </Route>
     </Route>
 );
 

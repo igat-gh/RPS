@@ -1,4 +1,5 @@
 var React = require('react');
+var Link = require('react-router').Link;
 var AppActions = require('../../actions/app-actions');
 var EmployeesStore = require('../../stores/app-employees-store');
 var FiltersConstants = require('../../constants/filters-constants');
@@ -6,6 +7,7 @@ var Moment = require('moment');
 
 var Filters = React.createClass({
     handleClick: function (event) {
+        console.log(event);
         event.stopPropagation();
         var element = event.target, filterType, filterOption;
         filterType = element.dataset.filterType;
@@ -16,27 +18,28 @@ var Filters = React.createClass({
         AppActions.filterEmployees(filterType, filterOption);
     },
     render: function () {
+        /* jshint ignore:start */
         return (
-            <p onClick={this.handleClick} className="btn-group center-block">
-                <button data-filter-type={FiltersConstants.TYPE_ALL} className="btn btn-default" type="button">All
-                </button>
-                <button data-filter-type={FiltersConstants.TYPE_PROJECT} data-filter-option={1}
-                        className="btn btn-default" type="button">Selfeducation
-                </button>
-                <button data-filter-type={FiltersConstants.TYPE_PROJECT} data-filter-option={2}
-                        className="btn btn-default" type="button">Absence
-                </button>
-                <button data-filter-type={FiltersConstants.TYPE_TIME} data-filter-option={Moment.duration(1, 'weeks')}
-                        className="btn btn-default" type="button">1 week
-                </button>
-                <button data-filter-type={FiltersConstants.TYPE_TIME} data-filter-option={Moment.duration(2, 'weeks')}
-                        className="btn btn-default" type="button">2 week
-                </button>
-                <button data-filter-type={FiltersConstants.TYPE_TIME} data-filter-option={Moment.duration(1, 'month')}
-                        className="btn btn-default" type="button">1 month
-                </button>
+            <p className="btn-group center-block">
+                <Link to={`/workload`} className="btn btn-default">All</Link>
+                <Link to={`/workload/filter/${FiltersConstants.TYPE_PROJECT}/1`} className="btn btn-default">
+                    Selfeducation
+                </Link>
+                <Link to={`/workload/filter/${FiltersConstants.TYPE_PROJECT}/2`} className="btn btn-default">
+                    Absence
+                </Link>
+                <Link to={`/workload/filter/${FiltersConstants.TYPE_TIME}/${Moment.duration(1, 'weeks')}`}
+                      className="btn btn-default">1 week
+                </Link>
+                <Link to={`/workload/filter/${FiltersConstants.TYPE_TIME}/${Moment.duration(2, 'weeks')}`}
+                      className="btn btn-default">2 week
+                </Link>
+                <Link to={`/workload/filter/${FiltersConstants.TYPE_TIME}/${Moment.duration(1, 'month')}`}
+                      className="btn btn-default">1 month
+                </Link>
             </p>
         );
+        /* jshint ignore:end */
     }
 });
 
