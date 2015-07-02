@@ -22,7 +22,7 @@ var routes = (
         <Route name="login" handler={Login}/>
         <Route name="logout" handler={Logout}/>
         <Route name="workload" handler={Workload}>
-            <Route path="/workload/filter/:type/:option" name="workload-filter" handler={Workload}/>
+            <Route path="/workload/filter/:type/:value" name="workload-filter" handler={Workload}/>
             <DefaultRoute handler={Workload}/>
         </Route>
     </Route>

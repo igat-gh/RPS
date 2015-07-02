@@ -28,10 +28,13 @@ var _filteredEmployees = [];
 
 /**
  *
- * @type {undefined|object} Current filter
+ * @type {{type: null|string, value: null|string}}
  * @private
  */
-var _currentFilter;
+var _currentFilter = {
+    type: null,
+    value: null
+};
 
 /**
  * Filter not ended projects for each employee
@@ -52,23 +55,24 @@ function loadEmployees(employeesList) {
 /**
  *
  * @param type String
- * @param option String
+ * @param value String
  */
-function setFilter(type, option) {
-    _currentFilter = {type: type, option: option};
+function setFilter(type, value) {
+    _currentFilter.type = type;
+    _currentFilter.value = value;
 }
 
 /**
  *
  * @param type String
- * @param option String
+ * @param value String
  */
-function filterEmployees(type, option) {
+function filterEmployees(type, value) {
     switch (type) {
         case FiltersConstants.TYPE_PROJECT:
             _filteredEmployees = _employees.filter(function (employee) {
                 return employee.projects.find(function (project) {
-                    return project.id === +option;
+                    return project.id === +value;
                 });
             });
             break;
@@ -80,17 +84,18 @@ function filterEmployees(type, option) {
                         return false;
                     }
                     diff = Moment.duration(project.date_end - Moment());
-                    duration = Moment.duration(option);
+                    duration = Moment.duration(value);
                     return diff <= duration;
                 });
             });
             break;
         default :
-            _currentFilter = undefined;
+            _currentFilter.type = null;
+            _currentFilter.value = null;
             _filteredEmployees = [];
     }
 
-    return _currentFilter ? _filteredEmployees : _employees;
+    return _currentFilter && _currentFilter.type ? _filteredEmployees : _employees;
 }
 
 /**
@@ -109,10 +114,8 @@ var EmployeesStore = assign({}, EventEmitter.prototype,
             this.removeListener(CHANGE_EVENT, callback);
         },
         getEmployeesState: function () {
-            var state = filterEmployees(_currentFilter.type, _currentFilter.option);
-            return {
-                employees: state
-            };
+            var state = filterEmployees(_currentFilter.type, _currentFilter.value);
+            return {employees: state};
         },
         dispatchToken: AppDispatcher.register(function (payload) {
             var action = payload.action;
@@ -121,7 +124,7 @@ var EmployeesStore = assign({}, EventEmitter.prototype,
                     loadEmployees(action.data.employees);
                     break;
                 case AppConstants.SET_FILTER:
-                    setFilter(action.data.type, action.data.option);
+                    setFilter(action.data.type, action.data.value);
                     break;
                 default :
                     return true;

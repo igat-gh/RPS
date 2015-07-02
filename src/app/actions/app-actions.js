@@ -21,12 +21,12 @@ var AppActions = {
             AppDispatcher.handleViewAction(payload);
         });
     },
-    filterEmployees: function (type, option) {
+    filterEmployees: function (type, value) {
         var payload = {
             actionType: AppConstants.SET_FILTER,
             data: {
                 type: type,
-                option: option
+                value: value
             }
         };
         AppDispatcher.handleViewAction(payload);

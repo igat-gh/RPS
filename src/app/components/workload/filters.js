@@ -10,24 +10,24 @@ var Filters = React.createClass({
         return (
             <p className="btn-group center-block">
                 <Link to="/workload" className="btn btn-default">All</Link>
-                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, option: 1}}
+                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, value: 1}}
                       className="btn btn-default">
                     Selfeducation
                 </Link>
-                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, option: 2}}
+                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, value: 2}}
                       className="btn btn-default">
                     Absence
                 </Link>
                 <Link to="workload-filter"
-                      params={{type: FiltersConstants.TYPE_TIME, option: Moment.duration(1, 'weeks')}}
+                      params={{type: FiltersConstants.TYPE_TIME, value: Moment.duration(1, 'weeks')}}
                       className="btn btn-default">1 week
                 </Link>
                 <Link to="workload-filter"
-                      params={{type: FiltersConstants.TYPE_TIME, option: Moment.duration(2, 'weeks')}}
+                      params={{type: FiltersConstants.TYPE_TIME, value: Moment.duration(2, 'weeks')}}
                       className="btn btn-default">2 week
                 </Link>
                 <Link to="workload-filter"
-                      params={{type: FiltersConstants.TYPE_TIME, option: Moment.duration(1, 'month')}}
+                      params={{type: FiltersConstants.TYPE_TIME, value: Moment.duration(1, 'month')}}
                       className="btn btn-default">1 month
                 </Link>
             </p>

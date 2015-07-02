@@ -2,7 +2,6 @@ var React = require('react');
 var AppActions = require('../../actions/app-actions');
 var EmployeesStore = require('../../stores/app-employees-store');
 var AuthStore = require('../../stores/app-auth-store');
-//var AuthenticationMixin = require('../../mixins/authentication-mixin');
 
 var Filters = require('./filters');
 var MarkedRow = require('./marked-row');
@@ -16,7 +15,7 @@ var EmployeesGrid = React.createClass({
                 transition.redirect('/login');
                 return;
             }
-            AppActions.filterEmployees(params.type, params.option);
+            AppActions.filterEmployees(params.type, params.value);
         }
     },
     getInitialState: function () {
