@@ -23,7 +23,7 @@ var AppActions = {
     },
     filterEmployees: function (type, option) {
         var payload = {
-            actionType: AppConstants.FILTER_EMPLOYEES,
+            actionType: AppConstants.SET_FILTER,
             data: {
                 type: type,
                 option: option
