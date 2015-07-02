@@ -16,13 +16,10 @@ var EmployeesGrid = React.createClass({
                 transition.redirect('/login');
                 return;
             }
-            console.log('transition');
-            console.log(params);
             AppActions.filterEmployees(params.type, params.option);
         }
     },
     getInitialState: function () {
-        console.log('initital state');
         return EmployeesStore.getEmployeesState();
     },
     componentWillMount: function () {
