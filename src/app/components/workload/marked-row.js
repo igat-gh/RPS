@@ -1,6 +1,8 @@
 var React = require('react');
 var Moment = require('moment');
 var Settings = require('../../settings');
+var ProjectConstants = require('../../constants/project-constants');
+
 require('moment-duration-format');
 
 var MarkedRow = React.createClass({
@@ -44,20 +46,21 @@ var MarkedRow = React.createClass({
         );
     },
     getMarker: function () {
-        /* TODO: Delegate this hardcoded functionality. Think about how to store markers in db (or maybe config) and how to present them in json structure */
-        var project = this.props.data.project;
-        var timeLeft = Moment.duration(project.date_end - Moment());
-        var durationToInform = Moment.duration(7, 'days');
-
-        if (timeLeft > 0 && timeLeft <= durationToInform) {
-            return Settings.marker.color.warning;
+        var project = this.props.data.project, marker;
+        switch (project.type) {
+            case ProjectConstants.TYPE_SELFEDUCATION:
+                marker = Settings.marker.color.danger;
+                break;
+            case ProjectConstants.TYPE_ABSENCE:
+                marker = Settings.marker.color.warning;
+                break;
+            case ProjectConstants.TYPE_TEST_PERIOD:
+                marker = Settings.marker.color.info;
+                break;
+            default:
+                marker = Settings.marker.color.default;
         }
-
-        if (1 === project.id) {
-            return Settings.marker.color.danger;
-        }
-
-        return Settings.marker.color.default;
+        return marker;
     }
 });
 

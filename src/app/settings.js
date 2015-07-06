@@ -12,7 +12,8 @@ var Settings = {
         color: {
             default: 'default',
             danger: 'danger',
-            warning: 'warning'
+            warning: 'warning',
+            info: 'info'
         }
     }
 };
