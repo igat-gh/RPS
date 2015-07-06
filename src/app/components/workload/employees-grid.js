@@ -2,6 +2,7 @@ var React = require('react');
 var AppActions = require('../../actions/app-actions');
 var EmployeesStore = require('../../stores/app-employees-store');
 var AuthStore = require('../../stores/app-auth-store');
+var Loader = require('react-loader');
 
 var Filters = require('./filters');
 var MarkedRow = require('./marked-row');
@@ -19,7 +20,7 @@ var EmployeesGrid = React.createClass({
         }
     },
     getInitialState: function () {
-        return EmployeesStore.getEmployeesState();
+        return {loaded: false, employees: EmployeesStore.getEmployeesState().employees};
     },
     componentWillMount: function () {
         AppActions.loadEmployees();
@@ -31,7 +32,7 @@ var EmployeesGrid = React.createClass({
         EmployeesStore.removeChangeListener(this._onChange);
     },
     _onChange: function () {
-        this.setState(EmployeesStore.getEmployeesState());
+        this.setState({loaded: true, employees: EmployeesStore.getEmployeesState().employees});
     },
     render: function () {
         var rows = [];
@@ -59,20 +60,22 @@ var EmployeesGrid = React.createClass({
                     </div>
                 </div>
                 <div className="row">
-                    <table className="table">
-                        <thead>
-                        <tr>
-                            <th>Employees</th>
-                            <th>Projects</th>
-                            <th>Start</th>
-                            <th>End</th>
-                            <th>Time Left</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {rows}
-                        </tbody>
-                    </table>
+                    <Loader loaded={this.state.loaded}>
+                        <table className="table">
+                            <thead>
+                            <tr>
+                                <th>Employees</th>
+                                <th>Projects</th>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th>Time Left</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {rows}
+                            </tbody>
+                        </table>
+                    </Loader>
                 </div>
             </div>
         );
