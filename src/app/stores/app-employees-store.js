@@ -95,7 +95,7 @@ function filterEmployees(type, value) {
             _filteredEmployees = [];
     }
 
-    return _currentFilter && _currentFilter.type ? _filteredEmployees : _employees;
+    return _currentFilter.type ? _filteredEmployees : _employees;
 }
 
 /**

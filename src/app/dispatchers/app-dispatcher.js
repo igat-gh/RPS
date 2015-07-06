@@ -16,6 +16,30 @@ var AppDispatcher = assign(new Dispatcher(), {
             source: 'VIEW_ACTION',
             action: action
         });
+    },
+
+    /**
+     * @param {function} f
+     * Method that shows exceptions hidden by Dispatcher
+     * For more info about hidden exceptions visit http://cjlarose.com/2014/12/09/flux-show-exceptions.html
+     */
+    showErrors: function (f) {
+        return function () {
+            try {
+                f.apply(this, arguments);
+            } catch (e) {
+                console.error(e.stack);
+            }
+        };
+    },
+
+    /**
+     * @param {function} f
+     * Method that registers function that shows exceptions hidden by Dispatcher
+     * For more info about hidden exceptions visit http://cjlarose.com/2014/12/09/flux-show-exceptions.html
+     */
+    register: function (f) {
+        return Dispatcher.prototype.register.call(this, this.showErrors(f));
     }
 });
 
