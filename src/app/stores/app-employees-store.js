@@ -72,7 +72,7 @@ function filterEmployees(type, value) {
         case FiltersConstants.TYPE_PROJECT:
             _filteredEmployees = _employees.filter(function (employee) {
                 return employee.projects.find(function (project) {
-                    return project.id === +value;
+                    return project.type === +value;
                 });
             });
             break;

@@ -2,6 +2,7 @@
 var Promise = require('es6-promise').Promise;
 /* Delete this line when will use api service */
 var moment = require('moment');
+var ProjectConstants = require('../constants/project-constants');
 
 var _employees = [
     {
@@ -10,6 +11,7 @@ var _employees = [
         projects: [
             {
                 id: 2,
+                type: ProjectConstants.TYPE_TEST_PERIOD,
                 title: 'Test Period',
                 date_start: +moment('2015-07-08'),
                 date_end: +moment('2015-08-07')
@@ -22,6 +24,7 @@ var _employees = [
         projects: [
             {
                 id: 10001,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Paxton Access - Net10 UI',
                 date_start: +moment('2014-06-01'),
                 date_end: null
@@ -34,12 +37,14 @@ var _employees = [
         projects: [
             {
                 id: 10002,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Accela - BoardTraq',
                 date_start: +moment('2014-05-01'),
                 date_end: +moment('2015-04-30')
             },
             {
                 id: 10003,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Wren Kitchens - Planner',
                 date_start: +moment('2015-05-01'),
                 date_end: null
@@ -52,12 +57,14 @@ var _employees = [
         projects: [
             {
                 id: 10004,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'IRIS',
                 date_start: +moment('2015-05-12'),
                 date_end: +moment('2015-09-01')
             },
             {
                 id: 10005,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Forex',
                 date_start: +moment('2014-09-01'),
                 date_end: +moment('2015-05-11')
@@ -70,6 +77,7 @@ var _employees = [
         projects: [
             {
                 id: 10006,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Themis',
                 date_start: +moment('2014-09-01'),
                 date_end: null
@@ -82,12 +90,14 @@ var _employees = [
         projects: [
             {
                 id: 1,
+                type: ProjectConstants.TYPE_SELFEDUCATION,
                 title: 'Selfeducation',
                 date_start: +moment('2015-06-01'),
                 date_end: +moment('2015-07-12')
             },
             {
                 id: 10007,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'ZigZag',
                 date_start: +moment('2015-07-15'),
                 date_end: +moment('2015-08-15')
@@ -100,6 +110,7 @@ var _employees = [
         projects: [
             {
                 id: 10006,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Themis',
                 date_start: +moment('2015-04-01'),
                 date_end: null
@@ -112,6 +123,7 @@ var _employees = [
         projects: [
             {
                 id: 10008,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'SDVentures',
                 date_start: +moment('2014-03-14'),
                 date_end: null
@@ -124,6 +136,7 @@ var _employees = [
         projects: [
             {
                 id: 10003,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Wren Kitchens - Planner',
                 date_start: +moment('2015-06-01'),
                 date_end: null
@@ -136,6 +149,7 @@ var _employees = [
         projects: [
             {
                 id: 1,
+                type: ProjectConstants.TYPE_SELFEDUCATION,
                 title: 'Selfeducation',
                 date_start: +moment('2015-06-01'),
                 date_end: null
@@ -148,12 +162,14 @@ var _employees = [
         projects: [
             {
                 id: 10,
+                type: ProjectConstants.TYPE_ABSENCE,
                 title: 'Annual Leave',
                 date_start: +moment('2015-06-29'),
                 date_end: +moment('2015-07-16')
             },
             {
                 id: 10009,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Kaspersky',
                 date_start: +moment('2014-09-01'),
                 date_end: null
@@ -166,6 +182,7 @@ var _employees = [
         projects: [
             {
                 id: 10006,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Themis',
                 date_start: +moment('2014-09-01'),
                 date_end: null
@@ -178,6 +195,7 @@ var _employees = [
         projects: [
             {
                 id: 10006,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Themis',
                 date_start: +moment('2015-05-01'),
                 date_end: null
@@ -190,18 +208,21 @@ var _employees = [
         projects: [
             {
                 id: 10010,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Becton Dickinson',
                 date_start: +moment('2014-05-01'),
                 date_end: +moment('2014-06-30')
             },
             {
                 id: 1001011,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'QuantumVerse',
                 date_start: +moment('2014-07-01'),
                 date_end: +moment('2014-08-31')
             },
             {
                 id: 10,
+                type: ProjectConstants.TYPE_ABSENCE,
                 title: 'Annual Leave',
                 date_start: +moment('2014-07-13'),
                 date_end: +moment('2014-07-28')
@@ -214,6 +235,7 @@ var _employees = [
         projects: [
             {
                 id: 10001,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Paxton Access - Net10 UI',
                 date_start: +moment('2014-09-01'),
                 date_end: null
@@ -226,6 +248,7 @@ var _employees = [
         projects: [
             {
                 id: 1,
+                type: ProjectConstants.TYPE_SELFEDUCATION,
                 title: 'Selfeducation',
                 date_start: +moment('2014-07-01'),
                 date_end: null
@@ -238,6 +261,7 @@ var _employees = [
         projects: [
             {
                 id: 10005,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Forex',
                 date_start: +moment('2014-09-01'),
                 date_end: null
@@ -250,6 +274,7 @@ var _employees = [
         projects: [
             {
                 id: 10008,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'SDVentures',
                 date_start: +moment('2014-03-14'),
                 date_end: null
@@ -262,6 +287,7 @@ var _employees = [
         projects: [
             {
                 id: 1,
+                type: ProjectConstants.TYPE_SELFEDUCATION,
                 title: 'Selfeducation',
                 date_start: +moment('2015-06-01'),
                 date_end: null
@@ -274,6 +300,7 @@ var _employees = [
         projects: [
             {
                 id: 100011,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Productive Edge',
                 date_start: +moment('2015-05-01'),
                 date_end: null
@@ -286,6 +313,7 @@ var _employees = [
         projects: [
             {
                 id: 100012,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Pull Media',
                 date_start: +moment('2015-05-01'),
                 date_end: +moment('2015-07-31')
@@ -298,6 +326,7 @@ var _employees = [
         projects: [
             {
                 id: 100013,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Edyt',
                 date_start: +moment('2014-10-01'),
                 date_end: null
@@ -310,6 +339,7 @@ var _employees = [
         projects: [
             {
                 id: 10006,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Themis',
                 date_start: +moment('2014-10-01'),
                 date_end: null
@@ -323,6 +353,7 @@ var _employees = [
             {
                 id: 100014,
                 title: 'Accela',
+                type: ProjectConstants.TYPE_PROJECT,
                 date_start: +moment('2015-05-01'),
                 date_end: null
             }
@@ -334,6 +365,7 @@ var _employees = [
         projects: [
             {
                 id: 100001,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Paxton Access - Net10 UI',
                 date_start: +moment('2015-01-01'),
                 date_end: null
@@ -346,6 +378,7 @@ var _employees = [
         projects: [
             {
                 id: 10008,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'SDVentures',
                 date_start: +moment('2014-03-14'),
                 date_end: null
@@ -358,12 +391,14 @@ var _employees = [
         projects: [
             {
                 id: 100015,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'OPUS',
                 date_start: +moment('2015-06-01'),
                 date_end: +moment('2015-06-30')
             },
             {
                 id: 1,
+                type: ProjectConstants.TYPE_SELFEDUCATION,
                 title: 'Selfeducation',
                 date_start: +moment('2015-07-01'),
                 date_end: null
@@ -376,6 +411,7 @@ var _employees = [
         projects: [
             {
                 id: 100016,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'FPX - ePDM',
                 date_start: +moment('2015-05-01'),
                 date_end: +moment('2015-09-30')
@@ -388,6 +424,7 @@ var _employees = [
         projects: [
             {
                 id: 100008,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'SDVentures',
                 date_start: +moment('2015-05-01'),
                 date_end: null
@@ -400,6 +437,7 @@ var _employees = [
         projects: [
             {
                 id: 100017,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Itransition.com',
                 date_start: +moment('2015-06-01'),
                 date_end: +moment('2015-07-15')
@@ -411,7 +449,8 @@ var _employees = [
         name: 'Sinkevich, Sergey',
         projects: [
             {
-               id: 10006,
+                id: 10006,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Themis',
                 date_start: +moment('2014-09-01'),
                 date_end: null
@@ -424,6 +463,7 @@ var _employees = [
         projects: [
             {
                 id: 1,
+                type: ProjectConstants.TYPE_SELFEDUCATION,
                 title: 'Selfeducation',
                 date_start: +moment('2015-29-06'),
                 date_end: null
@@ -436,6 +476,7 @@ var _employees = [
         projects: [
             {
                 id: 10001,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Paxton Access - Net10 UI',
                 date_start: +moment('2014-06-01'),
                 date_end: null
@@ -448,6 +489,7 @@ var _employees = [
         projects: [
             {
                 id: 1,
+                type: ProjectConstants.TYPE_SELFEDUCATION,
                 title: 'Selfeducation',
                 date_start: +moment('2015-29-06'),
                 date_end: null
@@ -460,6 +502,7 @@ var _employees = [
         projects: [
             {
                 id: 1,
+                type: ProjectConstants.TYPE_SELFEDUCATION,
                 title: 'Selfeducation',
                 date_start: +moment('2015-29-06'),
                 date_end: null
@@ -472,6 +515,7 @@ var _employees = [
         projects: [
             {
                 id: 100013,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Edyt',
                 date_start: +moment('2014-10-01'),
                 date_end: null
@@ -484,6 +528,7 @@ var _employees = [
         projects: [
             {
                 id: 100018,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'BI Tool',
                 date_start: +moment('2015-06-12'),
                 date_end: null
@@ -496,6 +541,7 @@ var _employees = [
         projects: [
             {
                 id: 10001,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Paxton Access - Net10 UI',
                 date_start: +moment('2014-06-01'),
                 date_end: null
@@ -508,6 +554,7 @@ var _employees = [
         projects: [
             {
                 id: 10001,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Paxton Access - Net10 UI',
                 date_start: +moment('2015-01-01'),
                 date_end: null
@@ -520,6 +567,7 @@ var _employees = [
         projects: [
             {
                 id: 100014,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Accela',
                 date_start: +moment('2015-05-01'),
                 date_end: null
@@ -532,6 +580,7 @@ var _employees = [
         projects: [
             {
                id: 10006,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Themis',
                 date_start: +moment('2014-09-01'),
                 date_end: null
@@ -544,6 +593,7 @@ var _employees = [
         projects: [
             {
                 id: 100013,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Edyt',
                 date_start: +moment('2015-04-01'),
                 date_end: null
@@ -556,6 +606,7 @@ var _employees = [
         projects: [
             {
                 id: 10001,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Paxton Access - Net10 UI',
                 date_start: +moment('2015-01-01'),
                 date_end: null
@@ -568,6 +619,7 @@ var _employees = [
         projects: [
             {
                 id: 100011,
+                type: ProjectConstants.TYPE_PROJECT,
                 title: 'Productive Edge',
                 date_start: +moment('2015-05-01'),
                 date_end: null
@@ -580,6 +632,7 @@ var _employees = [
         projects: [
             {
                 id: 1,
+                type: ProjectConstants.TYPE_SELFEDUCATION,
                 title: 'Selfeducation',
                 date_start: +moment('2015-29-06'),
                 date_end: null
