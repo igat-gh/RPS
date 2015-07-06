@@ -369,6 +369,222 @@ var _employees = [
                 date_end: null
             }
         ]
+    },
+    {
+        id: 28,
+        name: 'Rumyantsev, Pavel',
+        projects: [
+            {
+                id: 100016,
+                title: 'FPX - ePDM',
+                date_start: +moment('2015-05-01'),
+                date_end: +moment('2015-09-30')
+            }
+        ]
+    },
+    {
+        id: 29,
+        name: 'Semigradsky, Dmitry',
+        projects: [
+            {
+                id: 100008,
+                title: 'SDVentures',
+                date_start: +moment('2015-05-01'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 30,
+        name: 'Sinkevich, Victoriya',
+        projects: [
+            {
+                id: 100017,
+                title: 'Itransition.com',
+                date_start: +moment('2015-06-01'),
+                date_end: +moment('2015-07-15')
+            }
+        ]
+    },
+    {
+        id: 31,
+        name: 'Sinkevich, Sergey',
+        projects: [
+            {
+               id: 10006,
+                title: 'Themis',
+                date_start: +moment('2014-09-01'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 32,
+        name: 'Sitko, Stefan',
+        projects: [
+            {
+                id: 1,
+                title: 'Selfeducation',
+                date_start: +moment('2015-29-06'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 33,
+        name: 'Skakun, Aleksey',
+        projects: [
+            {
+                id: 10001,
+                title: 'Paxton Access - Net10 UI',
+                date_start: +moment('2014-06-01'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 34,
+        name: 'Sokolovsky, Aleksandr',
+        projects: [
+            {
+                id: 1,
+                title: 'Selfeducation',
+                date_start: +moment('2015-29-06'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 35,
+        name: 'Sologub, Evgeny',
+        projects: [
+            {
+                id: 1,
+                title: 'Selfeducation',
+                date_start: +moment('2015-29-06'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 36,
+        name: 'Strigo, Denis',
+        projects: [
+            {
+                id: 100013,
+                title: 'Edyt',
+                date_start: +moment('2014-10-01'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 37,
+        name: 'Tarasyuk, Nina',
+        projects: [
+            {
+                id: 100018,
+                title: 'BI Tool',
+                date_start: +moment('2015-06-12'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 38,
+        name: 'Truhan, Veronika',
+        projects: [
+            {
+                id: 10001,
+                title: 'Paxton Access - Net10 UI',
+                date_start: +moment('2014-06-01'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 39,
+        name: 'Tuleyko, Evgeny',
+        projects: [
+            {
+                id: 10001,
+                title: 'Paxton Access - Net10 UI',
+                date_start: +moment('2015-01-01'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 40,
+        name: 'Tylindus, Anastasiya',
+        projects: [
+            {
+                id: 100014,
+                title: 'Accela',
+                date_start: +moment('2015-05-01'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 41,
+        name: 'Tyshkovets, Sergey',
+        projects: [
+            {
+               id: 10006,
+                title: 'Themis',
+                date_start: +moment('2014-09-01'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 42,
+        name: 'Chuev, Aleksandr',
+        projects: [
+            {
+                id: 100013,
+                title: 'Edyt',
+                date_start: +moment('2015-04-01'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 43,
+        name: 'Shklyarik, Viktoriya',
+        projects: [
+            {
+                id: 10001,
+                title: 'Paxton Access - Net10 UI',
+                date_start: +moment('2015-01-01'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 44,
+        name: 'Shcherbakov, Aleksandr',
+        projects: [
+            {
+                id: 100011,
+                title: 'Productive Edge',
+                date_start: +moment('2015-05-01'),
+                date_end: null
+            }
+        ]
+    },
+    {
+        id: 45,
+        name: 'Yatsuk, Egor',
+        projects: [
+            {
+                id: 1,
+                title: 'Selfeducation',
+                date_start: +moment('2015-29-06'),
+                date_end: null
+            }
+        ]
     }
 ];
 
