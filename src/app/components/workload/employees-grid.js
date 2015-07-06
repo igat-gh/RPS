@@ -16,11 +16,14 @@ var EmployeesGrid = React.createClass({
                 transition.redirect('/login');
                 return;
             }
-            AppActions.filterEmployees(params.type, params.value);
+            AppActions.setEmployeeFilter(params.type, params.value);
         }
     },
     getInitialState: function () {
-        return {loaded: false, employees: EmployeesStore.getEmployeesState().employees};
+        return {
+            loaded: false,
+            employees: EmployeesStore.getEmployees()
+        };
     },
     componentWillMount: function () {
         AppActions.loadEmployees();
@@ -32,7 +35,10 @@ var EmployeesGrid = React.createClass({
         EmployeesStore.removeChangeListener(this._onChange);
     },
     _onChange: function () {
-        this.setState({loaded: true, employees: EmployeesStore.getEmployeesState().employees});
+        this.setState({
+            loaded: true,
+            employees: EmployeesStore.getEmployees()
+        });
     },
     render: function () {
         var rows = [];

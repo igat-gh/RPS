@@ -7,7 +7,7 @@ var MarkersService = require('../services/markers');
  * Application action creator.
  * More info about Actions and Action Creators visit
  * https://facebook.github.io/flux/docs/actions-and-the-dispatcher.html#actions-and-action-creators
- * @type {{loadEmployees: Function, filterEmployees: Function}}
+ * @type {{loadEmployees: Function, setEmployeeFilter: Function}}
  */
 var AppActions = {
     loadEmployees: function () {
@@ -21,7 +21,7 @@ var AppActions = {
             AppDispatcher.handleViewAction(payload);
         });
     },
-    filterEmployees: function (type, value) {
+    setEmployeeFilter: function (type, value) {
         var payload = {
             actionType: AppConstants.SET_FILTER,
             data: {

@@ -113,9 +113,8 @@ var EmployeesStore = assign({}, EventEmitter.prototype,
         removeChangeListener: function (callback) {
             this.removeListener(CHANGE_EVENT, callback);
         },
-        getEmployeesState: function () {
-            var state = filterEmployees(_currentFilter.type, _currentFilter.value);
-            return {employees: state};
+        getEmployees: function () {
+            return filterEmployees(_currentFilter.type, _currentFilter.value);
         },
         dispatchToken: AppDispatcher.register(function (payload) {
             var action = payload.action;
