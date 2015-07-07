@@ -5,6 +5,7 @@ var Settings = {
         undefined: '-'
     },
     duration: {
+        // More about formats you can fund here: https://github.com/jsmreese/moment-duration-format#template
         format: 'Y[y] M[m] W[w] D[d]',
         undefined: '-'
     },
@@ -15,7 +16,8 @@ var Settings = {
             warning: 'warning',
             info: 'info'
         }
-    }
+    },
+    daysToWorkloadExpires: 7
 };
 
 module.exports = Settings;

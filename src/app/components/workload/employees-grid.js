@@ -5,6 +5,7 @@ var AuthStore = require('../../stores/app-auth-store');
 var Loader = require('react-loader');
 var Settings = require('../../settings');
 var Filters = require('./filters');
+var Markers = require('./markers');
 var MarkedRow = require('./marked-row');
 var Login = require('../auth/login');
 
@@ -45,10 +46,9 @@ var EmployeesGrid = React.createClass({
         this.state.employees.forEach(function (employee) {
             employee.projects.forEach(function (project, index) {
                 var rowProps = {
-                    projectsLength: employee.projects.length,
                     projectIndex: index,
                     employeeName: employee.name,
-                    project: project
+                    projects: employee.projects
                 };
                 rows.push(<MarkedRow data={rowProps} key={'' + employee.id + project.id}/>);
             });
@@ -64,11 +64,9 @@ var EmployeesGrid = React.createClass({
                     <div className="col-md-6">
                         <Filters />
                     </div>
-                    <ul className="markers-list col-md-6">
-                        <li><span className={'box ' + Settings.marker.color.info}></span> Test Period</li>
-                        <li><span className={'box ' + Settings.marker.color.warning}></span> Absence</li>
-                        <li><span className={'box ' + Settings.marker.color.danger}></span> Selfeducation</li>
-                    </ul>
+                    <div className="col-md-6">
+                        <Markers />
+                    </div>
                 </div>
                 <div className="row">
                     <Loader loaded={this.state.loaded}>

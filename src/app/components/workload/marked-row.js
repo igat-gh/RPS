@@ -11,61 +11,67 @@ var MarkedRow = React.createClass({
     },
     render: function () {
         var data = this.props.data;
-        var toBeOrNotToBe = data.projectIndex > 0 ? null : <td rowSpan={data.projectsLength}>{data.employeeName}</td>;
-        var className = this.getMarker();
+        var project = data.projects[data.projectIndex];
+        var toBeOrNotToBe = data.projectIndex > 0 ? null : <td rowSpan={data.projects.length}>{data.employeeName}</td>;
+        var className = getMarker();
         function getTitle() {
-            return data.project.title;
+            return project.title;
         }
         function getDateStart() {
-            return Moment(data.project.date_start).format(Settings.date.format);
+            return Moment(project.date_start).format(Settings.date.format);
         }
         function getDateEnd() {
             var dateEnd;
-            if (!data.project.date_end) {
+            if (!project.date_end) {
                 return Settings.date.undefined;
             }
-            dateEnd = Moment(data.project.date_end).format(Settings.date.format);
+            dateEnd = Moment(project.date_end).format(Settings.date.format);
             return dateEnd;
         }
         function getTimeLeft() {
             var timeLeft;
-            if (!data.project.date_end) {
+            if (!project.date_end) {
                 return Settings.duration.undefined;
             }
-            timeLeft = Moment.duration(data.project.date_end - Moment()).format(Settings.duration.format);
+            timeLeft = Moment.duration(project.date_end - Moment()).format(Settings.duration.format);
             return timeLeft;
         }
-        function isExpire() {
-            var timeLeft = Moment.duration(data.project.date_end - Moment());
-            var durationToInform = Moment.duration(7, 'days');
+        function workloadHasExpired() {
+            var timeLeft = Moment.duration(project.date_end - Moment());
+            var durationToInform = Moment.duration(Settings.daysToWorkloadExpires, 'days');
             return timeLeft > 0 && timeLeft <= durationToInform;
         }
+        function getMarker() {
+            var marker;
+            switch (project.type) {
+                case ProjectConstants.TYPE_SELFEDUCATION:
+                    marker = Settings.marker.color.danger;
+                    break;
+                case ProjectConstants.TYPE_ABSENCE:
+                    marker = Settings.marker.color.warning;
+                    break;
+                case ProjectConstants.TYPE_TEST_PERIOD:
+                    marker = Settings.marker.color.info;
+                    break;
+                default:
+                    marker = Settings.marker.color.default;
+            }
+            return marker;
+        }
+
         return (
             <tr>
                 {toBeOrNotToBe}
                 <td className={className}>{getTitle()}</td>
                 <td className={className}>{getDateStart()}</td>
                 <td className={className}>{getDateEnd()}</td>
-                <td className={className}>{getTimeLeft()}</td>
+                <td className={className}>
+                    {workloadHasExpired() &&
+                    <span title="Expired less than a week"
+                          className="glyphicon glyphicon-time"></span> } {getTimeLeft()}
+                </td>
             </tr>
         );
-    },
-    getMarker: function () {
-        var project = this.props.data.project, marker;
-        switch (project.type) {
-            case ProjectConstants.TYPE_SELFEDUCATION:
-                marker = Settings.marker.color.danger;
-                break;
-            case ProjectConstants.TYPE_ABSENCE:
-                marker = Settings.marker.color.warning;
-                break;
-            case ProjectConstants.TYPE_TEST_PERIOD:
-                marker = Settings.marker.color.info;
-                break;
-            default:
-                marker = Settings.marker.color.default;
-        }
-        return marker;
     }
 });
 
