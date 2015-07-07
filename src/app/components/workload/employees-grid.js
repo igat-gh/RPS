@@ -3,7 +3,7 @@ var AppActions = require('../../actions/app-actions');
 var EmployeesStore = require('../../stores/app-employees-store');
 var AuthStore = require('../../stores/app-auth-store');
 var Loader = require('react-loader');
-
+var Settings = require('../../settings');
 var Filters = require('./filters');
 var MarkedRow = require('./marked-row');
 var Login = require('../auth/login');
@@ -54,20 +54,25 @@ var EmployeesGrid = React.createClass({
             });
         });
         return (
-            <div>
+            <div id="workload">
                 <div className="row">
                     <div className="col-md-4">
                         <h1 className="">Workload</h1>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-md-6">
                         <Filters />
                     </div>
+                    <ul className="markers-list col-md-6">
+                        <li><span className={'box ' + Settings.marker.color.info}></span> Test Period</li>
+                        <li><span className={'box ' + Settings.marker.color.warning}></span> Absence</li>
+                        <li><span className={'box ' + Settings.marker.color.danger}></span> Selfeducation</li>
+                    </ul>
                 </div>
                 <div className="row">
                     <Loader loaded={this.state.loaded}>
-                        <table className="table">
+                        <table className="table workload-grid">
                             <thead>
                             <tr>
                                 <th>Employees</th>

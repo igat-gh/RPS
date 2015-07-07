@@ -35,6 +35,11 @@ var MarkedRow = React.createClass({
             timeLeft = Moment.duration(data.project.date_end - Moment()).format(Settings.duration.format);
             return timeLeft;
         }
+        function isExpire() {
+            var timeLeft = Moment.duration(data.project.date_end - Moment());
+            var durationToInform = Moment.duration(7, 'days');
+            return timeLeft > 0 && timeLeft <= durationToInform;
+        }
         return (
             <tr>
                 {toBeOrNotToBe}
