@@ -45,16 +45,16 @@ var MarkedRow = React.createClass({
             var marker;
             switch (project.type) {
                 case ProjectConstants.TYPE_SELFEDUCATION:
-                    marker = Settings.marker.color.danger;
+                    marker = Settings.marker.classNames.selfEducation;
                     break;
                 case ProjectConstants.TYPE_ABSENCE:
-                    marker = Settings.marker.color.warning;
+                    marker = Settings.marker.classNames.absence;
                     break;
                 case ProjectConstants.TYPE_TEST_PERIOD:
-                    marker = Settings.marker.color.info;
+                    marker = Settings.marker.classNames.testPeriod;
                     break;
                 default:
-                    marker = Settings.marker.color.default;
+                    marker = Settings.marker.classNames.project;
             }
             return marker;
         }

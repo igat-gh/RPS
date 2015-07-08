@@ -10,11 +10,11 @@ var Settings = {
         undefined: '-'
     },
     marker: {
-        color: {
-            default: 'default',
-            danger: 'danger',
-            warning: 'warning',
-            info: 'info'
+        classNames: {
+            project: 'marker_project',
+            selfEducation: 'marker_selfeducation',
+            absence: 'marker_absence',
+            testPeriod: 'marker_testperiod'
         }
     },
     daysToWorkloadExpires: 7

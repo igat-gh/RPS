@@ -146,7 +146,7 @@ gulp.task('default', ['jshint'], function () {
 
     cssTask({
         development: true,
-        src: ['./src/styles/**/*.css', './src/styles/**/*.less'],
+        src: ['./src/styles/main.less'],
         dest: './build/dev'
     });
 
@@ -174,7 +174,7 @@ gulp.task('deploy', ['jshint'], function () {
 
     cssTask({
         development: false,
-        src: ['./src/styles/**/*.css', './src/styles/**/*.less'],
+        src: ['./src/styles/main.less'],
         dest: './build/prod'
     });
 

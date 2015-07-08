@@ -1,3 +1,19 @@
+// Bootstrap
+@import "../../node_modules/bootstrap/less/bootstrap.less";
+@import "./variables.less";
+
+// Markers
+.marker_selfeducation {
+  background-color: @marker-selfeducation-bg;
+}
+.marker_absence {
+  background-color: @marker-absence-bg;
+}
+.marker_testperiod {
+  background-color: @marker-testperiod-bg;
+}
+.marker_project {}
+
 // Styles for workload page
 #workload {
 
@@ -15,13 +31,13 @@
         border: 1px solid #cccccc;
       }
       .box.danger {
-        background-color: #f2dede;
+        background-color: @state-danger-bg;
       }
       .box.warning {
-        background-color: #fcf8e3;
+        background-color: @state-warning-bg;
       }
       .box.info {
-        background-color: #d9edf7;
+        background-color: @state-info-bg;
       }
     }
   }
