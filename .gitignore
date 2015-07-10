@@ -6,3 +6,4 @@ node_modules
 
 build/dev
 build/prod
+build/test/specs.js
