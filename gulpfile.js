@@ -18,11 +18,13 @@ var jshint = require('gulp-jshint');
 var react = require('gulp-react');
 var less = require('gulp-less');
 var sourcemaps = require('gulp-sourcemaps');
+var jasminePhantomJs = require('gulp-jasmine2-phantomjs');
 
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
 var dependencies = [
-    'react'
+    'react',
+    'react/addons'
 ];
 
 var browserifyTask = function (options) {
@@ -197,4 +199,28 @@ gulp.task('jshint', function () {
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
         .pipe(jshint.reporter('fail'));
+});
+
+
+gulp.task('test', function () {
+    var testFiles = glob.sync('./src/specs/**/*-spec.js');
+    var testBundler = browserify({
+        entries: testFiles,
+        debug: true, // Gives us sourcemapping
+        transform: [reactify],
+        cache: {}, packageCache: {}, fullPaths: true // Requirement of watchify
+    });
+
+    var rebundleTests = function () {
+        var start = Date.now();
+        console.log('Building TEST bundle');
+        testBundler.bundle()
+            .on('error', gutil.log)
+            .pipe(source('specs.js'))
+            .pipe(gulp.dest('./build/test'))
+            .pipe(notify(function () {
+                console.log('TEST bundle built in ' + (Date.now() - start) + 'ms');
+            }));
+    };
+    rebundleTests();
 });
