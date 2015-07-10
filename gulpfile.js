@@ -201,26 +201,25 @@ gulp.task('jshint', function () {
         .pipe(jshint.reporter('fail'));
 });
 
-
+// Build tests
+// To see test results open /project-root/build/test/testrunner-phantomjs.html in your browser
 gulp.task('test', function () {
     var testFiles = glob.sync('./src/specs/**/*-spec.js');
     var testBundler = browserify({
         entries: testFiles,
-        debug: true, // Gives us sourcemapping
+        debug: true,
         transform: [reactify],
-        cache: {}, packageCache: {}, fullPaths: true // Requirement of watchify
+        cache: {}, packageCache: {}, fullPaths: true
     });
 
-    var rebundleTests = function () {
-        var start = Date.now();
-        console.log('Building TEST bundle');
-        testBundler.bundle()
-            .on('error', gutil.log)
-            .pipe(source('specs.js'))
-            .pipe(gulp.dest('./build/test'))
-            .pipe(notify(function () {
-                console.log('TEST bundle built in ' + (Date.now() - start) + 'ms');
-            }));
-    };
-    rebundleTests();
+    var start = Date.now();
+    console.log('Building TEST bundle');
+    testBundler.bundle()
+        .on('error', gutil.log)
+        .pipe(source('specs.js'))
+        .pipe(gulp.dest('./build/test'))
+        .pipe(notify(function () {
+            console.log('TEST bundle built in ' + (Date.now() - start) + 'ms');
+        }));
+
 });
