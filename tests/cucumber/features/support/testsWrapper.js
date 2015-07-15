@@ -2,7 +2,7 @@ var Q = require('q');
 
 var wrapTest = function (context, callback, fn) {
 
-    var promise = Q.async(function(){
+    var promise = Q.async(function () {
         return fn.call(context);
     });
 

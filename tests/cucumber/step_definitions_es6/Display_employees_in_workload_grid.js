@@ -1,5 +1,6 @@
 require('babel/polyfill');
 var testWrapper = require('../support/testsWrapper');
+var Settings = require('../../settings');
 
 var myStepDefinitionsWrapper = function () {
     this.World = require('../support/world.js').World;
@@ -7,11 +8,11 @@ var myStepDefinitionsWrapper = function () {
     this.Given(/^I'm logged in as 'Admin'$/, function (callback) {
 
         testWrapper.wrap(this, callback, function* () {
-            yield this.browser.get('http://localhost:3000/#/login');
+            yield this.browser.get(Settings.baseUrl + 'login');
             var emailInput = yield this.browser.elementById('auth-email-input');
             var passwordInput = yield this.browser.elementById('auth-password-input');
-            emailInput.value = 'example@email.com';
-            passwordInput.value = 'password';
+            emailInput.value = Settings.adminCredentials.login;
+            passwordInput.value = Settings.adminCredentials.password;
             var loginButton = this.browser.elementByClassName('login-btn');
             yield loginButton.click();
             callback();
@@ -22,7 +23,7 @@ var myStepDefinitionsWrapper = function () {
     this.When('I navigate to "$module" module', function (module, callback) {
 
         testWrapper.wrap(this, callback, function* () {
-            yield this.browser.get('http://localhost:3000/#/' + module);
+            yield this.browser.get(Settings.baseUrl + module);
             callback();
         });
 
