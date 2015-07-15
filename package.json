@@ -5,9 +5,11 @@
   "author": "WD",
   "license": "",
   "devDependencies": {
+    "babel": "^5.6.14",
     "browserify": "^10.2.1",
     "glob": "^4.0.6",
     "gulp": "^3.8.9",
+    "gulp-babel": "^5.1.0",
     "gulp-concat": "^2.3.4",
     "gulp-cssmin": "^0.1.6",
     "gulp-if": "^1.2.4",
@@ -24,6 +26,7 @@
     "gulp-uglify": "^0.3.1",
     "gulp-util": "^3.0.0",
     "jshint-stylish": "^2.0.1",
+    "q": "^1.4.1",
     "reactify": "^0.15.2",
     "vinyl-source-stream": "^0.1.1",
     "watchify": "^2.1.1"

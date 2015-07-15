@@ -19,6 +19,8 @@ var react = require('gulp-react');
 var less = require('gulp-less');
 var sourcemaps = require('gulp-sourcemaps');
 var jasminePhantomJs = require('gulp-jasmine2-phantomjs');
+var babel = require('gulp-babel');
+var sourcemaps = require('gulp-sourcemaps');
 
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
@@ -120,7 +122,7 @@ var htmlTask = function (options) {
     var start = new Date();
     console.log('Building HTML bundle');
     gulp.src(options.src)
-        .pipe(preprocess({context: { DEVELOPMENT: options.development}})) //To set environment variables in-line
+        .pipe(preprocess({context: {DEVELOPMENT: options.development}})) //To set environment variables in-line
         .pipe(gulp.dest(options.dest))
         .pipe(notify(function () {
             console.log('HTML bundle built in ' + (Date.now() - start) + 'ms');
@@ -222,4 +224,15 @@ gulp.task('test', function () {
             console.log('TEST bundle built in ' + (Date.now() - start) + 'ms');
         }));
 
+});
+
+gulp.task('cucumber', function () {
+    return gulp.src('tests/cucumber/step_definitions_es6/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            sourceMaps: 'inline'
+        }))
+        .pipe(sourcemaps.write('.'))
+        .on('error', console.error.bind(console))
+        .pipe(gulp.dest("tests/cucumber/features/step_definitions"));
 });
