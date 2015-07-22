@@ -247,7 +247,7 @@ gulp.task('cucumber', function () {
 
 // Run tests
 // Outputs result to output_JUnit.xml file in tests/cucumber folder
-gulp.task('cucumber_jUnit', function () {
+gulp.task('cucumber-jUnit', function () {
     return gulp.src('tests/cucumber/step_definitions_es6/*.js')
         .pipe(sourcemaps.init())
         .pipe(babel({
@@ -257,5 +257,5 @@ gulp.task('cucumber_jUnit', function () {
         .on('error', console.error.bind(console))
         .pipe(gulp.dest("tests/cucumber/features/step_definitions"))
         .pipe(exec('cd tests/cucumber && ..\\..\\node_modules\\.bin\\cucumber-js --format=json ' +
-            '| ..\\..\\node_modules\\.bin\\cucumber-junit > output_JUnit.xml'));
+            '| ..\\..\\node_modules\\.bin\\cucumber-junit > cucumber_jUnit_results.xml'));
 });
