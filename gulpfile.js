@@ -20,7 +20,7 @@ var less = require('gulp-less');
 var sourcemaps = require('gulp-sourcemaps');
 var jasminePhantomJs = require('gulp-jasmine2-phantomjs');
 var babel = require('gulp-babel');
-var sourcemaps = require('gulp-sourcemaps');
+var jsdoc = require('gulp-jsdoc');
 
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
@@ -140,7 +140,7 @@ var assetsTask = function (options) {
 };
 
 // Development build
-gulp.task('default', ['jshint'], function () {
+gulp.task('default', ['jshint', 'jsdoc'], function () {
 
     browserifyTask({
         development: true,
@@ -235,4 +235,10 @@ gulp.task('cucumber', function () {
         .pipe(sourcemaps.write('.'))
         .on('error', console.error.bind(console))
         .pipe(gulp.dest("tests/cucumber/features/step_definitions"));
+});
+
+gulp.task('jsdoc', function() {
+    gulp.src(['./src/*/*/*.js', 'README.md'])
+        .pipe(jsdoc.parser())
+        .pipe(jsdoc.generator('./docs'))
 });
