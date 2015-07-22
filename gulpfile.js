@@ -20,7 +20,7 @@ var less = require('gulp-less');
 var sourcemaps = require('gulp-sourcemaps');
 var jasminePhantomJs = require('gulp-jasmine2-phantomjs');
 var babel = require('gulp-babel');
-var jsdoc = require("gulp-jsdoc");
+var jsdoc = require('gulp-jsdoc');
 
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
@@ -238,7 +238,7 @@ gulp.task('cucumber', function () {
 });
 
 gulp.task('jsdoc', function() {
-    gulp.src(["./src/*/*/*.js", "README.md"])
+    gulp.src(['./src/*/*/*.js', 'README.md'])
         .pipe(jsdoc.parser())
         .pipe(jsdoc.generator('./docs'))
 });
