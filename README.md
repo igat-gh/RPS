@@ -26,11 +26,14 @@
 * **src/styles/**: Where you put your styles.
 
 ### Run tests
+* Run `npm install` to install required packages
+* Run `npm install -g cucumber` to install cucumber globally (http://github.com/cucumber/cucumber-js)
+* Run `npm install -g cucumber-junit` to install cucumber-junit globally (http://www.npmjs.org/package/cucumber-junit)
 * Run `gulp cucumber` to build all tests step definitions to /tests/cucumber/features/step_definitions folder
 * Start a webservice in the `build/dev` folder: `http-server -a localhost -p 3000`
 * Run PhantomJS `phantomjs --webdriver=4444` for headless website testing without Browser
-* To run all tests execute `cucumber.js --format=pretty` on `tests/cucumber/features` directory, prints a result to the console
-* To run all tests with report to the JUNIT execute `cucumber.js --format=pretty` on `tests/cucumber/features` directory, prints a result to the console
+* To run all tests execute `cucumber.js.cmd --format=pretty` on `tests/cucumber` directory, prints a result to the console
+* To run all tests with report to the JUNIT execute `cucumber.js.cmd --format=json | cucumber-junit > output_JUnit.xml` on `tests/cucumber` directory, prints a result to the console
 
 ### Stack
 In the frontend uses [React](http://facebook.github.io/react/) for the views, the data flow organized with [Flux](http://facebook.github.io/flux/docs/overview.html) architecture.
