@@ -21,6 +21,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var jasminePhantomJs = require('gulp-jasmine2-phantomjs');
 var babel = require('gulp-babel');
 var jsdoc = require('gulp-jsdoc');
+var exec = require('gulp-exec');
 
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
@@ -226,6 +227,8 @@ gulp.task('test', function () {
 
 });
 
+// Run tests
+// Outputs result to console in pretty style
 gulp.task('cucumber', function () {
     return gulp.src('tests/cucumber/step_definitions_es6/*.js')
         .pipe(sourcemaps.init())
@@ -234,7 +237,27 @@ gulp.task('cucumber', function () {
         }))
         .pipe(sourcemaps.write('.'))
         .on('error', console.error.bind(console))
-        .pipe(gulp.dest("tests/cucumber/features/step_definitions"));
+        .pipe(gulp.dest("tests/cucumber/features/step_definitions"))
+        .pipe(exec('cd tests/cucumber && ..\\..\\node_modules\\.bin\\cucumber-js --format=pretty',
+            function (err, stdOut) {
+                console.log(stdOut);
+                err && console.log(err);
+            }));
+});
+
+// Run tests
+// Outputs result to output_JUnit.xml file in tests/cucumber folder
+gulp.task('cucumber-jUnit', function () {
+    return gulp.src('tests/cucumber/step_definitions_es6/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            sourceMaps: 'inline'
+        }))
+        .pipe(sourcemaps.write('.'))
+        .on('error', console.error.bind(console))
+        .pipe(gulp.dest("tests/cucumber/features/step_definitions"))
+        .pipe(exec('cd tests/cucumber && ..\\..\\node_modules\\.bin\\cucumber-js --format=json ' +
+            '| ..\\..\\node_modules\\.bin\\cucumber-junit > cucumber_jUnit_results.xml'));
 });
 
 gulp.task('jsdoc', function() {

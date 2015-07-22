@@ -3,6 +3,17 @@
 * Install gulp: `npm install -g gulp` 
 * Install http-server: `npm install -g http-server`
 
+### Directory
+* **build/** Where your automatically builds to.
+* **build/prod/** Ready for production code exists here (git ignores this folder).
+* **build/dev/**: This is where you launch your app in development (git ignores this folder).
+* **misc/**: Where you put any other files for the project needs (f. ex. code style setting for WebStorm).
+* **src/** All sources are here.
+* **src/app/**: Where you put your application files.
+* **src/assets/**: Where you put your static files (f. ex. images, fonts).
+* **src/styles/**: Where you put your styles.
+* **tests/**: Where you put tests
+
 ### Install
 * Run `npm install`
 
@@ -15,15 +26,11 @@
 ### Minify the code, ready for production
 * Run `gulp deploy`
 
-### Directory
-* **build/** Where your automatically builds to.
-* **build/prod/** Ready for production code exists here (git ignores this folder).
-* **build/dev/**: This is where you launch your app in development (git ignores this folder).
-* **misc/**: Where you put any other files for the project needs (f. ex. code style setting for WebStorm).
-* **src/** All sources are here.
-* **src/app/**: Where you put your application files.
-* **src/assets/**: Where you put your static files (f. ex. images, fonts).
-* **src/styles/**: Where you put your styles.
+### Run tests
+* Start a webservice in the `build/dev` folder: `http-server -a localhost -p 3000`
+* Run PhantomJS `phantomjs --webdriver=4444` for headless website testing without Browser
+* To run all tests execute `gulp cucumber`, prints a result to the console
+* To run all tests with report to the JUNIT execute `gulp cucumber_jUnit`, outputs result to output_JUnit.xml file in tests/cucumber folder.
 
 ### Stack
 In the frontend uses [React](http://facebook.github.io/react/) for the views, the data flow organized with [Flux](http://facebook.github.io/flux/docs/overview.html) architecture.
