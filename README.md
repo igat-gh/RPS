@@ -29,8 +29,8 @@
 * Run `gulp cucumber` to build all tests step definitions to /tests/cucumber/features/step_definitions folder
 * Start a webservice in the `build/dev` folder: `http-server -a localhost -p 3000`
 * Run PhantomJS `phantomjs --webdriver=4444` for headless website testing without Browser
-* To run all tests execute `cucumber.js --format=pretty` on `tests/features` directory, prints a result to the console
-* To run all tests with report to the JUNIT execute `cucumber.js --format=pretty` on `tests/features` directory, prints a result to the console
+* To run all tests execute `cucumber.js --format=pretty` on `tests/cucumber/features` directory, prints a result to the console
+* To run all tests with report to the JUNIT execute `cucumber.js --format=pretty` on `tests/cucumber/features` directory, prints a result to the console
 
 ### Stack
 In the frontend uses [React](http://facebook.github.io/react/) for the views, the data flow organized with [Flux](http://facebook.github.io/flux/docs/overview.html) architecture.
