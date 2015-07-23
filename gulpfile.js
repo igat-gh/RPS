@@ -227,9 +227,8 @@ gulp.task('test', function () {
 
 });
 
-// Run tests
-// Outputs result to console in pretty style
-gulp.task('cucumber', function () {
+//Transforms es6 cucumber test steps
+gulp.task('transform-es6-test-step', function(){
     return gulp.src('tests/cucumber/step_definitions_es6/*.js')
         .pipe(sourcemaps.init())
         .pipe(babel({
@@ -237,7 +236,13 @@ gulp.task('cucumber', function () {
         }))
         .pipe(sourcemaps.write('.'))
         .on('error', console.error.bind(console))
-        .pipe(gulp.dest("tests/cucumber/features/step_definitions"))
+        .pipe(gulp.dest("tests/cucumber/features/step_definitions"));
+});
+
+// Run tests
+// Outputs result to console in pretty style
+gulp.task('cucumber', ['transform-es6-test-step'], function () {
+    return gulp.src('*')
         .pipe(exec('cd tests/cucumber && ..\\..\\node_modules\\.bin\\cucumber-js --format=pretty',
             function (err, stdOut) {
                 console.log(stdOut);
@@ -247,15 +252,8 @@ gulp.task('cucumber', function () {
 
 // Run tests
 // Outputs result to output_JUnit.xml file in tests/cucumber folder
-gulp.task('cucumber-jUnit', function () {
-    return gulp.src('tests/cucumber/step_definitions_es6/*.js')
-        .pipe(sourcemaps.init())
-        .pipe(babel({
-            sourceMaps: 'inline'
-        }))
-        .pipe(sourcemaps.write('.'))
-        .on('error', console.error.bind(console))
-        .pipe(gulp.dest("tests/cucumber/features/step_definitions"))
+gulp.task('cucumber-jUnit', ['transform-es6-test-step'], function () {
+    return gulp.src('*')
         .pipe(exec('cd tests/cucumber && ..\\..\\node_modules\\.bin\\cucumber-js --format=json ' +
             '| ..\\..\\node_modules\\.bin\\cucumber-junit > cucumber_jUnit_results.xml'));
 });

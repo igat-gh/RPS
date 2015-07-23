@@ -62,7 +62,7 @@ var MarkedRow = React.createClass({
         return (
             <tr>
                 {toBeOrNotToBe}
-                <td className={className}>{getTitle()}</td>
+                <td className={className + ' project'}>{getTitle()}</td>
                 <td className={className}>{getDateStart()}</td>
                 <td className={className}>{getDateEnd()}</td>
                 <td className={className}>
