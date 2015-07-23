@@ -4,12 +4,21 @@ var EmployeeService = require('../services/employee');
 var MarkersService = require('../services/markers');
 
 /**
- * Application action creator.
+ Application action creator.
  * More info about Actions and Action Creators visit
  * https://facebook.github.io/flux/docs/actions-and-the-dispatcher.html#actions-and-action-creators
+ * @module actions/AppActions
  * @type {{loadEmployees: Function, setEmployeeFilter: Function}}
+ * @extends {object}
  */
 var AppActions = {
+
+    /**
+     * Requests list of children from the server by user id.
+     * @return {object}           Promise
+     *
+     * @memberOf actions/AppActions
+     */
     loadEmployees: function () {
         EmployeeService.fetch().then(function (employees) {
             var payload = {
@@ -21,6 +30,11 @@ var AppActions = {
             AppDispatcher.handleViewAction(payload);
         });
     },
+
+    /**
+     * @method
+     * @type function
+     */
     setEmployeeFilter: function (type, value) {
         var payload = {
             actionType: AppConstants.SET_FILTER,
