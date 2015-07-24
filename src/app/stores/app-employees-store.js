@@ -1,3 +1,9 @@
+/**
+ * @module
+ * @type {AppDispatcher|exports|module.exports}
+ */
+
+
 var AppDispatcher = require('../dispatchers/app-dispatcher');
 var AppConstants = require('../constants/app-constants');
 var FiltersConstants = require('../constants/filters-constants');
@@ -13,23 +19,20 @@ require('array.prototype.find');
 var CHANGE_EVENT = 'change';
 
 /**
- *
- * @type {Array} List of employees
- * @private
+ * List of employees
+ * @type {Array}
  */
 var _employees = [];
 
 /**
- *
- * @type {Array} List of filtered employees
- * @private
+ * List of filtered employees
+ * @type {Array}
  */
 var _filteredEmployees = [];
 
 /**
  *
- * @type {{type: null|string, value: null|string}}
- * @private
+ * @type {object}
  */
 var _currentFilter = {
     type: null,
@@ -54,8 +57,8 @@ function loadEmployees(employeesList) {
 
 /**
  *
- * @param type String
- * @param value String
+ * @param {string} type
+ * @param {string} value
  */
 function setFilter(type, value) {
     _currentFilter.type = type;
@@ -64,8 +67,8 @@ function setFilter(type, value) {
 
 /**
  *
- * @param type String
- * @param value String
+ * @param {string} type
+ * @param {string} value
  */
 function filterEmployees(type, value) {
     switch (type) {

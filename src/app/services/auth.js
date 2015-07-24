@@ -1,9 +1,18 @@
 /**
  * Authentication Service
- *
+ * @class Auth
  * @type {{logout: Function, getToken: Function, loggedIn: Function, onChange: Function}}
  */
 var Auth = {
+
+
+
+    /**
+     * @param email
+     * @param pass
+     * @param callback
+     * @memberOf Auth
+     */
     login: function (email, pass, callback) {
         callback = arguments[arguments.length - 1];
         if (localStorage.token) {
@@ -13,7 +22,16 @@ var Auth = {
             this.onChange(true);
             return;
         }
+        /**
+         * @memberOf Auth
+         * @type {Auth}
+         */
         var self = this;
+
+        /**
+         * @function
+         * @memberOf Auth
+         */
         pretendRequest(email, pass, function (res) {
             if (res.authenticated) {
                 localStorage.token = res.token;
@@ -29,7 +47,10 @@ var Auth = {
             }
         });
     },
-
+    /**
+     *
+     * @param callback
+     */
     logout: function (callback) {
         delete localStorage.token;
         if (callback) {
@@ -37,11 +58,17 @@ var Auth = {
         }
         this.onChange(false);
     },
-
+    /**
+     *
+     * @return {*|string|context.token|Function|string}
+     */
     getToken: function () {
         return localStorage.token;
     },
-
+    /**
+     *
+     * @return {boolean}
+     */
     loggedIn: function () {
         return !!localStorage.token;
     },
@@ -49,7 +76,12 @@ var Auth = {
     onChange: function () {}
 };
 
-/* Fake request */
+/**
+ * Fake request
+ * @param email
+ * @param pass
+ * @param callback
+ */
 function pretendRequest (email, pass, callback) {
     setTimeout(function () {
         if (email === 'example@email.com' && pass === 'password') {

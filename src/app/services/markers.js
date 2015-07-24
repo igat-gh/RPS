@@ -3,7 +3,10 @@ var Promise = require('es6-promise').Promise;
 /* Delete this line when will use api service */
 
 var _markers = [];
-
+/**
+ * @module
+ * @type {{fetch: Function, setMarkers: Function}}
+ */
 var Markers = {
     fetch: function () {
         /* Imitate request. With real request we will use Api service. */

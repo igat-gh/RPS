@@ -4,7 +4,7 @@ var AuthStore = require('../stores/app-auth-store');
 /**
  * AuthenticationMixin.
  * Use for auth protected components.
- *
+ * @module
  * @type {{statics: {willTransitionTo: Function}}}
  */
 var AuthenticationMixin = {
