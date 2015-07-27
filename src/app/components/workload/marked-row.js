@@ -11,7 +11,7 @@ require('moment-duration-format');
 var MarkedRow = React.createClass({
     /**
      * @memberOf MarkedRow
-     * @param nextProps
+     * @param {object} nextProps
      */
     componentWillReceiveProps: function (nextProps) {
         this.props.data = nextProps.data;

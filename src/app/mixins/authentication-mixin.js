@@ -4,10 +4,13 @@ var AuthStore = require('../stores/app-auth-store');
 /**
  * AuthenticationMixin.
  * Use for auth protected components.
- * @module
+ * @namespace
  * @type {{statics: {willTransitionTo: Function}}}
  */
 var AuthenticationMixin = {
+    /**
+     * @type {object}
+     */
     statics: {
         willTransitionTo: function (transition, params) {
             if (!AuthStore.getState().loggedIn) {

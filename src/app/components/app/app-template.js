@@ -8,7 +8,6 @@ var Template = React.createClass({
      * @memberOf Template
      * @return {XML}
      */
-
     render: function () {
         return (
             <div>

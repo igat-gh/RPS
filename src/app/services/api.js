@@ -3,7 +3,7 @@ var Promise = require('es6-promise').Promise;
 
 /**
  * Wrapper for calling a API
- * @module
+ * @namespace
  * @type {object}
  */
 var Api = {

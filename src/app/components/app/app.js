@@ -6,7 +6,7 @@ var AuthAction = require('../../actions/auth-actions');
 var Template = require('./app-template');
 var Header = require('../header/header');
 /**
- * @class
+ * @namespace
  * @type {*|Function}
  */
 var APP = React.createClass({
@@ -19,14 +19,12 @@ var APP = React.createClass({
     },
     /**
      * @memberOf APP
-     * @method
      */
     componentWillMount: function () {
         AuthStore.addChangeListener(this.setStateOnAuth);
     },
     /**
      * @memberOf APP
-     * @method
      */
     setStateOnAuth: function () {
         this.setState(AuthStore.getState());

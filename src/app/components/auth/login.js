@@ -45,7 +45,7 @@ var Login = React.createClass({
     },
     /**
      * @memberOf Login
-     * @param event
+     * @param {object} event Form object
      */
     handleSubmit: function (event) {
         event.preventDefault();

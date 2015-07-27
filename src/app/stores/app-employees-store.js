@@ -1,5 +1,5 @@
 /**
- * @module
+ * @module EmployeesStore
  * @type {AppDispatcher|exports|module.exports}
  */
 

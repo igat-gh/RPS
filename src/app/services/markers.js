@@ -4,10 +4,14 @@ var Promise = require('es6-promise').Promise;
 
 var _markers = [];
 /**
- * @module
+ * @namespace
  * @type {{fetch: Function, setMarkers: Function}}
  */
 var Markers = {
+    /**
+     *
+     * @return {*}
+     */
     fetch: function () {
         /* Imitate request. With real request we will use Api service. */
         return new Promise(function (resolve, reject) {
@@ -16,6 +20,10 @@ var Markers = {
             }, 1000);
         });
     },
+    /**
+     *
+     * @param {array} markersList
+     */
     setMarkers: function (markersList) {
         _markers = markersList;
     }

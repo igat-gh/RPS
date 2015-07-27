@@ -1,16 +1,13 @@
 /**
  * Authentication Service
- * @class Auth
+ * @namespace
  * @type {{logout: Function, getToken: Function, loggedIn: Function, onChange: Function}}
  */
 var Auth = {
-
-
-
     /**
-     * @param email
-     * @param pass
-     * @param callback
+     * @param {string} email
+     * @param {string} pass
+     * @param {function} callback
      * @memberOf Auth
      */
     login: function (email, pass, callback) {
@@ -22,6 +19,7 @@ var Auth = {
             this.onChange(true);
             return;
         }
+
         /**
          * @memberOf Auth
          * @type {Auth}
@@ -29,7 +27,6 @@ var Auth = {
         var self = this;
 
         /**
-         * @function
          * @memberOf Auth
          */
         pretendRequest(email, pass, function (res) {
@@ -47,9 +44,10 @@ var Auth = {
             }
         });
     },
+
     /**
-     *
-     * @param callback
+     * @memberOf Auth
+     * @param {function} callback
      */
     logout: function (callback) {
         delete localStorage.token;
@@ -59,14 +57,14 @@ var Auth = {
         this.onChange(false);
     },
     /**
-     *
+     * @memberOf Auth
      * @return {*|string|context.token|Function|string}
      */
     getToken: function () {
         return localStorage.token;
     },
     /**
-     *
+     * @memberOf Auth
      * @return {boolean}
      */
     loggedIn: function () {
@@ -78,9 +76,9 @@ var Auth = {
 
 /**
  * Fake request
- * @param email
- * @param pass
- * @param callback
+ * @param {string} email
+ * @param {string} pass
+ * @param {function} callback
  */
 function pretendRequest (email, pass, callback) {
     setTimeout(function () {

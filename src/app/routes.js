@@ -12,8 +12,7 @@ var Workload = require('./components/workload/employees-grid');
 
 /**
  * Application routing
- * For more info about routing visit https://github.com/rackt/react-router
- * @module routes
+ * @see For more info about routing visit {@link https://github.com/rackt/react-router}
  * @type {XML}
  */
 var routes = (
