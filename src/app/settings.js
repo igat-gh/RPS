@@ -1,15 +1,14 @@
 /**
+ * List of all available formats you can find here: http://momentjs.com/docs/#/displaying/format/
  * @module
  * @type {{date: {format: string, undefined: string}, duration: {format: string, undefined: string}, marker: {classNames: {project: string, selfEducation: string, absence: string, testPeriod: string}}, daysToWorkloadExpires: number}}
  */
 var Settings = {
     date: {
-        // List of all available formats you can find here: http://momentjs.com/docs/#/displaying/format/
         format: 'MM/DD/YYYY',
         undefined: '-'
     },
     duration: {
-        // More about formats you can fund here: https://github.com/jsmreese/moment-duration-format#template
         format: 'Y[y] M[m] W[w] D[d]',
         undefined: '-'
     },

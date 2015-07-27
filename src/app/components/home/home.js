@@ -1,6 +1,13 @@
 var React = require('react');
-
+/**
+ * @class
+ * @type {*|Function}
+ */
 var Home = React.createClass({
+    /**
+     * @memberOf Home
+     * @return {XML}
+     */
     render: function () {
         return (
             <div className="jumbotron">

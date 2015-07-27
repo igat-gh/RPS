@@ -2,11 +2,18 @@ var React = require('react');
 var Link = require('react-router').Link;
 
 var Menu = require('./menu');
-
+/**
+ * @class
+ * @type {*|Function}
+ */
 var Header = React.createClass({
     propTypes: {
         loggedIn: React.PropTypes.bool.isRequired
     },
+    /**
+     * @memberOf Header
+     * @return {XML}
+     */
     render: function () {
         return (
             <header>

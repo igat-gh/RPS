@@ -5,8 +5,15 @@ var EmployeesStore = require('../../stores/app-employees-store');
 var FiltersConstants = require('../../constants/filters-constants');
 var ProjectConstants = require('../../constants/project-constants');
 var Moment = require('moment');
-
+/**
+ * @class
+ * @type {*|Function}
+ */
 var Filters = React.createClass({
+    /**
+     * @memberOf Filters
+     * @return {XML}
+     */
     render: function () {
         return (
             <p className="btn-group center-block">

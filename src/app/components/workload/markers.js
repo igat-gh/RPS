@@ -1,7 +1,14 @@
 var React = require('react');
 var Settings = require('../../settings');
-
+/**
+ * @class
+ * @type {*|Function}
+ */
 var Markers = React.createClass({
+    /**
+     * @memberOf Markers
+     * @return {XML}
+     */
     render: function () {
         return (
             <ul className="markers-list">

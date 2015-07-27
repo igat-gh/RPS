@@ -5,17 +5,36 @@ var AuthAction = require('../../actions/auth-actions');
 
 var Template = require('./app-template');
 var Header = require('../header/header');
-
+/**
+ * @class
+ * @type {*|Function}
+ */
 var APP = React.createClass({
+    /**
+     * @memberOf APP
+     * @return {*}
+     */
     getInitialState: function () {
         return AuthStore.getState();
     },
+    /**
+     * @memberOf APP
+     * @method
+     */
     componentWillMount: function () {
         AuthStore.addChangeListener(this.setStateOnAuth);
     },
+    /**
+     * @memberOf APP
+     * @method
+     */
     setStateOnAuth: function () {
         this.setState(AuthStore.getState());
     },
+    /**
+     * @memberOf APP
+     * @return {XML}
+     */
     render: function () {
         return (
             <Template>

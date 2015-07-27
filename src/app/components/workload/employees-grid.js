@@ -8,7 +8,10 @@ var Filters = require('./filters');
 var Markers = require('./markers');
 var MarkedRow = require('./marked-row');
 var Login = require('../auth/login');
-
+/**
+ * @class
+ * @type {*|Function}
+ */
 var EmployeesGrid = React.createClass({
     statics: {
         willTransitionTo: function (transition, params) {
@@ -20,27 +23,48 @@ var EmployeesGrid = React.createClass({
             AppActions.setEmployeeFilter(params.type, params.value);
         }
     },
+    /**
+     * @memberOf EmployeesGrid
+     * @return {{loaded: boolean, employees: *}}
+     */
     getInitialState: function () {
         return {
             loaded: false,
             employees: EmployeesStore.getEmployees()
         };
     },
+    /**
+     * @memberOf EmployeesGrid
+     */
     componentWillMount: function () {
         AppActions.loadEmployees();
     },
+    /**
+     * @memberOf EmployeesGrid
+     */
     componentDidMount: function () {
         EmployeesStore.addChangeListener(this._onChange);
     },
+    /**
+     * @memberOf EmployeesGrid
+     */
     componentWillUnmount: function () {
         EmployeesStore.removeChangeListener(this._onChange);
     },
+    /**
+     * @memberOf EmployeesGrid
+     * @private
+     */
     _onChange: function () {
         this.setState({
             loaded: true,
             employees: EmployeesStore.getEmployees()
         });
     },
+    /**
+     * @memberOf EmployeesGrid
+     * @return {XML}
+     */
     render: function () {
         var rows = [];
         this.state.employees.forEach(function (employee) {

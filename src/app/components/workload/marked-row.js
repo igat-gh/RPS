@@ -4,11 +4,22 @@ var Settings = require('../../settings');
 var ProjectConstants = require('../../constants/project-constants');
 
 require('moment-duration-format');
-
+/**
+ * @class
+ * @type {*|Function}
+ */
 var MarkedRow = React.createClass({
+    /**
+     * @memberOf MarkedRow
+     * @param nextProps
+     */
     componentWillReceiveProps: function (nextProps) {
         this.props.data = nextProps.data;
     },
+    /**
+     * @memberOf MarkedRow
+     * @return {XML}
+     */
     render: function () {
         var data = this.props.data;
         var project = data.projects[data.projectIndex];
