@@ -227,9 +227,8 @@ gulp.task('test', function () {
 
 });
 
-//Transforms es6 cucumber test steps
-gulp.task('transform-es6-test-step', function(){
-    return gulp.src('tests/cucumber/step_definitions_es6/*.js')
+var transformEs6TestStepsTask = function () {
+    gulp.src('tests/cucumber/step_definitions_es6/*.js')
         .pipe(sourcemaps.init())
         .pipe(babel({
             sourceMaps: 'inline'
@@ -237,11 +236,29 @@ gulp.task('transform-es6-test-step', function(){
         .pipe(sourcemaps.write('.'))
         .on('error', console.error.bind(console))
         .pipe(gulp.dest("tests/cucumber/features/step_definitions"));
+};
+
+
+var transformEs6SupportTask = function () {
+    gulp.src('tests/cucumber/support_es6/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            sourceMaps: 'inline'
+        }))
+        .pipe(sourcemaps.write('.'))
+        .on('error', console.error.bind(console))
+        .pipe(gulp.dest("tests/cucumber/features/support"));
+};
+
+//Transforms es6 cucumber test steps
+gulp.task('transform-es6', function () {
+    transformEs6TestStepsTask();
+    transformEs6SupportTask();
 });
 
 // Run tests
 // Outputs result to console in pretty style
-gulp.task('cucumber', ['transform-es6-test-step'], function () {
+gulp.task('cucumber', ['transform-es6'], function () {
     return gulp.src('*')
         .pipe(exec('cd tests/cucumber && ..\\..\\node_modules\\.bin\\cucumber-js --format=pretty',
             function (err, stdOut) {
@@ -252,13 +269,13 @@ gulp.task('cucumber', ['transform-es6-test-step'], function () {
 
 // Run tests
 // Outputs result to output_JUnit.xml file in tests/cucumber folder
-gulp.task('cucumber-jUnit', ['transform-es6-test-step'], function () {
+gulp.task('cucumber-jUnit', ['transform-es6'], function () {
     return gulp.src('*')
         .pipe(exec('cd tests/cucumber && ..\\..\\node_modules\\.bin\\cucumber-js --format=json ' +
             '| ..\\..\\node_modules\\.bin\\cucumber-junit > cucumber_jUnit_results.xml'));
 });
 
-gulp.task('jsdoc', function() {
+gulp.task('jsdoc', function () {
     gulp.src(['./src/*/*/*.js', 'README.md'])
         .pipe(jsdoc.parser())
         .pipe(jsdoc.generator('./docs'))

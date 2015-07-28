@@ -12,7 +12,7 @@ var Filters = React.createClass({
             <p className="btn-group center-block">
                 <Link to="/workload" className="btn btn-default">All</Link>
                 <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, value: ProjectConstants.TYPE_SELFEDUCATION}}
-                      className="btn btn-default selfeducation-filter">
+                      className="btn btn-default" id="selfeducation-filter">
                     Selfeducation
                 </Link>
                 <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, value: ProjectConstants.TYPE_ABSENCE}}
