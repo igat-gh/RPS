@@ -6,11 +6,12 @@ var MarkersService = require('../services/markers');
 /**
  * Application action creator.
  * @see More info about Actions and Action Creators visit {@link https://facebook.github.io/flux/docs/actions-and-the-dispatcher.html#actions-and-action-creators}
- * @namespace
+ * @class
  */
 var AppActions = {
 
     /**
+     * AppActions~loadEmployees
      * Requests list of children from the server by user id.
      * @return {object} Promise
      */
@@ -27,6 +28,7 @@ var AppActions = {
     },
 
     /**
+     * Sort table by filter
      * @param {string} type
      * @param {string} value
      */

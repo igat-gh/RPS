@@ -6,7 +6,7 @@ var AuthAction = require('../../actions/auth-actions');
 var Template = require('./app-template');
 var Header = require('../header/header');
 /**
- * @namespace
+ * @class
  * @type {*|Function}
  */
 var APP = React.createClass({

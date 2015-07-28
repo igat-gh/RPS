@@ -16,6 +16,7 @@ var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
 
 /**
+ * User's authorization state
  * @type {{authToken: null|string, loggedIn: boolean}}
  * @private
  */
@@ -25,7 +26,7 @@ var _authData = {
 };
 
 /**
- *
+ * Change user's authorization state
  * @param {object} data Data from 'actions'
  */
 function loadAuthData (data) {

@@ -3,12 +3,12 @@ var Promise = require('es6-promise').Promise;
 
 /**
  * Wrapper for calling a API
- * @namespace
+ * @class
  * @type {object}
  */
 var Api = {
     /**
-     * @param {string} url
+     * @param {string} url Current URL
      * @return {object} Promise
      */
     get: function (url) {

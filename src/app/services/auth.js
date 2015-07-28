@@ -1,13 +1,13 @@
 /**
  * Authentication Service
- * @namespace
+ * @class
  * @type {{logout: Function, getToken: Function, loggedIn: Function, onChange: Function}}
  */
 var Auth = {
     /**
-     * @param {string} email
-     * @param {string} pass
-     * @param {function} callback
+     * @param {string} email User email
+     * @param {string} pass User password
+     * @param {function} callback Will called after authorization
      * @memberOf Auth
      */
     login: function (email, pass, callback) {
@@ -21,6 +21,7 @@ var Auth = {
         }
 
         /**
+         * Save context 'this'
          * @memberOf Auth
          * @type {Auth}
          */
@@ -64,6 +65,7 @@ var Auth = {
         return localStorage.token;
     },
     /**
+     * Include auth status to Action
      * @memberOf Auth
      * @return {boolean}
      */

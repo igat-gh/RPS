@@ -6,10 +6,11 @@ var Auth = require('../services/auth');
 /**
  * Authentication action creator.
  * @see More info about Actions and Action Creators visit {@link https://facebook.github.io/flux/docs/actions-and-the-dispatcher.html#actions-and-action-creators}
- * @namespace
+ * @class
  */
 var AuthActions = {
     /**
+     * User authorization
      * @param {string} email
      * @param {string} pass
      */
@@ -27,6 +28,7 @@ var AuthActions = {
     },
 
     /**
+     * Exit from account
      * @function
      */
     logout: function () {
