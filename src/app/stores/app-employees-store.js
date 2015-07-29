@@ -21,18 +21,21 @@ var CHANGE_EVENT = 'change';
 /**
  * List of employees
  * @type {Array}
+ * @private
  */
 var _employees = [];
 
 /**
  * List of filtered employees
  * @type {Array}
+ * @private
  */
 var _filteredEmployees = [];
 
 /**
- *
+ * Filter's state
  * @type {object}
+ * @private
  */
 var _currentFilter = {
     type: null,
@@ -41,7 +44,7 @@ var _currentFilter = {
 
 /**
  * Filter not ended projects for each employee
- * @param employeesList Array
+ * @param {array} employeesList Array with employers
  */
 function loadEmployees(employeesList) {
     employeesList.map(function (employee) {
@@ -56,9 +59,9 @@ function loadEmployees(employeesList) {
 }
 
 /**
- *
- * @param {string} type
- * @param {string} value
+ * Change current Filter state
+ * @param {string} type Set new type
+ * @param {string} value Set new value
  */
 function setFilter(type, value) {
     _currentFilter.type = type;
@@ -67,8 +70,8 @@ function setFilter(type, value) {
 
 /**
  *
- * @param {string} type
- * @param {string} value
+ * @param {string} type Type project or time
+ * @param {string} value Value of filter
  */
 function filterEmployees(type, value) {
     switch (type) {
@@ -103,7 +106,7 @@ function filterEmployees(type, value) {
 
 /**
  * EmployeesStore stores the state of the workload.
- * For more info about Stores visit https://facebook.github.io/flux/docs/overview.html#stores
+ * @see For more info about Stores visit {@link https://facebook.github.io/flux/docs/overview.html#stores}
  */
 var EmployeesStore = assign({}, EventEmitter.prototype,
     {

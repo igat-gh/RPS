@@ -48,7 +48,7 @@ var Auth = {
 
     /**
      * @memberOf Auth
-     * @param {function} callback
+     * @param {function} callback Callback function
      */
     logout: function (callback) {
         delete localStorage.token;

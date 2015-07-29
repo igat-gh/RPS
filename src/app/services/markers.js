@@ -21,7 +21,7 @@ var Markers = {
     },
     /**
      * Change array _markers
-     * @param {array} markersList
+     * @param {array} markersList List of new markers
      */
     setMarkers: function (markersList) {
         _markers = markersList;

@@ -11,8 +11,8 @@ var Auth = require('../services/auth');
 var AuthActions = {
     /**
      * User authorization
-     * @param {string} email
-     * @param {string} pass
+     * @param {string} email Email from form
+     * @param {string} pass Password from form
      */
     login: function (email, pass) {
         Auth.login(email, pass, function () {

@@ -29,8 +29,8 @@ var AppActions = {
 
     /**
      * Sort table by filter
-     * @param {string} type
-     * @param {string} value
+     * @param {string} type Type project or time
+     * @param {string} value Value of filter
      */
     setEmployeeFilter: function (type, value) {
         var payload = {
