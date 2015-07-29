@@ -229,11 +229,9 @@ gulp.task('test', function () {
 
 var transformEs6TestStepsTask = function () {
     gulp.src('tests/cucumber/step_definitions_es6/*.js')
-        .pipe(sourcemaps.init())
         .pipe(babel({
             sourceMaps: 'inline'
         }))
-        .pipe(sourcemaps.write('.'))
         .on('error', console.error.bind(console))
         .pipe(gulp.dest("tests/cucumber/features/step_definitions"));
 };
@@ -241,16 +239,14 @@ var transformEs6TestStepsTask = function () {
 
 var transformEs6SupportTask = function () {
     gulp.src('tests/cucumber/support_es6/*.js')
-        .pipe(sourcemaps.init())
         .pipe(babel({
             sourceMaps: 'inline'
         }))
-        .pipe(sourcemaps.write('.'))
         .on('error', console.error.bind(console))
         .pipe(gulp.dest("tests/cucumber/features/support"));
 };
 
-//Transforms es6 cucumber test steps
+//Transforms es6 cucumber test steps and support files
 gulp.task('transform-es6', function () {
     transformEs6TestStepsTask();
     transformEs6SupportTask();

@@ -1,22 +1,34 @@
-'use strict';
-
-require('babel/polyfill');
-var Q = require('q');
 var Settings = require('../../settings');
+var Q = require('q');
 
-var loginModule = {
+var TOKEN_STORAGE_KEY = 'token';
 
-    login: function* (context) {
-        yield context.browser.get(Settings.baseUrl);
-        var token = yield context.browser.getLocalStorageKey('token');
+function generateToken() {
+    return Math.random().toString(36).substring(7);
+}
 
-        if (!token) {
-            yield context.browser.setLocalStorageKey('token', Math.random().toString(36).substring(7));
-        }
+function setToken() {
+    var token = generateToken();
+    this.browser.setLocalStorageKey(TOKEN_STORAGE_KEY, token);
+}
 
-        yield context.browser.get(Settings.baseUrl);
+function getToken() {
+    return this.browser.getLocalStorageKey(TOKEN_STORAGE_KEY);
+}
+
+function* loginAsync() {
+    yield this.browser.get(Settings.baseUrl);
+    var token = yield getToken.call(this);
+
+    if (!token) {
+        yield setToken.call(this);
     }
 
-};
+    yield this.browser.get(Settings.baseUrl);
+}
 
-module.exports = loginModule;
+function loginSync() {
+    return Q.async(() => loginAsync.call(this))();
+}
+
+exports.login = loginSync;

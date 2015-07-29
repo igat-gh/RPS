@@ -1,16 +1,15 @@
-require('babel/polyfill');
-var testWrapper = require('../support/testsWrapper');
-var Settings = require('../../settings');
 var Q = require('q');
-var loginModule = require('../step_definitions/loginModule');
+var loginModule = require('../support/loginModule');
+var testWrapper = require('../support/testWrapper');
+var Settings = require('../../settings');
 
 var myStepDefinitionsWrapper = function () {
     this.World = require('../support/world.js').World;
 
     this.Given('Im in "$module" module', function (module, callback) {
+
         testWrapper.wrap(this, callback, function* () {
-            var self = this;
-            yield Q.async(function(){return loginModule.login(self);})();
+            yield loginModule.login.call(this);
             yield this.browser.get(Settings.baseUrl + module);
             callback();
         });
