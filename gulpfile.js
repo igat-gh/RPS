@@ -22,6 +22,7 @@ var jasminePhantomJs = require('gulp-jasmine2-phantomjs');
 var babel = require('gulp-babel');
 var jsdoc = require('gulp-jsdoc');
 var exec = require('gulp-exec');
+var del = require('del');
 
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
@@ -101,7 +102,7 @@ var cssTask = function (options) {
             gulp.src(options.src)
                 .pipe(sourcemaps.init())
                 .pipe(less())
-                .pipe(concat('main.css'))
+                .pipe(concat(options.name + '.css'))
                 .pipe(sourcemaps.write())
                 .pipe(gulp.dest(options.dest))
                 .pipe(notify(function () {
@@ -113,7 +114,7 @@ var cssTask = function (options) {
     } else {
         gulp.src(options.src)
             .pipe(less())
-            .pipe(concat('main.css'))
+            .pipe(concat(options.name + '.css'))
             .pipe(cssmin())
             .pipe(gulp.dest(options.dest));
     }
@@ -140,60 +141,90 @@ var assetsTask = function (options) {
         }));
 };
 
+
+var cleanUpTask = function (options, done) {
+    del(options.path, done);
+};
+
 // Development build
 gulp.task('default', ['jshint', 'jsdoc'], function () {
+    cleanUpTask({
+            path: ['./build/dev/']
+        },
+        function () {
+            browserifyTask({
+                development: true,
+                src: './src/app/main.js',
+                dest: './build/dev/scripts'
+            });
 
-    browserifyTask({
-        development: true,
-        src: './src/app/main.js',
-        dest: './build/dev'
-    });
+            cssTask({
+                development: true,
+                src: ['./src/styles/main.less'],
+                name: 'styles',
+                dest: './build/dev/styles'
+            });
 
-    cssTask({
-        development: true,
-        src: ['./src/styles/main.less'],
-        dest: './build/dev'
-    });
+            cssTask({
+                development: true,
+                src: ['./node_modules/bootstrap/less/bootstrap.less'],
+                name: 'libs',
+                dest: './build/dev/styles'
+            });
 
-    htmlTask({
-        development: true,
-        src: './src/app/index.html',
-        dest: './build/dev'
-    });
+            htmlTask({
+                development: true,
+                src: './src/app/index.html',
+                dest: './build/dev'
+            });
 
-    assetsTask({
-        development: true,
-        src: './src/assets/**/*',
-        dest: './build/dev'
-    });
+            assetsTask({
+                development: true,
+                src: './src/assets/**/*',
+                dest: './build/dev/assets'
+            });
+        });
 });
 
 // Production build
 gulp.task('deploy', ['jshint'], function () {
+    cleanUpTask({
+            path: ['./build/prod/']
+        },
+        function () {
+            browserifyTask({
+                development: false,
+                src: './src/app/main.js',
+                dest: './build/prod/scripts'
+            });
 
-    browserifyTask({
-        development: false,
-        src: './src/app/main.js',
-        dest: './build/prod'
-    });
+            cssTask({
+                development: false,
+                src: ['./src/styles/main.less'],
+                name: 'styles',
+                dest: './build/prod/styles'
+            });
 
-    cssTask({
-        development: false,
-        src: ['./src/styles/main.less'],
-        dest: './build/prod'
-    });
+            cssTask({
+                development: false,
+                src: ['./node_modules/bootstrap/less/bootstrap.less'],
+                name: 'libs',
+                dest: './build/prod/styles'
+            });
 
-    htmlTask({
-        development: false,
-        src: './src/app/index.html',
-        dest: './build/prod'
-    });
 
-    assetsTask({
-        development: false,
-        src: './src/assets/**/*',
-        dest: './build/prod'
-    });
+            htmlTask({
+                development: false,
+                src: './src/app/index.html',
+                dest: './build/prod'
+            });
+
+            assetsTask({
+                development: false,
+                src: './src/assets/**/*',
+                dest: './build/prod/assets'
+            });
+        });
 });
 
 gulp.task('jshint', function () {
