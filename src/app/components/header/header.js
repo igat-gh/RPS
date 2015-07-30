@@ -3,6 +3,7 @@ var Link = require('react-router').Link;
 
 var Menu = require('./menu');
 /**
+ * Header with top menu, login and logout links
  * @class
  * @type {*|Function}
  */

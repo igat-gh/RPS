@@ -3,6 +3,7 @@ var Router = require('react-router');
 var AuthStore = require('../../stores/app-auth-store');
 var AuthAction = require('../../actions/auth-actions');
 /**
+ * Login form
  * @class
  * @type {*|Function}
  */

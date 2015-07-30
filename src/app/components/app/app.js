@@ -6,13 +6,15 @@ var AuthAction = require('../../actions/auth-actions');
 var Template = require('./app-template');
 var Header = require('../header/header');
 /**
+ * Main template with all application
  * @class
  * @type {*|Function}
  */
 var APP = React.createClass({
     /**
+     * Get user's authorization state
      * @memberOf APP
-     * @return {*}
+     * @return {object}
      */
     getInitialState: function () {
         return AuthStore.getState();

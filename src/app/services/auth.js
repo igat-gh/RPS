@@ -5,6 +5,7 @@
  */
 var Auth = {
     /**
+     * Authentication function. It takes username, password and callback to login.
      * @param {string} email User email
      * @param {string} pass User password
      * @param {function} callback Will called after authorization
@@ -28,6 +29,7 @@ var Auth = {
         var self = this;
 
         /**
+         * Call fake request. If authentication is successful, write a token in the local storage
          * @memberOf Auth
          */
         pretendRequest(email, pass, function (res) {
@@ -47,6 +49,7 @@ var Auth = {
     },
 
     /**
+     * Logout function. Deletes token from the local storage, if has a callback, call it.
      * @memberOf Auth
      * @param {function} callback Callback function
      */
@@ -58,6 +61,7 @@ var Auth = {
         this.onChange(false);
     },
     /**
+     * Returns token value.
      * @memberOf Auth
      * @return {*|string|context.token|Function|string}
      */
@@ -65,7 +69,7 @@ var Auth = {
         return localStorage.token;
     },
     /**
-     * Include auth status to Action
+     * Does a token in the local storage?
      * @memberOf Auth
      * @return {boolean}
      */
@@ -77,7 +81,7 @@ var Auth = {
 };
 
 /**
- * Fake request
+ * Fake request.
  * @param {string} email
  * @param {string} pass
  * @param {function} callback

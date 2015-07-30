@@ -13,7 +13,6 @@ var assign = require('object-assign');
 require('array.prototype.find');
 
 /**
- *
  * @type {string}
  */
 var CHANGE_EVENT = 'change';
@@ -59,7 +58,7 @@ function loadEmployees(employeesList) {
 }
 
 /**
- * Change current Filter state
+ * Set new current Filter state
  * @param {string} type Set new type
  * @param {string} value Set new value
  */
@@ -69,7 +68,8 @@ function setFilter(type, value) {
 }
 
 /**
- *
+ * Takes filter and filter's value, returns filtered array with employers.
+ * If the filter is not installed, it returns array '_employees'
  * @param {string} type Type project or time
  * @param {string} value Value of filter
  */

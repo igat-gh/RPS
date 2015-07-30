@@ -9,6 +9,7 @@ var Markers = require('./markers');
 var MarkedRow = require('./marked-row');
 var Login = require('../auth/login');
 /**
+ * Returns Workload table with Lists of markers and filters.
  * @class
  * @type {*|Function}
  */

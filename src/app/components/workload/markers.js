@@ -1,6 +1,7 @@
 var React = require('react');
 var Settings = require('../../settings');
 /**
+ * Description of the table's markers. Returns list with color squares and designation.
  * @class
  * @type {*|Function}
  */

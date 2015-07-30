@@ -1,5 +1,6 @@
 var React = require('react');
 /**
+ * Outsides div wrapper for APP
  * @class
  * @type {*|Function}
  */

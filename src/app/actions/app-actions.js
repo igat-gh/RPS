@@ -11,8 +11,7 @@ var MarkersService = require('../services/markers');
 var AppActions = {
 
     /**
-     * AppActions~loadEmployees
-     * Requests list of children from the server by user id.
+     * Load employees and add this data in action
      * @return {object} Promise
      */
     loadEmployees: function () {
@@ -28,7 +27,7 @@ var AppActions = {
     },
 
     /**
-     * Sort table by filter
+     * Sets filtering parameters to employees
      * @param {string} type Type project or time
      * @param {string} value Value of filter
      */

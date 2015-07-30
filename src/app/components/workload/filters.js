@@ -6,6 +6,7 @@ var FiltersConstants = require('../../constants/filters-constants');
 var ProjectConstants = require('../../constants/project-constants');
 var Moment = require('moment');
 /**
+ * Returns list of filters. It contains links sort table.
  * @class
  * @type {*|Function}
  */

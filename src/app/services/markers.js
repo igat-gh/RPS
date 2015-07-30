@@ -5,6 +5,7 @@ var Promise = require('es6-promise').Promise;
 var _markers = [];
 
 /**
+ * Stores the value of markers in private array, simulates requests.
  * @class
  */
 var Markers = {

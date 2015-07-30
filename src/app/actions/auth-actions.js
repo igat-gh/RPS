@@ -10,9 +10,9 @@ var Auth = require('../services/auth');
  */
 var AuthActions = {
     /**
-     * User authorization
-     * @param {string} email Email from form
-     * @param {string} pass Password from form
+     * Logs in user with specified email and password combination
+     * @param {string} email User email address
+     * @param {string} pass User password
      */
     login: function (email, pass) {
         Auth.login(email, pass, function () {
@@ -28,7 +28,7 @@ var AuthActions = {
     },
 
     /**
-     * Exit from account
+     * Log out
      * @function
      */
     logout: function () {

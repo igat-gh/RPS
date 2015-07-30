@@ -26,7 +26,7 @@ var _authData = {
 };
 
 /**
- * Change user's authorization state
+ * Set new values in _authData.
  * @param {object} data Data from 'actions'
  */
 function loadAuthData (data) {

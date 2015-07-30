@@ -5,6 +5,13 @@ var ProjectConstants = require('../../constants/project-constants');
 
 require('moment-duration-format');
 /**
+ * Returns row of table. Color markers sets by classNames.
+ *  {
+ *      .selfEducation -> #f2dede;
+ *      .testPeriod -> #d9edf7;
+ *      .absence -> #fcf8e3;
+ *      .project -> none
+ *  }
  * @class
  * @type {*|Function}
  */

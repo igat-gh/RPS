@@ -8,6 +8,7 @@ var Promise = require('es6-promise').Promise;
  */
 var Api = {
     /**
+     * Api method for calling async requests at the url
      * @param {string} url Current URL
      * @return {object} Promise
      */
