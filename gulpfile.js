@@ -271,6 +271,7 @@ gulp.task('cucumber-jUnit', ['transform-es6'], function () {
             '| ..\\..\\node_modules\\.bin\\cucumber-junit > cucumber_jUnit_results.xml'));
 });
 
+gulp.task('jsdoc', function () {
     gulp.src('./src/**/*.js')
         .pipe(react())
         .pipe(addsrc('README.md'))
