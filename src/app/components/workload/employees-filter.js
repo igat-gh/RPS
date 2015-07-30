@@ -1,12 +1,22 @@
-var React = require('react');
 var Link = require('react-router').Link;
+var Moment = require('moment');
+var React = require('react');
+
 var AppActions = require('../../actions/app-actions');
 var EmployeesStore = require('../../stores/app-employees-store');
 var FiltersConstants = require('../../constants/filters-constants');
 var ProjectConstants = require('../../constants/project-constants');
-var Moment = require('moment');
 
-var Filters = React.createClass({
+/**
+ * Employees data grid filters component.
+ * @class
+ * @type {*|Function}
+ */
+var EmployeesFilters = React.createClass({
+    /**
+     * @memberOf EmployeesFilters
+     * @return {XML}
+     */
     render: function () {
         return (
             <p className="btn-group center-block">
@@ -36,4 +46,4 @@ var Filters = React.createClass({
     }
 });
 
-module.exports = Filters;
+module.exports = EmployeesFilters;

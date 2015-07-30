@@ -22,7 +22,7 @@ var jasminePhantomJs = require('gulp-jasmine2-phantomjs');
 var babel = require('gulp-babel');
 var jsdoc = require('gulp-jsdoc');
 var exec = require('gulp-exec');
-
+var addsrc = require('gulp-add-src');
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
 var dependencies = [
@@ -271,8 +271,10 @@ gulp.task('cucumber-jUnit', ['transform-es6'], function () {
             '| ..\\..\\node_modules\\.bin\\cucumber-junit > cucumber_jUnit_results.xml'));
 });
 
-gulp.task('jsdoc', function () {
-    gulp.src(['./src/*/*/*.js', 'README.md'])
+    gulp.src('./src/**/*.js')
+        .pipe(react())
+        .pipe(addsrc('README.md'))
         .pipe(jsdoc.parser())
-        .pipe(jsdoc.generator('./docs'))
+        .pipe(jsdoc.generator('./docs'));
+
 });

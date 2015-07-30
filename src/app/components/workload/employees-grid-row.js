@@ -1,14 +1,33 @@
-var React = require('react');
 var Moment = require('moment');
-var Settings = require('../../settings');
-var ProjectConstants = require('../../constants/project-constants');
-
+var React = require('react');
 require('moment-duration-format');
 
-var MarkedRow = React.createClass({
+var ProjectConstants = require('../../constants/project-constants');
+var Settings = require('../../settings');
+
+/**
+ * Employees data row component. Uses different visualization by project types.
+ *  {
+ *      .selfEducation -> #f2dede;
+ *      .testPeriod -> #d9edf7;
+ *      .absence -> #fcf8e3;
+ *      .project -> none
+ *  }
+ * @class
+ * @type {*|Function}
+ */
+var EmployeesGridRow = React.createClass({
+    /**
+     * @memberOf EmployeesGridRow
+     * @param {object} nextProps
+     */
     componentWillReceiveProps: function (nextProps) {
         this.props.data = nextProps.data;
     },
+    /**
+     * @memberOf EmployeesGridRow
+     * @return {XML}
+     */
     render: function () {
         var data = this.props.data;
         var project = data.projects[data.projectIndex];
@@ -75,5 +94,5 @@ var MarkedRow = React.createClass({
     }
 });
 
-module.exports = MarkedRow;
+module.exports = EmployeesGridRow;
 

@@ -5,11 +5,15 @@ var MarkersService = require('../services/markers');
 
 /**
  * Application action creator.
- * More info about Actions and Action Creators visit
- * https://facebook.github.io/flux/docs/actions-and-the-dispatcher.html#actions-and-action-creators
- * @type {{loadEmployees: Function, setEmployeeFilter: Function}}
+ * @see More info about Actions and Action Creators visit {@link https://facebook.github.io/flux/docs/actions-and-the-dispatcher.html#actions-and-action-creators}
+ * @class
  */
 var AppActions = {
+
+    /**
+     * Load employees and add this data in action
+     * @return {object} Promise
+     */
     loadEmployees: function () {
         EmployeeService.fetch().then(function (employees) {
             var payload = {
@@ -21,6 +25,12 @@ var AppActions = {
             AppDispatcher.handleViewAction(payload);
         });
     },
+
+    /**
+     * Sets filtering parameters to employees
+     * @param {string} type Type project or time
+     * @param {string} value Value of filter
+     */
     setEmployeeFilter: function (type, value) {
         var payload = {
             actionType: AppConstants.SET_FILTER,

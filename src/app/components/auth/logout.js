@@ -1,7 +1,13 @@
 var React = require('react');
-var AuthStore = require('../../stores/app-auth-store');
-var AuthAction = require('../../actions/auth-actions');
 
+var AuthAction = require('../../actions/auth-actions');
+var AuthStore = require('../../stores/app-auth-store');
+
+/**
+ * Logout message component
+ * @class
+ * @type {*|Function}
+ */
 var Logout = React.createClass({
     /*
      statics: {
@@ -13,9 +19,16 @@ var Logout = React.createClass({
      }
      },
      */
+    /**
+     * @memberOf Logout
+     */
     componentWillMount: function () {
         AuthAction.logout();
     },
+    /**
+     * @memberOf Logout
+     * @return {XML}
+     */
     render: function () {
         return <p>You are logged out now!</p>;
     }

@@ -1,10 +1,11 @@
+var assign = require('object-assign');
 var Dispatcher = require('flux').Dispatcher;
 var React = require('react/addons');
-var assign = require('object-assign');
 
 /**
  * A singleton that operates as the central hub for application updates.
- * For more information visit https://facebook.github.io/flux/docs/dispatcher.html
+ * @see For more information visit {@link https://facebook.github.io/flux/docs/dispatcher.html}
+ * @module AppDispatcher
  */
 var AppDispatcher = assign(new Dispatcher(), {
     /**
@@ -21,7 +22,7 @@ var AppDispatcher = assign(new Dispatcher(), {
     /**
      * @param {function} f
      * Method that shows exceptions hidden by Dispatcher
-     * For more info about hidden exceptions visit http://cjlarose.com/2014/12/09/flux-show-exceptions.html
+     * @see For more info about hidden exceptions visit {@link http://cjlarose.com/2014/12/09/flux-show-exceptions.html}
      */
     showErrors: function (f) {
         return function () {
@@ -36,7 +37,7 @@ var AppDispatcher = assign(new Dispatcher(), {
     /**
      * @param {function} f
      * Method that registers function that shows exceptions hidden by Dispatcher
-     * For more info about hidden exceptions visit http://cjlarose.com/2014/12/09/flux-show-exceptions.html
+     * @see For more info about hidden exceptions visit {@link http://cjlarose.com/2014/12/09/flux-show-exceptions.html}
      */
     register: function (f) {
         return Dispatcher.prototype.register.call(this, this.showErrors(f));

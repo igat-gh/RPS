@@ -4,11 +4,15 @@ var Auth = require('../services/auth');
 
 /**
  * Authentication action creator.
- * More info about Actions and Action Creators visit
- * https://facebook.github.io/flux/docs/actions-and-the-dispatcher.html#actions-and-action-creators
- * @type {{login: Function, logout: Function}}
+ * @see More info about Actions and Action Creators visit {@link https://facebook.github.io/flux/docs/actions-and-the-dispatcher.html#actions-and-action-creators}
+ * @class
  */
 var AuthActions = {
+    /**
+     * Logs in user with specified email and password combination
+     * @param {string} email User email address
+     * @param {string} pass User password
+     */
     login: function (email, pass) {
         Auth.login(email, pass, function () {
             var payload = {
@@ -21,6 +25,11 @@ var AuthActions = {
             AppDispatcher.handleViewAction(payload);
         });
     },
+
+    /**
+     * Logs user out
+     * @function
+     */
     logout: function () {
         Auth.logout(function () {
             var payload = {

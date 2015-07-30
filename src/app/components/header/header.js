@@ -1,12 +1,21 @@
-var React = require('react');
 var Link = require('react-router').Link;
+var React = require('react');
 
 var Menu = require('./menu');
 
+/**
+ * Header component with top menu, login and logout links
+ * @class
+ * @type {*|Function}
+ */
 var Header = React.createClass({
     propTypes: {
         loggedIn: React.PropTypes.bool.isRequired
     },
+    /**
+     * @memberOf Header
+     * @return {XML}
+     */
     render: function () {
         return (
             <header>

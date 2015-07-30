@@ -1,16 +1,22 @@
+var assign = require('object-assign');
+var EventEmitter = require('events').EventEmitter;
+
 var AppDispatcher = require('../dispatchers/app-dispatcher');
 var AppConstants = require('../constants/app-constants');
-var EventEmitter = require('events').EventEmitter;
-var assign = require('object-assign');
 
 /**
- *
+ * AuthStore stores the state of the user authentication.
+ * @see For more info about Stores visit {@link https://facebook.github.io/flux/docs/overview.html#stores}
+ * @module AuthStore
+ */
+
+/**
  * @type {string}
  */
 var CHANGE_EVENT = 'change';
 
 /**
- *
+ * User's authorization state
  * @type {{authToken: null|string, loggedIn: boolean}}
  * @private
  */
@@ -20,17 +26,15 @@ var _authData = {
 };
 
 /**
- *
- * @param data
+ * Set new values in _authData.
+ * @param {object} data Data from 'actions'
  */
 function loadAuthData (data) {
     _authData.authToken = data.token;
     _authData.loggedIn = data.loggedIn;
 }
-
 /**
  * AuthStore stores the state of the user authentication.
- * For more info about Stores visit https://facebook.github.io/flux/docs/overview.html#stores
  */
 var AuthStore = assign({}, EventEmitter.prototype,
     {
@@ -61,6 +65,5 @@ var AuthStore = assign({}, EventEmitter.prototype,
         })
     }
 );
-
 module.exports = AuthStore;
 
