@@ -1,5 +1,4 @@
-require('babel/polyfill');
-var testWrapper = require('../support/testsWrapper');
+var testWrapper = require('../support/testWrapper');
 var Settings = require('../../settings');
 
 var myStepDefinitionsWrapper = function () {

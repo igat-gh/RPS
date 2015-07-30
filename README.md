@@ -43,5 +43,13 @@ Also uses custom bootstrap [theme](http://bootswatch.com/paper/) and LESS as a C
 * Flux & React [Best Practices](http://racingtadpole.com/blog/flux-react-best-practices/)
 * A [collection](https://react.zeef.com/nick.raienko) of awesome React tools, resources, videos and shiny things.
 
+### Info Cucumber + Selenium
+* [WD] (https://github.com/admc/wd)
+* Usage [Q promises + chaining] (https://github.com/admc/wd/blob/master/examples/promise/chrome.js)
+* [WD API] (https://github.com/admc/wd/blob/master/doc/api.md)
+* [Cucumber-js] (https://github.com/cucumber/cucumber-js)
+* [Gherkin syntax examples] (http://docs.behat.org/en/latest/guides/1.gherkin.html)
+* Features are written with the [Gherkin syntax] (https://github.com/cucumber/cucumber/wiki/Gherkin)
+
 ### Project materials
 Wiki [page](https://wiki.itransition.com/display/RPS/Resource+Planning+System+Home)

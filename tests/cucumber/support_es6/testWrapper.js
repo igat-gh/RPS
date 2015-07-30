@@ -1,6 +1,6 @@
 var Q = require('q');
 
-var wrapTest = function (context, callback, fn) {
+function wrapTest(context, callback, fn) {
 
     var promise = Q.async(function () {
         return fn.call(context);
@@ -10,6 +10,6 @@ var wrapTest = function (context, callback, fn) {
         callback.fail(err);
     });
 
-};
+}
 
 exports.wrap = wrapTest;

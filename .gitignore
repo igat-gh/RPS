@@ -8,3 +8,4 @@ build/dev
 build/prod
 build/test/specs.js
 /tests/cucumber/features/step_definitions
+/tests/cucumber/features/support
