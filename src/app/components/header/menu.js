@@ -1,7 +1,8 @@
-var React = require('react');
 var Link = require('react-router').Link;
+var React = require('react');
+
 /**
- * Navigation menu. Showed 'Workload' link, if user is authorized
+ * Navigation menu component. Shows main menu for authorized user, otherwise is empty.
  * @class
  * @type {*|Function}
  */

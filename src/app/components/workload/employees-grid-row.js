@@ -1,11 +1,12 @@
-var React = require('react');
 var Moment = require('moment');
-var Settings = require('../../settings');
-var ProjectConstants = require('../../constants/project-constants');
-
+var React = require('react');
 require('moment-duration-format');
+
+var ProjectConstants = require('../../constants/project-constants');
+var Settings = require('../../settings');
+
 /**
- * Returns row of table. Color markers sets by classNames.
+ * Employees data row component. Uses different visualization by project types.
  *  {
  *      .selfEducation -> #f2dede;
  *      .testPeriod -> #d9edf7;
@@ -15,16 +16,16 @@ require('moment-duration-format');
  * @class
  * @type {*|Function}
  */
-var MarkedRow = React.createClass({
+var EmployeesGridRow = React.createClass({
     /**
-     * @memberOf MarkedRow
+     * @memberOf EmployeesGridRow
      * @param {object} nextProps
      */
     componentWillReceiveProps: function (nextProps) {
         this.props.data = nextProps.data;
     },
     /**
-     * @memberOf MarkedRow
+     * @memberOf EmployeesGridRow
      * @return {XML}
      */
     render: function () {
@@ -93,5 +94,5 @@ var MarkedRow = React.createClass({
     }
 });
 
-module.exports = MarkedRow;
+module.exports = EmployeesGridRow;
 

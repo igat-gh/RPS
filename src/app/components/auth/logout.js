@@ -1,8 +1,10 @@
 var React = require('react');
-var AuthStore = require('../../stores/app-auth-store');
+
 var AuthAction = require('../../actions/auth-actions');
+var AuthStore = require('../../stores/app-auth-store');
+
 /**
- * Logout message
+ * Logout message component
  * @class
  * @type {*|Function}
  */

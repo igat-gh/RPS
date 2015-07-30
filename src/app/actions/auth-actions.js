@@ -2,7 +2,6 @@ var AppConstants = require('../constants/app-constants');
 var AppDispatcher = require('../dispatchers/app-dispatcher');
 var Auth = require('../services/auth');
 
-
 /**
  * Authentication action creator.
  * @see More info about Actions and Action Creators visit {@link https://facebook.github.io/flux/docs/actions-and-the-dispatcher.html#actions-and-action-creators}
@@ -28,7 +27,7 @@ var AuthActions = {
     },
 
     /**
-     * Log out
+     * Logs user out
      * @function
      */
     logout: function () {

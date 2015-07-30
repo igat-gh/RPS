@@ -5,7 +5,7 @@
  */
 var Auth = {
     /**
-     * Authentication function. It takes username, password and callback to login.
+     * Authentication function. It takes username, password and callback to log in.
      * @param {string} email User email
      * @param {string} pass User password
      * @param {function} callback Will called after authorization
@@ -49,7 +49,7 @@ var Auth = {
     },
 
     /**
-     * Logout function. Deletes token from the local storage, if has a callback, call it.
+     * Logs user out function. Deletes token from the local storage, if has a callback, call it.
      * @memberOf Auth
      * @param {function} callback Callback function
      */

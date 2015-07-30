@@ -1,9 +1,11 @@
 var React = require('react');
 var Router = require('react-router');
-var AuthStore = require('../../stores/app-auth-store');
+
 var AuthAction = require('../../actions/auth-actions');
+var AuthStore = require('../../stores/app-auth-store');
+
 /**
- * Login form
+ * Login form component
  * @class
  * @type {*|Function}
  */

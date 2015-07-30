@@ -1,5 +1,5 @@
-var Login = require('../components/auth/login');
 var AuthStore = require('../stores/app-auth-store');
+var Login = require('../components/auth/login');
 
 /**
  * AuthenticationMixin.

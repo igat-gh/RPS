@@ -1,18 +1,20 @@
-var React = require('react');
 var Link = require('react-router').Link;
+var Moment = require('moment');
+var React = require('react');
+
 var AppActions = require('../../actions/app-actions');
 var EmployeesStore = require('../../stores/app-employees-store');
 var FiltersConstants = require('../../constants/filters-constants');
 var ProjectConstants = require('../../constants/project-constants');
-var Moment = require('moment');
+
 /**
- * Returns list of filters. It contains links sort table.
+ * Employees data grid filters component.
  * @class
  * @type {*|Function}
  */
-var Filters = React.createClass({
+var EmployeesFilters = React.createClass({
     /**
-     * @memberOf Filters
+     * @memberOf EmployeesFilters
      * @return {XML}
      */
     render: function () {
@@ -44,4 +46,4 @@ var Filters = React.createClass({
     }
 });
 
-module.exports = Filters;
+module.exports = EmployeesFilters;

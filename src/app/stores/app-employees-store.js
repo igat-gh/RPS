@@ -1,16 +1,16 @@
+var assign = require('object-assign');
+var EventEmitter = require('events').EventEmitter;
+var Moment = require('moment');
+require('array.prototype.find');
+
+var AppConstants = require('../constants/app-constants');
+var AppDispatcher = require('../dispatchers/app-dispatcher');
+var FiltersConstants = require('../constants/filters-constants');
+
 /**
  * @module EmployeesStore
  * @type {AppDispatcher|exports|module.exports}
  */
-
-
-var AppDispatcher = require('../dispatchers/app-dispatcher');
-var AppConstants = require('../constants/app-constants');
-var FiltersConstants = require('../constants/filters-constants');
-var EventEmitter = require('events').EventEmitter;
-var Moment = require('moment');
-var assign = require('object-assign');
-require('array.prototype.find');
 
 /**
  * @type {string}

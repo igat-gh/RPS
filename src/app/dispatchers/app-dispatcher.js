@@ -1,6 +1,6 @@
+var assign = require('object-assign');
 var Dispatcher = require('flux').Dispatcher;
 var React = require('react/addons');
-var assign = require('object-assign');
 
 /**
  * A singleton that operates as the central hub for application updates.

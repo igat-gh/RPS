@@ -1,9 +1,9 @@
 var React = require('react');
 var Router = require('react-router');
-var AuthAction = require('./actions/auth-actions');
 
 /** Init application routes */
 var appRoutes = require('./routes');
+var AuthAction = require('./actions/auth-actions');
 
 /** Keep logged in */
 AuthAction.login();

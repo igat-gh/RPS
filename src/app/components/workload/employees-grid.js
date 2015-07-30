@@ -1,15 +1,18 @@
-var React = require('react');
-var AppActions = require('../../actions/app-actions');
-var EmployeesStore = require('../../stores/app-employees-store');
-var AuthStore = require('../../stores/app-auth-store');
 var Loader = require('react-loader');
-var Settings = require('../../settings');
-var Filters = require('./filters');
-var Markers = require('./markers');
-var MarkedRow = require('./marked-row');
+var React = require('react');
+
+var AppActions = require('../../actions/app-actions');
+var AuthStore = require('../../stores/app-auth-store');
+var EmployeesStore = require('../../stores/app-employees-store');
 var Login = require('../auth/login');
+var Settings = require('../../settings');
+
+var EmployeesFilters = require('./employees-filter');
+var EmployeesGridRow = require('./employees-grid-row');
+var Markers = require('./markers');
+
 /**
- * Returns Workload table with Lists of markers and filters.
+ * Employees data grid component.
  * @class
  * @type {*|Function}
  */
@@ -75,7 +78,7 @@ var EmployeesGrid = React.createClass({
                     employeeName: employee.name,
                     projects: employee.projects
                 };
-                rows.push(<MarkedRow data={rowProps} key={'' + employee.id + project.id}/>);
+                rows.push(<EmployeesGridRow data={rowProps} key={'' + employee.id + project.id}/>);
             });
         });
         return (
@@ -87,7 +90,7 @@ var EmployeesGrid = React.createClass({
                 </div>
                 <div className="row">
                     <div className="col-md-6">
-                        <Filters />
+                        <EmployeesFilters />
                     </div>
                     <div className="col-md-6">
                         <Markers />

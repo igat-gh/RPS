@@ -1,6 +1,7 @@
 var React = require('react');
+
 /**
- * Home page. Default state of app with header "Resource Planning System"
+ * Home page component with header
  * @class
  * @type {*|Function}
  */

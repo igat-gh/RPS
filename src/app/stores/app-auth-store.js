@@ -1,14 +1,14 @@
+var assign = require('object-assign');
+var EventEmitter = require('events').EventEmitter;
+
+var AppDispatcher = require('../dispatchers/app-dispatcher');
+var AppConstants = require('../constants/app-constants');
+
 /**
  * AuthStore stores the state of the user authentication.
  * @see For more info about Stores visit {@link https://facebook.github.io/flux/docs/overview.html#stores}
  * @module AuthStore
  */
-
-var AppDispatcher = require('../dispatchers/app-dispatcher');
-var AppConstants = require('../constants/app-constants');
-var EventEmitter = require('events').EventEmitter;
-var assign = require('object-assign');
-
 
 /**
  * @type {string}

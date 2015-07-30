@@ -1,7 +1,8 @@
 /* var Api = require('./api'); // Uncomment this line when will use api service */
+var moment = require('moment');
 var Promise = require('es6-promise').Promise;
 /* Delete this line when will use api service */
-var moment = require('moment');
+
 var ProjectConstants = require('../constants/project-constants');
 
 var _employees = [
