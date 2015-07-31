@@ -26,12 +26,17 @@ var del = require('del');
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
 var dependencies = [
+    'array.prototype.find',
+    'es6-promise',
+    'events',
     'flux',
+    'moment',
+    'moment-duration-format',
+    'object-assign',
     'react',
     'react/addons',
-    'object-assign',
-    'es6-promise',
-    'moment'
+    'react-router',
+    'superagent'
 ];
 
 var environment = {
