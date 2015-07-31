@@ -19,8 +19,7 @@
 
 ### Development
 * Run `gulp`
-* Start a webservice in the `build/dev` folder: `http-server -a localhost -p 3000`
-* Go to `http://localhost:3000` to display the app
+* Start a webservice in the root project directory: `http-server build/dev -a localhost -p 3000 -o`
 * Any changes to `src/app` or `src/styles` folder will automatically rebuild to `build/dev` folder and application changes will refresh automatically in the browser
 
 ### Minify the code, ready for production

@@ -5,6 +5,7 @@ node_modules
 .idea
 docs
 build/dev
+/build/test
 build/prod
 build/test/specs.js
 /tests/cucumber/features/step_definitions
