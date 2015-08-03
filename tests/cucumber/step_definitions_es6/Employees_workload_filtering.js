@@ -16,17 +16,18 @@ var myStepDefinitionsWrapper = function () {
 
     });
 
-    this.When('I filter employees by "$Selfeducation"', function (projectType, callback) {
+    this.When('I filter employees by "$filter"', function (filter, callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
-            var filterButton = yield this.browser.waitForElementById('selfeducation-filter');
+            var id = filter.toLowerCase().replace(/\s*/g,'') + '-filter';
+            var filterButton = yield this.browser.waitForElementById(id);
             yield filterButton.click();
             callback();
         });
 
     });
 
-    this.Then('I see only employees with "$Selfeducation" type of project at the moment', function (projectType, callback) {
+    this.Then('I see only employees with "$filter" type of project at the moment', function (filter, callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
             var projectCells = yield this.browser.waitForElementsByCssSelector('.workload-grid tbody td.project'),
@@ -35,7 +36,7 @@ var myStepDefinitionsWrapper = function () {
 
             projectCells.forEach(Q.async(function* (cell) {
                 var text = yield cell.text();
-                text !== projectType && callback.fail();
+                text !== filter && callback.fail();
                 ++i === length && callback();
             }));
 

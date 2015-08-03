@@ -26,8 +26,12 @@ var EmployeesFilters = React.createClass({
                     Selfeducation
                 </Link>
                 <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, value: ProjectConstants.TYPE_ABSENCE}}
-                      className="btn btn-default">
+                      className="btn btn-default" id="absence-filter" >
                     Absence
+                </Link>
+                <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, value: ProjectConstants.TYPE_TEST_PERIOD}}
+                    className="btn btn-default" id="testperiod-filter" >
+                    Test Period
                 </Link>
                 <Link to="workload-filter"
                       params={{type: FiltersConstants.TYPE_TIME, value: Moment.duration(1, 'weeks')}}

@@ -620,8 +620,8 @@ var _employees = [
         projects: [
             {
                 id: 100011,
-                type: ProjectConstants.TYPE_PROJECT,
-                title: 'Productive Edge',
+                type: ProjectConstants.TYPE_ABSENCE,
+                title: 'Absence',
                 date_start: +moment('2015-05-01'),
                 date_end: null
             }
