@@ -9,7 +9,6 @@ var hooks = function () {
         asyncWrapper.wrap(this, callback, function* () {
             yield this.browser.get(Settings.baseUrl);
             yield this.browser.clearLocalStorage();
-            console.log('After hook running.');
             callback();
         });
 
