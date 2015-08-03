@@ -5,7 +5,7 @@
 
 ### Directory
 * **build/** Where your automatically builds to.
-* **build/prod/** Ready for production code exists here (git ignores this folder).
+* **build/release/** Ready for production code exists here (git ignores this folder).
 * **build/dev/**: This is where you launch your app in development (git ignores this folder).
 * **misc/**: Where you put any other files for the project needs (f. ex. code style setting for WebStorm).
 * **src/** All sources are here.
@@ -26,7 +26,7 @@
 * Run `gulp deploy`
 
 ### Run tests
-* Start a webservice in the `build/dev` folder: `http-server -a localhost -p 3000`
+* Start a webservice in the root project directory: `http-server build/dev -a localhost -p 3000`
 * Run PhantomJS `phantomjs --webdriver=4444` for headless website testing without Browser
 * To run all tests execute `gulp cucumber`, prints a result to the console
 * To run all tests with report to the JUNIT execute `gulp cucumber-jUnit`, outputs result to output_JUnit.xml file in tests/cucumber folder.

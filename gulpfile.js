@@ -239,39 +239,39 @@ gulp.task('test', ['jshint'], function () {
 // Production build
 gulp.task('release', ['jshint'], function () {
     cleanUpTask({
-            path: ['./build/prod/']
+            path: ['./build/release/']
         },
         function () {
             browserifyTask({
                 environment: environment.release,
                 src: './src/app/main.js',
-                dest: './build/prod/scripts'
+                dest: './build/release/scripts'
             });
 
             cssTask({
                 environment: environment.release,
                 src: ['./src/styles/main.less'],
                 name: 'styles',
-                dest: './build/prod/styles'
+                dest: './build/release/styles'
             });
 
             cssTask({
                 environment: environment.release,
                 src: ['./node_modules/bootstrap/less/bootstrap.less'],
                 name: 'libs',
-                dest: './build/prod/styles'
+                dest: './build/release/styles'
             });
 
             htmlTask({
                 environment: environment.release,
                 src: './src/app/index.html',
-                dest: './build/prod'
+                dest: './build/release'
             });
 
             assetsTask({
                 environment: environment.release,
                 src: './src/assets/**/*',
-                dest: './build/prod/assets'
+                dest: './build/release/assets'
             });
         });
 });
