@@ -35,15 +35,18 @@ var EmployeesFilters = React.createClass({
                 </Link>
                 <Link to="workload-filter"
                       params={{type: FiltersConstants.TYPE_TIME, value: Moment.duration(1, 'weeks')}}
-                      className="btn btn-default">1 week
+                      className="btn btn-default" id="1-week-filter" >
+                    1 week
                 </Link>
                 <Link to="workload-filter"
                       params={{type: FiltersConstants.TYPE_TIME, value: Moment.duration(2, 'weeks')}}
-                      className="btn btn-default">2 week
+                      className="btn btn-default" id="2-weeks-filter" >
+                    2 weeks
                 </Link>
                 <Link to="workload-filter"
                       params={{type: FiltersConstants.TYPE_TIME, value: Moment.duration(1, 'month')}}
-                      className="btn btn-default">1 month
+                      className="btn btn-default" id="1-month-filter" >
+                    1 month
                 </Link>
             </p>
         );
