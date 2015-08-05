@@ -22,7 +22,7 @@ var myStepDefinitionsWrapper = function () {
     this.When('I filter employees by "$filter" with selector "$selector"', function (filter, HTMLSelector, callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
-            var filterButton = yield this.browser.waitForElementById(HTMLSelector + '-filter');
+            var filterButton = yield this.browser.waitForElementById('filter-' + HTMLSelector);
             yield filterButton.click();
             callback();
         });
