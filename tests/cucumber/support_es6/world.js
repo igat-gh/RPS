@@ -5,18 +5,17 @@ var chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
 chai.should();
 
-var wd = require('wd');
+var webdriver = require("selenium-webdriver");
 
-chaiAsPromised.transferPromiseness = wd.transferPromiseness;
+var WorldConstructor = function WorldConstructor(callback) {
 
-var browserPromiseChainRemote = wd.promiseChainRemote();
+    var world = {
+        browser: new webdriver.Builder()
+            .forBrowser('phantomjs')
+            .build()
+    };
 
-var World = function World(callback) {
-    this.browser = browserPromiseChainRemote;
-
-    this.browser.init({browserName: 'chrome'}).then(function () {
-        callback();
-    });
+    callback(world);
 };
 
-exports.World = World;
+exports.World = WorldConstructor;

@@ -1,5 +1,7 @@
 var asyncWrapper = require('../support/asyncWrapper');
 var Settings = require('../../settings');
+var By = require('selenium-webdriver').By;
+var until = require('selenium-webdriver').until;
 
 var myStepDefinitionsWrapper = function () {
     this.World = require('../support/world.js').World;
@@ -7,13 +9,13 @@ var myStepDefinitionsWrapper = function () {
     this.Given(/^I'm logged in as 'Admin'$/, function (callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
-            yield this.browser.get(Settings.baseUrl + 'login');
-            var emailInput = yield this.browser.elementById('auth-email-input');
-            var passwordInput = yield this.browser.elementById('auth-password-input');
+            this.browser.get(Settings.baseUrl + 'login');
+            var emailInput = this.browser.findElement(By.id('auth-email-input'));
+            var passwordInput = this.browser.findElement(By.id('auth-password-input'));
             emailInput.value = Settings.adminCredentials.login;
             passwordInput.value = Settings.adminCredentials.password;
-            var loginButton = this.browser.elementByClassName('login-btn');
-            yield loginButton.click();
+            var loginButton = this.browser.findElement(By.className('login-btn'));
+            loginButton.click();
             callback();
         });
 
@@ -22,7 +24,7 @@ var myStepDefinitionsWrapper = function () {
     this.When('I navigate to "$module" module', function (module, callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
-            yield this.browser.get(Settings.baseUrl + module);
+            this.browser.get(Settings.baseUrl + module);
             callback();
         });
 
@@ -31,7 +33,10 @@ var myStepDefinitionsWrapper = function () {
     this.Then(/^I see table of employees$/, function (callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
-            var workloadGrid = yield this.browser.waitForElementByClassName('workload-grid');
+            var browser = this.browser;
+            var workloadGrid = this.browser.wait(function () {
+                return browser.isElementPresent(By.className('workload-grid'));
+            }, 2000);
 
             if (workloadGrid) {
                 callback();
@@ -46,10 +51,10 @@ var myStepDefinitionsWrapper = function () {
     this.Then(/^table contains columns$/, function (callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
-            var workloadGrid = yield this.browser.elementByClassName('workload-grid');
+            var workloadGrid = this.browser.findElement(By.className('workload-grid'));
 
             if (workloadGrid) {
-                var rows = yield workloadGrid.elementsByCssSelector('tr');
+                var rows = yield workloadGrid.findElements(By.tagName('tr'));
 
                 if (rows.slice().length) {
                     callback();
@@ -60,7 +65,7 @@ var myStepDefinitionsWrapper = function () {
             }
 
         });
-
+        
     });
 
 };
