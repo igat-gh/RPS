@@ -29,11 +29,11 @@ var myStepDefinitionsWrapper = function () {
 
     });
 
-    this.Then('I see only employees with "$filter" type of project at the moment with selector "$className"', function (filter, className, callback) {
+    this.Then('I see only employees with "$filter" type of project at the moment with selector "$HTMLSelector"', function (filter, HTMLSelector, callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
             var resultRows = yield this.browser.waitForElementsByCssSelector('.workload-grid tbody tr');
-            var employeesRows = yield this.browser.waitForElementsByCssSelector('.workload-grid tbody .project-type-' + className);
+            var employeesRows = yield this.browser.waitForElementsByCssSelector('.workload-grid tbody .project-type-' + HTMLSelector);
 
             resultRows.length === employeesRows.length && callback.fail();
             callback();
