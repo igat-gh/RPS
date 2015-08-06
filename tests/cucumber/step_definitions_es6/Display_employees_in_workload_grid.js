@@ -2,6 +2,7 @@ var asyncWrapper = require('../support/asyncWrapper');
 var Settings = require('../../settings');
 var By = require('selenium-webdriver').By;
 var until = require('selenium-webdriver').until;
+var Q = require('q');
 
 var myStepDefinitionsWrapper = function () {
     this.World = require('../support/world.js').World;
@@ -33,17 +34,8 @@ var myStepDefinitionsWrapper = function () {
     this.Then(/^I see table of employees$/, function (callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
-            var browser = this.browser;
-            var workloadGrid = this.browser.wait(function () {
-                return browser.isElementPresent(By.className('workload-grid'));
-            }, 2000);
-
-            if (workloadGrid) {
-                callback();
-            } else {
-                callback.fail('Find workload table fail ' + err);
-            }
-
+            yield this.browser.wait(until.elementLocated(By.className('workload-grid')), 3000);
+            callback();
         });
 
     });
@@ -55,8 +47,7 @@ var myStepDefinitionsWrapper = function () {
 
             if (workloadGrid) {
                 var rows = yield workloadGrid.findElements(By.tagName('tr'));
-
-                if (rows.slice().length) {
+                if (rows.length) {
                     callback();
                 } else {
                     callback.fail();
@@ -65,7 +56,7 @@ var myStepDefinitionsWrapper = function () {
             }
 
         });
-        
+
     });
 
 };

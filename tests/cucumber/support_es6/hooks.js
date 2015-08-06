@@ -10,7 +10,7 @@ var hooks = function () {
            // yield this.browser.get(Settings.baseUrl);
            // yield this.browser.clearLocalStorage();
             this.browser.quit();
-            callback();
+            setTimeout(callback, 0);
         });
 
     });
