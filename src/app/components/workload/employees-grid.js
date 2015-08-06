@@ -105,7 +105,7 @@ var EmployeesGrid = React.createClass({
                                 <th>Projects</th>
                                 <th>Start</th>
                                 <th className="project-end-date" >End</th>
-                                <th>Time Left</th>
+                                <th className="project-time-left" >Time Left</th>
                             </tr>
                             </thead>
                             <tbody>

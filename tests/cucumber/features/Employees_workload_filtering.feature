@@ -15,6 +15,7 @@ Feature: Filter employees in workload grid by categories
     Given Im in "Workload" module
     When I filter employees by "<DateFilter>" date range
     Then I see only employees with "Project End Date" value earlier than "<DateFilter>" from now
+    And I see only employees with "Project Time Left" value no more than "<DateFilter>"
   Examples:
     | DateFilter    |
     | 1 week        |
