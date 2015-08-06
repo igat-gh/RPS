@@ -2,8 +2,9 @@ var Moment = require('moment');
 var Q = require('q');
 require('moment-duration-format');
 
-var loginModule = require('../support/loginModule');
 var asyncWrapper = require('../support/asyncWrapper');
+var cssConverter = require('../support/cssConverter');
+var loginModule = require('../support/loginModule');
 var Settings = require('../../settings');
 
 var myStepDefinitionsWrapper = function () {
@@ -19,9 +20,10 @@ var myStepDefinitionsWrapper = function () {
 
     });
 
-    this.When('I filter employees by "$filter" with selector "$selector"', function (filter, HTMLSelector, callback) {
+    this.When('I filter employees by "$ProjectType" project type', function (ProjectType, callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
+            var HTMLSelector = cssConverter.getCssString(ProjectType);
             var filterButton = yield this.browser.waitForElementById('filter-' + HTMLSelector);
             yield filterButton.click();
             callback();
@@ -29,9 +31,21 @@ var myStepDefinitionsWrapper = function () {
 
     });
 
-    this.Then('I see only employees with "$filter" type of project at the moment with selector "$HTMLSelector"', function (filter, HTMLSelector, callback) {
+    this.When('I filter employees by "$DateFilter" date range', function (DateFilter, callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
+            var HTMLSelector = cssConverter.getCssString(DateFilter);
+            var filterButton = yield this.browser.waitForElementById('filter-' + HTMLSelector);
+            yield filterButton.click();
+            callback();
+        });
+
+    });
+
+    this.Then('I see only employees with "$ProjectType" type of project at the moment', function (ProjectType, callback) {
+
+        asyncWrapper.wrap(this, callback, function* () {
+            var HTMLSelector = cssConverter.getCssString(ProjectType);
             var resultRows = yield this.browser.waitForElementsByCssSelector('.workload-grid tbody tr');
             var employeesRows = yield this.browser.waitForElementsByCssSelector('.workload-grid tbody .project-type-' + HTMLSelector);
 
@@ -42,11 +56,16 @@ var myStepDefinitionsWrapper = function () {
 
     });
 
-    this.Then('I see only those employees whose time the project is completed at "$filter" and equal filter "$URLFilter"', function (filter, URLFilter, callback) {
+    this.Then('I see only employees with "$column" value earlier than "$DateFilter" from now', function (column, DateFilter, callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
             var self = this;
-            var cellEndProject = yield this.browser.waitForElementsByCssSelector('.workload-grid thead tr th.end-project');
+
+            var filterButton = yield this.browser.waitForElementById('filter-' + cssConverter.getCssString(DateFilter));
+            var URL = yield this.browser.getAttribute(filterButton, 'href');
+            var URLFilter = URL.split('/TYPE_TIME/')[1];
+
+            var cellEndProject = yield this.browser.waitForElementsByCssSelector('.workload-grid thead tr th.' + cssConverter.getCssString(column));
             var cellIndex = yield this.browser.getAttribute(cellEndProject, 'cellIndex');
             var cellsWithTime = yield this.browser.waitForElementsByCssSelector('.workload-grid tbody tr td:nth-child(' + (+cellIndex + 1) + ')');
 

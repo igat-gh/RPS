@@ -27,7 +27,7 @@ var Settings = {
             project: 'project-type-project',
             selfEducation: 'project-type-selfeducation',
             absence: 'project-type-absence',
-            testPeriod: 'project-type-testperiod'
+            testPeriod: 'project-type-test-period'
         }
     },
     /**

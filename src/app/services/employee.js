@@ -621,7 +621,7 @@ var _employees = [
             {
                 id: 100011,
                 type: ProjectConstants.TYPE_ABSENCE,
-                title: 'Absence',
+                title: 'Annual leave',
                 date_start: +moment('2015-05-01'),
                 date_end: null
             }

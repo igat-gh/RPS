@@ -2,21 +2,21 @@ Feature: Filter employees in workload grid by categories
 
   Scenario Outline: Filter by type of project
     Given Im in "Workload" module
-    When I filter employees by "<Filters>" with selector "<HTMLSelectors>"
-    Then I see only employees with "<Filters>" type of project at the moment with selector "<HTMLSelectors>"
+    When I filter employees by "<ProjectType>" project type
+    Then I see only employees with "<ProjectType>" type of project at the moment
   Examples:
-    | Filters       | HTMLSelectors |
-    | Selfeducation | selfeducation |
-    | Absence       | absence       |
-    | Test Period   | testperiod    |
+    | ProjectType   |
+    | Selfeducation |
+    | Absence       |
+    | Test   Period   |
 
 
   Scenario Outline: Filter by time completion of the project
     Given Im in "Workload" module
-    When I filter employees by "<Filters>" with selector "<HTMLSelectors>"
-    Then I see only those employees whose time the project is completed at "<Filters>" and equal filter "<URLSelectors>"
+    When I filter employees by "<DateFilter>" date range
+    Then I see only employees with "Project End Date" value earlier than "<DateFilter>" from now
   Examples:
-    | Filters       | HTMLSelectors | URLSelectors |
-    | 1 week        | 1-week        | P7D          |
-    | 2 weeks       | 2-weeks       | P14D         |
-    | 1 month       | 1-month       | P1M          |
+    | DateFilter    |
+    | 1 week        |
+    | 2 weeks       |
+    | 1 month       |

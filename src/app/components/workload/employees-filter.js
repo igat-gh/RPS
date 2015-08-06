@@ -30,7 +30,7 @@ var EmployeesFilters = React.createClass({
                     Absence
                 </Link>
                 <Link to="workload-filter" params={{type: FiltersConstants.TYPE_PROJECT, value: ProjectConstants.TYPE_TEST_PERIOD}}
-                    className="btn btn-default" id="filter-testperiod" >
+                    className="btn btn-default" id="filter-test-period" >
                     Test Period
                 </Link>
                 <Link to="workload-filter"
