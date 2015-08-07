@@ -2,33 +2,21 @@ var asyncWrapper = require('../support/asyncWrapper');
 var Settings = require('../../settings');
 var By = require('selenium-webdriver').By;
 var until = require('selenium-webdriver').until;
-var Q = require('q');
 
 var myStepDefinitionsWrapper = function () {
     this.World = require('../support/world.js').World;
 
     this.Given(/^I'm logged in as 'Admin'$/, function (callback) {
-
-        asyncWrapper.wrap(this, callback, function* () {
-            this.browser.get(Settings.baseUrl + 'login');
-            var emailInput = this.browser.findElement(By.id('auth-email-input'));
-            var passwordInput = this.browser.findElement(By.id('auth-password-input'));
-            emailInput.value = Settings.adminCredentials.login;
-            passwordInput.value = Settings.adminCredentials.password;
-            var loginButton = this.browser.findElement(By.className('login-btn'));
-            loginButton.click();
-            callback();
-        });
-
+        this.browser.get(Settings.baseUrl + 'login');
+        this.browser.findElement(By.id('auth-email-input')).sendKeys(Settings.adminCredentials.login);
+        this.browser.findElement(By.id('auth-password-input')).sendKeys(Settings.adminCredentials.password);
+        this.browser.findElement(By.className('login-btn')).click();
+        callback();
     });
 
     this.When('I navigate to "$module" module', function (module, callback) {
-
-        asyncWrapper.wrap(this, callback, function* () {
-            this.browser.get(Settings.baseUrl + module);
-            callback();
-        });
-
+        this.browser.get(Settings.baseUrl + module);
+        callback();
     });
 
     this.Then(/^I see table of employees$/, function (callback) {
@@ -42,17 +30,12 @@ var myStepDefinitionsWrapper = function () {
 
     this.Then(/^table contains columns$/, function (callback) {
 
-        asyncWrapper.wrap(this, callback, function* () {
-            var workloadGrid = this.browser.findElement(By.className('workload-grid'));
+        this.browser.findElements(By.css('.workload-grid  tr')).then(function (rows) {
 
-            if (workloadGrid) {
-                var rows = yield workloadGrid.findElements(By.tagName('tr'));
-                if (rows.length) {
-                    callback();
-                } else {
-                    callback.fail();
-                }
-
+            if (rows.length) {
+                callback();
+            } else {
+                callback.fail();
             }
 
         });
