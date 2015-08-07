@@ -21,13 +21,16 @@ var HtmlElementLocatorService = {
         return name.trim().toLowerCase().replace(/\s+/g, delimiter);
     },
     /**
-     * Substitutes index to a string selector, who is looking for the elements of child elements (:nth-child) in the table
-     * @param {string} selector A selector that includes a field for inserting an index
-     * @param {number} index Cell index
-     * @return {string} String with index for searching cells in a table
+     * Function to format string, replace the "{}" values of the 'arguments'.
+     * @param {string} string String that contains entries for replacement - "{}".
+     * @return {string} Formatted string.
      */
-    getCellLocator: function(selector, index) {
-        return selector.replace(/\{index}/, ++index);
+    getFormattedString: function(string) {
+        for(var i = 0; i < (arguments.length - 1); ++i) {
+            var regexp = new RegExp('\\{' + i + '\}');
+            var formatted = string.replace(regexp, arguments[i + 1]);
+        }
+        return formatted;
     }
 };
 

@@ -6,15 +6,13 @@ var htmlElementLocatorService = require('../support/htmlElementLocatorService');
 var loginModule = require('../support/loginModule');
 var settings = require('../../settings');
 
-
-
 var employeesWorkloadFilteringWrapper = function () {
     this.World = require('../support/world.js').World;
 
     var WORKLOAD_GRID_EMPLOYEE_ROW = '.workload-grid tbody tr',
         WORKLOAD_GRID_HEADER_ROW = '.workload-grid thead th',
         WORKLOAD_GRID_BODY = '.workload-grid tbody',
-        WORKLOAD_GRID_BODY_CELL = '.workload-grid tbody tr td:nth-child({index})';
+        WORKLOAD_GRID_BODY_CELL = '.workload-grid tbody tr td:nth-child({0})';
 
     this.Given('Im in "$module" module', function (module, callback) {
 
@@ -63,11 +61,11 @@ var employeesWorkloadFilteringWrapper = function () {
 
         asyncWrapper.wrap(this, callback, function* () {
             var dataString = DateFilter.split(' ');
-            var duration = Moment.duration(+dataString[0],dataString[1]);
+            var duration = Moment.duration(+dataString[0], dataString[1]);
 
             var cellEndProject = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_HEADER_ROW + '.' + htmlElementLocatorService.getLocator(column));
             var cellIndex = yield this.browser.getAttribute(cellEndProject, 'cellIndex');
-            var cellsWithTime = yield this.browser.waitForElementsByCssSelector(htmlElementLocatorService.getCellLocator(WORKLOAD_GRID_BODY_CELL, +cellIndex));
+            var cellsWithTime = yield this.browser.waitForElementsByCssSelector(htmlElementLocatorService.getFormattedString(WORKLOAD_GRID_BODY_CELL, +cellIndex + 1));
 
             for (let i = 0; i < cellsWithTime.length; ++i) {
                 var cellText = yield this.browser.getAttribute(cellsWithTime[i], 'textContent');
@@ -83,14 +81,16 @@ var employeesWorkloadFilteringWrapper = function () {
         });
 
     });
+
     this.Then('I see only employees with "$column" value no more than "$DateFilter"', function (column, DateFilter, callback) {
+
         asyncWrapper.wrap(this, callback, function* () {
             var dataString = DateFilter.split(' ');
-            var duration = Moment.duration(+dataString[0],dataString[1]);
+            var duration = Moment.duration(+dataString[0], dataString[1]);
 
             var cellTimeLeft = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_HEADER_ROW + '.' + htmlElementLocatorService.getLocator(column));
             var cellIndex = yield this.browser.getAttribute(cellTimeLeft, 'cellIndex');
-            var cellsWithTime = yield this.browser.waitForElementsByCssSelector(htmlElementLocatorService.getCellLocator(WORKLOAD_GRID_BODY_CELL, +cellIndex));
+            var cellsWithTime = yield this.browser.waitForElementsByCssSelector(htmlElementLocatorService.getFormattedString(WORKLOAD_GRID_BODY_CELL, +cellIndex + 1));
 
             for (let i = 0; i < cellsWithTime.length; ++i) {
                 var cellText = yield this.browser.getAttribute(cellsWithTime[i], 'textContent');
@@ -108,6 +108,7 @@ var employeesWorkloadFilteringWrapper = function () {
             }
             callback();
         });
+
     });
 
 
