@@ -313,7 +313,7 @@ gulp.task('transform-es6', function () {
 // Outputs result to console in pretty style
 gulp.task('cucumber', ['transform-es6'], function () {
     return gulp.src('*')
-        .pipe(exec('cd tests/cucumber && ..\\..\\node_modules\\.bin\\cucumber-js --format=pretty',
+        .pipe(exec('node_modules\\.bin\\cucumber-js tests/cucumber/features --format=pretty',
             function (err, stdOut) {
                 console.log(stdOut);
                 err && console.log(err);
@@ -324,8 +324,8 @@ gulp.task('cucumber', ['transform-es6'], function () {
 // Outputs result to output_JUnit.xml file in tests/cucumber folder
 gulp.task('cucumber-jUnit', ['transform-es6'], function () {
     return gulp.src('*')
-        .pipe(exec('cd tests/cucumber && ..\\..\\node_modules\\.bin\\cucumber-js --format=json ' +
-            '| ..\\..\\node_modules\\.bin\\cucumber-junit > cucumber_jUnit_results.xml'));
+        .pipe(exec('node_modules\\.bin\\cucumber-js tests/cucumber/features --format=json ' +
+            '| node_modules\\.bin\\cucumber-junit > cucumber_jUnit_results.xml'));
 });
 
 gulp.task('jsdoc', function () {
