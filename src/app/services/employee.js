@@ -15,7 +15,7 @@ var _employees = [
                 type: ProjectConstants.TYPE_TEST_PERIOD,
                 title: 'Test Period',
                 date_start: +moment('2015-07-08'),
-                date_end: +moment('2015-08-07')
+                date_end: +moment('2015-08-13')
             }
         ]
     },

@@ -8,7 +8,7 @@ Feature: Filter employees in workload grid by categories
     | ProjectType   |
     | Selfeducation |
     | Absence       |
-    | Test   Period   |
+    | Test Period   |
 
 
   Scenario Outline: Filter by time completion of the project
