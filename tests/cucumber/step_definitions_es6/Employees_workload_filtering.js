@@ -6,12 +6,15 @@ var htmlElementLocatorService = require('../support/htmlElementLocatorService');
 var loginModule = require('../support/loginModule');
 var settings = require('../../settings');
 
-var WORKLOAD_GRID_TBODY_TR = '.workload-grid tbody tr';
-var WORKLOAD_GRID_THEAD_TH = '.workload-grid thead th.';
-var WORKLOAD_GRID_TBODY = '.workload-grid tbody .';
 
-var myStepDefinitionsWrapper = function () {
+
+var employeesWorkloadFilteringWrapper = function () {
     this.World = require('../support/world.js').World;
+
+    var WORKLOAD_GRID_EMPLOYEE_ROW = '.workload-grid tbody tr',
+        WORKLOAD_GRID_HEADER_ROW = '.workload-grid thead th',
+        WORKLOAD_GRID_BODY = '.workload-grid tbody',
+        WORKLOAD_GRID_BODY_CELL = '.workload-grid tbody tr td:nth-child({index})';
 
     this.Given('Im in "$module" module', function (module, callback) {
 
@@ -46,8 +49,8 @@ var myStepDefinitionsWrapper = function () {
     this.Then('I see only employees with "$ProjectType" type of project at the moment', function (ProjectType, callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
-            var resultRows = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_TBODY_TR);
-            var employeesRows = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_TBODY + htmlElementLocatorService.getLocator(ProjectType, 'project-type'));
+            var resultRows = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_EMPLOYEE_ROW);
+            var employeesRows = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_BODY + ' .' + htmlElementLocatorService.getLocator(ProjectType, 'project-type'));
 
             resultRows.length === employeesRows.length && callback.fail();
             callback();
@@ -59,19 +62,17 @@ var myStepDefinitionsWrapper = function () {
     this.Then('I see only employees with "$column" value earlier than "$DateFilter" from now', function (column, DateFilter, callback) {
 
         asyncWrapper.wrap(this, callback, function* () {
-            var filterButton = yield this.browser.waitForElementById(htmlElementLocatorService.getLocator(DateFilter, 'filter'));
-            var URLFilter = yield this.browser.getAttribute(filterButton, 'href');
-            URLFilter = URLFilter.split('/TYPE_TIME/')[1];
+            var dataString = DateFilter.split(' ');
+            var duration = Moment.duration(+dataString[0],dataString[1]);
 
-            var cellEndProject = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_THEAD_TH + htmlElementLocatorService.getLocator(column));
+            var cellEndProject = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_HEADER_ROW + '.' + htmlElementLocatorService.getLocator(column));
             var cellIndex = yield this.browser.getAttribute(cellEndProject, 'cellIndex');
-            var cellsWithTime = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_TBODY_TR + ' td:nth-child(' + (+cellIndex + 1) + ')');
+            var cellsWithTime = yield this.browser.waitForElementsByCssSelector(htmlElementLocatorService.getCellLocator(WORKLOAD_GRID_BODY_CELL, +cellIndex));
 
             for (let i = 0; i < cellsWithTime.length; ++i) {
                 var cellText = yield this.browser.getAttribute(cellsWithTime[i], 'textContent');
                 var projectEndDate = +new Date(cellText);
                 var diff = Moment.duration(projectEndDate - Moment());
-                var duration = Moment.duration(URLFilter);
 
                 if (diff >= duration) {
                     callback.fail();
@@ -84,23 +85,21 @@ var myStepDefinitionsWrapper = function () {
     });
     this.Then('I see only employees with "$column" value no more than "$DateFilter"', function (column, DateFilter, callback) {
         asyncWrapper.wrap(this, callback, function* () {
-            var filterButton = yield this.browser.waitForElementById(htmlElementLocatorService.getLocator(DateFilter, 'filter'));
-            var URLFilter = yield this.browser.getAttribute(filterButton, 'href');
-            URLFilter = URLFilter.split('/TYPE_TIME/')[1];
+            var dataString = DateFilter.split(' ');
+            var duration = Moment.duration(+dataString[0],dataString[1]);
 
-            var cellTimeLeft = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_THEAD_TH + htmlElementLocatorService.getLocator(column));
+            var cellTimeLeft = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_HEADER_ROW + '.' + htmlElementLocatorService.getLocator(column));
             var cellIndex = yield this.browser.getAttribute(cellTimeLeft, 'cellIndex');
-            var cellsWithTime = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_TBODY_TR + ' td:nth-child(' + (+cellIndex + 1) + ')');
+            var cellsWithTime = yield this.browser.waitForElementsByCssSelector(htmlElementLocatorService.getCellLocator(WORKLOAD_GRID_BODY_CELL, +cellIndex));
 
-            for (let i = 1; i < cellsWithTime.length; ++i) {
+            for (let i = 0; i < cellsWithTime.length; ++i) {
                 var cellText = yield this.browser.getAttribute(cellsWithTime[i], 'textContent');
                 var timeLeftArr = cellText.toUpperCase().split(' ');
                 var timeLeft = 0;
 
-                for (let i = 0; i < timeLeftArr.length; ++i) {
-                    timeLeft += Moment.duration('P' + timeLeftArr[i]);
+                for (let j = 0; j < timeLeftArr.length; ++j) {
+                    timeLeft += Moment.duration('P' + timeLeftArr[j]);
                 }
-                var duration = Moment.duration(URLFilter);
 
                 if (timeLeft >= duration) {
                     callback.fail();
@@ -114,4 +113,4 @@ var myStepDefinitionsWrapper = function () {
 
 };
 
-module.exports = myStepDefinitionsWrapper;
+module.exports = employeesWorkloadFilteringWrapper;
