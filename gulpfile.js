@@ -325,7 +325,7 @@ gulp.task('cucumber', ['transform-es6'], function () {
 gulp.task('cucumber-jUnit', ['transform-es6'], function () {
     return gulp.src('*')
         .pipe(exec('node_modules\\.bin\\cucumber-js tests/cucumber/features --format=json ' +
-            '| node_modules\\.bin\\cucumber-junit > cucumber_jUnit_results.xml'));
+            '| node_modules\\.bin\\cucumber-junit > tests/cucumber/cucumber_jUnit_results.xml'));
 });
 
 gulp.task('jsdoc', function () {

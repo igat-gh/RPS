@@ -27,7 +27,6 @@
 
 ### Run tests
 * Start a webservice in the root project directory: `http-server build/dev -a localhost -p 3000`
-* Run PhantomJS `phantomjs --webdriver=4444` for headless website testing without Browser
 * To run all tests execute `gulp cucumber`, prints a result to the console
 * To run all tests with report to the JUNIT execute `gulp cucumber-jUnit`, outputs result to output_JUnit.xml file in tests/cucumber folder.
 
@@ -43,9 +42,8 @@ Also uses custom bootstrap [theme](http://bootswatch.com/paper/) and LESS as a C
 * A [collection](https://react.zeef.com/nick.raienko) of awesome React tools, resources, videos and shiny things.
 
 ### Info Cucumber + Selenium
-* [WD] (https://github.com/admc/wd)
-* Usage [Q promises + chaining] (https://github.com/admc/wd/blob/master/examples/promise/chrome.js)
-* [WD API] (https://github.com/admc/wd/blob/master/doc/api.md)
+* [Selenium-Webdriver] (https://github.com/SeleniumHQ/selenium)
+* [Selenium-Webdriver API] (http://seleniumhq.github.io/selenium/docs/api/javascript/)
 * [Cucumber-js] (https://github.com/cucumber/cucumber-js)
 * [Gherkin syntax examples] (http://docs.behat.org/en/latest/guides/1.gherkin.html)
 * Features are written with the [Gherkin syntax] (https://github.com/cucumber/cucumber/wiki/Gherkin)

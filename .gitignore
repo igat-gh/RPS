@@ -8,3 +8,4 @@ build
 /tests/cucumber/features/step_definitions
 /tests/cucumber/features/support
 /tests/cucumber/cucumber_jUnit_results.xml
+/phantomjsdriver.log

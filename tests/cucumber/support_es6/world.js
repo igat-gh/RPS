@@ -1,16 +1,11 @@
 require('babel/polyfill');
 
-var chai = require("chai");
-var chaiAsPromised = require("chai-as-promised");
-chai.use(chaiAsPromised);
-chai.should();
-
-var webdriver = require("selenium-webdriver");
+var Webdriver = require("selenium-webdriver");
 
 var WorldConstructor = function WorldConstructor(callback) {
 
     var world = {
-        browser: new webdriver.Builder()
+        browser: new Webdriver.Builder()
             .forBrowser('phantomjs')
             .build()
     };
