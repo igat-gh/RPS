@@ -24,10 +24,10 @@ var Settings = {
      */
     marker: {
         classNames: {
-            project: 'marker_project',
-            selfEducation: 'marker_selfeducation',
-            absence: 'marker_absence',
-            testPeriod: 'marker_testperiod'
+            project: 'project-type-project',
+            selfEducation: 'project-type-selfeducation',
+            absence: 'project-type-absence',
+            testPeriod: 'project-type-test-period'
         }
     },
     /**
