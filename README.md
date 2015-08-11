@@ -38,9 +38,11 @@ NPM global packages
 * To run all tests with report to the JUNIT execute `gulp cucumber-jUnit`, outputs result to output_JUnit.xml file in tests/cucumber folder.
 
 ## Useful Information
+
 ### Development Stack
 In the frontend uses [React](http://facebook.github.io/react/) for the views, the data flow organized with [Flux](http://facebook.github.io/flux/docs/overview.html) architecture.
 Also uses custom bootstrap [theme](http://bootswatch.com/paper/) and LESS as a CSS preprocessor. 
+
 * Comprehensive [Guide](http://tylermcginnis.com/reactjs-tutorial-a-comprehensive-guide-to-building-apps-with-react/) to Building Apps with React.js
 * React.js [documentation](http://tftf.ru/stati/javascript/reactjs/) translated to Russian. 
 * Flux Architecture [series](https://egghead.io/series/react-flux-architecture).
