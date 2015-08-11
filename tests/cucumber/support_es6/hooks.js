@@ -7,6 +7,7 @@ var hooks = function () {
     this.After(function (callback) {
 
         AsyncWrapper.wrap(this, callback, function* () {
+            this.browser.get(Settings.baseUrl);
             yield this.browser.executeScript('localStorage.clear();');
             this.browser.quit();
             setTimeout(callback, 0);
