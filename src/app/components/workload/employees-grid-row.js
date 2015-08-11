@@ -79,12 +79,12 @@ var EmployeesGridRow = React.createClass({
         }
 
         return (
-            <tr>
+            <tr className={className} >
                 {toBeOrNotToBe}
-                <td className={className + ' project'}>{getTitle()}</td>
-                <td className={className}>{getDateStart()}</td>
-                <td className={className}>{getDateEnd()}</td>
-                <td className={className}>
+                <td>{getTitle()}</td>
+                <td>{getDateStart()}</td>
+                <td>{getDateEnd()}</td>
+                <td>
                     {workloadHasExpired() &&
                     <span title="Expired less than a week"
                           className="glyphicon glyphicon-time"></span> } {getTimeLeft()}

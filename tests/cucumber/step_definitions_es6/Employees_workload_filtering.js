@@ -50,7 +50,9 @@ var employeesWorkloadFilteringWrapper = function () {
             var resultRows = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_EMPLOYEE_ROW);
             var employeesRows = yield this.browser.waitForElementsByCssSelector(WORKLOAD_GRID_BODY + ' .' + htmlElementLocatorService.getLocator(ProjectType, 'project-type'));
 
-            resultRows.length === employeesRows.length && callback.fail();
+            if(resultRows.length !== employeesRows.length) {
+                callback.fail();
+            }
             callback();
 
         });

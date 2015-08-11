@@ -14,14 +14,14 @@
   url('../assets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
-// Markers
-.project-type-selfeducation {
+// Table
+.project-type-selfeducation td:not(:first-child) {
   background-color: @marker-selfeducation-bg;
 }
-.project-type-absence {
+.project-type-absence td:not(:first-child) {
   background-color: @marker-absence-bg;
 }
-.project-type-testperiod {
+.project-type-testperiod td:not(:first-child) {
   background-color: @marker-testperiod-bg;
 }
 .project-type-project {}
@@ -30,6 +30,17 @@
 #workload {
 
   .markers-list {
+
+    // Markers
+    .project-type-selfeducation  {
+      background-color: @marker-selfeducation-bg;
+    }
+    .project-type-absence {
+      background-color: @marker-absence-bg;
+    }
+    .project-type-testperiod  {
+      background-color: @marker-testperiod-bg;
+    }
 
     li {
       display: inline-block;
