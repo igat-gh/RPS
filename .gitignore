@@ -4,7 +4,7 @@
 node_modules
 .idea
 docs
-build
+/build
 /tests/cucumber/features/step_definitions
 /tests/cucumber/features/support
 /tests/cucumber/cucumber_jUnit_results.xml
