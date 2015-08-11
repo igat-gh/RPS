@@ -1,5 +1,4 @@
-require('babel/polyfill');
-var testWrapper = require('../support/testsWrapper');
+var asyncWrapper = require('../support/asyncWrapper');
 var Settings = require('../../settings');
 
 var myStepDefinitionsWrapper = function () {
@@ -7,7 +6,7 @@ var myStepDefinitionsWrapper = function () {
 
     this.Given(/^I'm logged in as 'Admin'$/, function (callback) {
 
-        testWrapper.wrap(this, callback, function* () {
+        asyncWrapper.wrap(this, callback, function* () {
             yield this.browser.get(Settings.baseUrl + 'login');
             var emailInput = yield this.browser.elementById('auth-email-input');
             var passwordInput = yield this.browser.elementById('auth-password-input');
@@ -22,7 +21,7 @@ var myStepDefinitionsWrapper = function () {
 
     this.When('I navigate to "$module" module', function (module, callback) {
 
-        testWrapper.wrap(this, callback, function* () {
+        asyncWrapper.wrap(this, callback, function* () {
             yield this.browser.get(Settings.baseUrl + module);
             callback();
         });
@@ -31,7 +30,7 @@ var myStepDefinitionsWrapper = function () {
 
     this.Then(/^I see table of employees$/, function (callback) {
 
-        testWrapper.wrap(this, callback, function* () {
+        asyncWrapper.wrap(this, callback, function* () {
             var workloadGrid = yield this.browser.waitForElementByClassName('workload-grid');
 
             if (workloadGrid) {
@@ -46,7 +45,7 @@ var myStepDefinitionsWrapper = function () {
 
     this.Then(/^table contains columns$/, function (callback) {
 
-        testWrapper.wrap(this, callback, function* () {
+        asyncWrapper.wrap(this, callback, function* () {
             var workloadGrid = yield this.browser.elementByClassName('workload-grid');
 
             if (workloadGrid) {

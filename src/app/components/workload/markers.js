@@ -1,7 +1,17 @@
 var React = require('react');
+
 var Settings = require('../../settings');
 
+/**
+ * Component with description of the table's markers. Contains list with color squares and designation.
+ * @class
+ * @type {*|Function}
+ */
 var Markers = React.createClass({
+    /**
+     * @memberOf Markers
+     * @return {XML}
+     */
     render: function () {
         return (
             <ul className="markers-list">

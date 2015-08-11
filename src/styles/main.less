@@ -1,18 +1,30 @@
-// Bootstrap
-@import "../../node_modules/bootstrap/less/bootstrap.less";
+//Bootstrap variables
+@import "../../node_modules/bootstrap/less/variables.less";
+
 @import "./variables.less";
 
+@font-face {
+  font-family: 'Glyphicons Halflings';
+
+  src: url('../assets/fonts/glyphicons-halflings-regular.eot');
+  src: url('../assets/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  url('../assets/fonts/glyphicons-halflings-regular.woff2') format('woff2'),
+  url('../assets/fonts/glyphicons-halflings-regular.woff') format('woff'),
+  url('../assets/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+  url('../assets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
 // Markers
-.marker_selfeducation {
+.project-type-selfeducation {
   background-color: @marker-selfeducation-bg;
 }
-.marker_absence {
+.project-type-absence {
   background-color: @marker-absence-bg;
 }
-.marker_testperiod {
+.project-type-testperiod {
   background-color: @marker-testperiod-bg;
 }
-.marker_project {}
+.project-type-project {}
 
 // Styles for workload page
 #workload {

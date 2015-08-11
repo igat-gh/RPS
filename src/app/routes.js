@@ -1,19 +1,18 @@
 var React = require('react');
 var Router = require('react-router');
-var Route = Router.Route;
-var DefaultRoute = Router.DefaultRoute;
 
-APP = require('./components/app/app').APP;
-
+var APP = require('./components/app/app').APP;
 var Home = require('./components/home/home');
 var Login = require('./components/auth/login');
 var Logout = require('./components/auth/logout');
 var Workload = require('./components/workload/employees-grid');
 
+var Route = Router.Route;
+var DefaultRoute = Router.DefaultRoute;
+
 /**
  * Application routing
- * For more info about routing visit https://github.com/rackt/react-router
- *
+ * @see For more info about routing visit {@link https://github.com/rackt/react-router}
  * @type {XML}
  */
 var routes = (

@@ -1,7 +1,8 @@
 /* var Api = require('./api'); // Uncomment this line when will use api service */
+var moment = require('moment');
 var Promise = require('es6-promise').Promise;
 /* Delete this line when will use api service */
-var moment = require('moment');
+
 var ProjectConstants = require('../constants/project-constants');
 
 var _employees = [
@@ -14,7 +15,7 @@ var _employees = [
                 type: ProjectConstants.TYPE_TEST_PERIOD,
                 title: 'Test Period',
                 date_start: +moment('2015-07-08'),
-                date_end: +moment('2015-08-07')
+                date_end: +moment('2015-08-13')
             }
         ]
     },
@@ -619,8 +620,8 @@ var _employees = [
         projects: [
             {
                 id: 100011,
-                type: ProjectConstants.TYPE_PROJECT,
-                title: 'Productive Edge',
+                type: ProjectConstants.TYPE_ABSENCE,
+                title: 'Annual leave',
                 date_start: +moment('2015-05-01'),
                 date_end: null
             }

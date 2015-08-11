@@ -1,10 +1,17 @@
-var request = require('superagent');
 var Promise = require('es6-promise').Promise;
+var request = require('superagent');
 
 /**
  * Wrapper for calling a API
+ * @class
+ * @type {object}
  */
 var Api = {
+    /**
+     * Api method for calling async requests at the url
+     * @param {string} url Current URL
+     * @return {object} Promise
+     */
     get: function (url) {
         return new Promise(function (resolve, reject) {
             request

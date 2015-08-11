@@ -1,14 +1,21 @@
-var React = require('react');
-var AppActions = require('../../actions/app-actions');
-var EmployeesStore = require('../../stores/app-employees-store');
-var AuthStore = require('../../stores/app-auth-store');
 var Loader = require('react-loader');
-var Settings = require('../../settings');
-var Filters = require('./filters');
-var Markers = require('./markers');
-var MarkedRow = require('./marked-row');
-var Login = require('../auth/login');
+var React = require('react');
 
+var AppActions = require('../../actions/app-actions');
+var AuthStore = require('../../stores/app-auth-store');
+var EmployeesStore = require('../../stores/app-employees-store');
+var Login = require('../auth/login');
+var Settings = require('../../settings');
+
+var EmployeesFilters = require('./employees-filter');
+var EmployeesGridRow = require('./employees-grid-row');
+var Markers = require('./markers');
+
+/**
+ * Employees data grid component.
+ * @class
+ * @type {*|Function}
+ */
 var EmployeesGrid = React.createClass({
     statics: {
         willTransitionTo: function (transition, params) {
@@ -20,27 +27,48 @@ var EmployeesGrid = React.createClass({
             AppActions.setEmployeeFilter(params.type, params.value);
         }
     },
+    /**
+     * @memberOf EmployeesGrid
+     * @return {{loaded: boolean, employees: *}}
+     */
     getInitialState: function () {
         return {
             loaded: false,
             employees: EmployeesStore.getEmployees()
         };
     },
+    /**
+     * @memberOf EmployeesGrid
+     */
     componentWillMount: function () {
         AppActions.loadEmployees();
     },
+    /**
+     * @memberOf EmployeesGrid
+     */
     componentDidMount: function () {
         EmployeesStore.addChangeListener(this._onChange);
     },
+    /**
+     * @memberOf EmployeesGrid
+     */
     componentWillUnmount: function () {
         EmployeesStore.removeChangeListener(this._onChange);
     },
+    /**
+     * @memberOf EmployeesGrid
+     * @private
+     */
     _onChange: function () {
         this.setState({
             loaded: true,
             employees: EmployeesStore.getEmployees()
         });
     },
+    /**
+     * @memberOf EmployeesGrid
+     * @return {XML}
+     */
     render: function () {
         var rows = [];
         this.state.employees.forEach(function (employee) {
@@ -50,7 +78,7 @@ var EmployeesGrid = React.createClass({
                     employeeName: employee.name,
                     projects: employee.projects
                 };
-                rows.push(<MarkedRow data={rowProps} key={'' + employee.id + project.id}/>);
+                rows.push(<EmployeesGridRow data={rowProps} key={'' + employee.id + project.id}/>);
             });
         });
         return (
@@ -62,7 +90,7 @@ var EmployeesGrid = React.createClass({
                 </div>
                 <div className="row">
                     <div className="col-md-6">
-                        <Filters />
+                        <EmployeesFilters />
                     </div>
                     <div className="col-md-6">
                         <Markers />
@@ -76,8 +104,8 @@ var EmployeesGrid = React.createClass({
                                 <th>Employees</th>
                                 <th>Projects</th>
                                 <th>Start</th>
-                                <th>End</th>
-                                <th>Time Left</th>
+                                <th className="project-end-date" >End</th>
+                                <th className="project-time-left" >Time Left</th>
                             </tr>
                             </thead>
                             <tbody>
