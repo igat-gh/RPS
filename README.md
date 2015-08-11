@@ -11,12 +11,12 @@ NPM global packages
 * Install http-server: `npm install -g http-server`.
 
 ## Solution Folders
-* **src/** contains all sources files of the app.
-* **src/app/** contains all application logic - reusable ui components, data services, actions, dispatchers, routers etc.
-* **src/assets/** contains static, logic-less files - images, web fonts, flash and svg files.
-* **src/styles/** contains application styles written in LESS.
-* **tests/** contains test suite and automated tests for the application.
-* **misc/** contains other files for the project needs (e.g. code style setting for WebStorm).
+* `src/` contains all sources files of the app.
+* `src/app/` contains all application logic - reusable ui components, data services, actions, dispatchers, routers etc.
+* `src/assets/` contains static, logic-less files - images, web fonts, flash and svg files.
+* `src/styles/` contains application styles written in LESS.
+* `tests/` contains test suite and automated tests for the application.
+* `misc/` contains other files for the project needs (e.g. code style setting for WebStorm).
 
 ## Build
 * Run `npm install`
@@ -27,10 +27,10 @@ NPM global packages
 * Any changes to `src/app` or `src/styles` folder will automatically rebuild to `build/dev` folder and application changes will refresh automatically in the browser.
 
 ### Test
-* Run `gulp test` to build test version of the app. Minifies all assets, JavaScripts, CSS, HTML files as well as creates source maps for easy debugging in case any bug is found during test session.
+* Run `gulp test` to build test version of the app. Minifies all assets, JavaScripts, CSS, HTML files as well as creates source maps for easy debugging in case any bug is found during test session. The result can be found in `build/test` folder.
 
 ### Release
-* Run `gulp release` to build release version of the app. Is used for production package creation, minifies all assets, JavaScripts, CSS, HTML files, but never creates source maps.
+* Run `gulp release` to build release version of the app. Is used for production package creation, minifies all assets, JavaScripts, CSS, HTML files, but never creates source maps. The result can be found in `build/release` folder.
 
 ## Run Automated Tests
 * Start a webservice in the root project directory: `http-server build/dev -a localhost -p 3000`.
