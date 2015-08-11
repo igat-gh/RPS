@@ -21,7 +21,7 @@
 .project-type-absence td:not(:first-child) {
   background-color: @marker-absence-bg;
 }
-.project-type-testperiod td:not(:first-child) {
+.project-type-test-period td:not(:first-child) {
   background-color: @marker-testperiod-bg;
 }
 .project-type-project {}
@@ -30,17 +30,6 @@
 #workload {
 
   .markers-list {
-
-    // Markers
-    .project-type-selfeducation  {
-      background-color: @marker-selfeducation-bg;
-    }
-    .project-type-absence {
-      background-color: @marker-absence-bg;
-    }
-    .project-type-testperiod  {
-      background-color: @marker-testperiod-bg;
-    }
 
     li {
       display: inline-block;
@@ -53,14 +42,15 @@
         height: 10px;
         border: 1px solid #cccccc;
       }
-      .box.danger {
-        background-color: @state-danger-bg;
+      // Markers
+      .project-type-selfeducation  {
+        background-color: @marker-selfeducation-bg;
       }
-      .box.warning {
-        background-color: @state-warning-bg;
+      .project-type-absence {
+        background-color: @marker-absence-bg;
       }
-      .box.info {
-        background-color: @state-info-bg;
+      .project-type-test-period  {
+        background-color: @marker-testperiod-bg;
       }
     }
   }
