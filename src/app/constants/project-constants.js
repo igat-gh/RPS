@@ -1,8 +1,7 @@
 /**
  * Project type constants
- * @namespace ProjectConstants
- * @type {array}
- * @see TODO - structure AppConstants for API as for example: {@link http://www.code-experience.com/async-requests-with-react-js-and-flux-revisited/}
+ * @namespace Constants
+ * @type {object}
  */
 module.exports = {
     /** Represents standard project types */

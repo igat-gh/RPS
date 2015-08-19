@@ -1,7 +1,6 @@
 var AppConstants = require('../constants/app-constants');
 var AppDispatcher = require('../dispatchers/app-dispatcher');
 var EmployeeService = require('../services/employee');
-var MarkersService = require('../services/markers');
 
 /**
  * Application action creator.
