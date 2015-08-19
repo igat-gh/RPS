@@ -98,14 +98,14 @@ var EmployeesGrid = React.createClass({
                 </div>
                 <div className="row">
                     <Loader loaded={this.state.loaded}>
-                        <table className="table workload-grid">
+                        <table id="workload-grid" className="table">
                             <thead>
                             <tr>
-                                <th>Employees</th>
-                                <th>Projects</th>
-                                <th>Start</th>
-                                <th className="project-end-date" >End</th>
-                                <th className="project-time-left" >Time Left</th>
+                                <th className="project-employees">Employees</th>
+                                <th className="project-name">Projects</th>
+                                <th className="project-start-date">Start</th>
+                                <th className="project-end-date">End</th>
+                                <th className="project-time-left">Time Left</th>
                             </tr>
                             </thead>
                             <tbody>

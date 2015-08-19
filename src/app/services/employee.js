@@ -15,7 +15,7 @@ var _employees = [
                 type: ProjectConstants.TYPE_TEST_PERIOD,
                 title: 'Test Period',
                 date_start: +moment('2015-07-08'),
-                date_end: +moment('2015-08-13')
+                date_end: +moment('2015-08-20')
             }
         ]
     },
@@ -648,7 +648,7 @@ var Employee = {
         return new Promise(function (resolve, reject) {
             setTimeout(function () {
                 resolve(_employees);
-            }, 1000);
+            }, 300);
         });
     }
 };

@@ -19,18 +19,6 @@ var HtmlElementLocatorService = {
             delimiter = delimiter || '-',
             name = prefix + ' ' + name + ' ' + postfix;
         return name.trim().toLowerCase().replace(/\s+/g, delimiter);
-    },
-    /**
-     * Function to format string, replace the "{}" values of the 'arguments'.
-     * @param {string} string String that contains entries for replacement - "{}".
-     * @return {string} Formatted string.
-     */
-    getFormattedString: function(string) {
-        for(var i = 0; i < (arguments.length - 1); ++i) {
-            var regexp = new RegExp('\\{' + i + '\}');
-            var formatted = string.replace(regexp, arguments[i + 1]);
-        }
-        return formatted;
     }
 };
 

@@ -1,5 +1,5 @@
 module.exports = {
-    baseUrl: 'http://web2.demohoster.com/RPSUITest/#/',
+    baseUrl: 'http://localhost:3000/#/',
     adminCredentials: {
         login: 'example@email.com',
         password: 'password'

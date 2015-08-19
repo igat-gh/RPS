@@ -89,7 +89,7 @@ var Login = React.createClass({
                                        id="auth-password-input"/>
                             </div>
                             <div className="form-group">
-                                <button type="submit" className="btn btn-primary btn-block login-btn">Login</button>
+                                <button id="btn-login" type="submit" className="btn btn-primary btn-block login-btn">Login</button>
                             </div>
                             {
                                 this.state.loginError ?

@@ -11,7 +11,6 @@ var notify = require('gulp-notify');
 var concat = require('gulp-concat');
 var cssmin = require('gulp-cssmin');
 var gutil = require('gulp-util');
-var glob = require('glob');
 var livereload = require('gulp-livereload');
 var jshint = require('gulp-jshint');
 var react = require('gulp-react');
@@ -217,7 +216,7 @@ gulp.task('test', ['jshint'], function () {
 
             cssTask({
                 environment: environment.test,
-                src: ['./node_modules/bootstrap/less/bootstrap.less'],
+                src: ['./src/styles/bootstrap.less'],
                 name: 'libs',
                 dest: './build/test/styles'
             });
@@ -284,34 +283,9 @@ gulp.task('jshint', function () {
         .pipe(jshint.reporter('fail'));
 });
 
-var transformEs6TestStepsTask = function () {
-    gulp.src('tests/cucumber/step_definitions_es6/*.js')
-        .pipe(babel({
-            sourceMaps: 'inline'
-        }))
-        .on('error', console.error.bind(console))
-        .pipe(gulp.dest("tests/cucumber/features/step_definitions"));
-};
-
-
-var transformEs6SupportTask = function () {
-    gulp.src('tests/cucumber/support_es6/*.js')
-        .pipe(babel({
-            sourceMaps: 'inline'
-        }))
-        .on('error', console.error.bind(console))
-        .pipe(gulp.dest("tests/cucumber/features/support"));
-};
-
-//Transforms es6 cucumber test steps and support files
-gulp.task('transform-es6', function () {
-    transformEs6TestStepsTask();
-    transformEs6SupportTask();
-});
-
 // Run tests
 // Outputs result to console in pretty style
-gulp.task('cucumber', ['transform-es6'], function () {
+gulp.task('cucumber', function () {
     return gulp.src('*')
         .pipe(exec('node_modules\\.bin\\cucumber-js tests/cucumber/features --format=pretty',
             function (err, stdOut) {
@@ -322,7 +296,7 @@ gulp.task('cucumber', ['transform-es6'], function () {
 
 // Run tests
 // Outputs result to output_JUnit.xml file in tests/cucumber folder
-gulp.task('cucumber-jUnit', ['transform-es6'], function () {
+gulp.task('cucumber-jUnit', function () {
     return gulp.src('*')
         .pipe(exec('node_modules\\.bin\\cucumber-js tests/cucumber/features --format=json ' +
             '| node_modules\\.bin\\cucumber-junit > tests/cucumber/cucumber_jUnit_results.xml'));

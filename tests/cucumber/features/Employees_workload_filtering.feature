@@ -1,7 +1,9 @@
 Feature: Filter employees in workload grid by categories
 
   Scenario Outline: Filter by type of project
-    Given Im in "Workload" module
+    Given I am logged in as "Admin"
+	And I am in "Workload" module
+	And I see table of employees
     When I filter employees by "<ProjectType>" project type
     Then I see only employees with "<ProjectType>" type of project at the moment
   Examples:
@@ -12,7 +14,9 @@ Feature: Filter employees in workload grid by categories
 
 
   Scenario Outline: Filter by time completion of the project
-    Given Im in "Workload" module
+    Given I am logged in as "Admin"
+	And I am in "Workload" module
+	And I see table of employees
     When I filter employees by "<DateFilter>" date range
     Then I see only employees with "Project End Date" value earlier than "<DateFilter>" from now
     And I see only employees with "Project Time Left" value no more than "<DateFilter>"
