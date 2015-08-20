@@ -15,13 +15,13 @@ GLOBAL.Settings = require('../Settings');
 
 var HtmlElementLocatorService = require('../utils/HtmlElementLocatorService');
 
-var WorldConstructor = function WorldConstructor(callback) {
+var WorldConstructor = function(callback) {
 
-	var world = {
+    var world = {
         browser: new Webdriver.Builder()
-					.forBrowser('phantomjs')
-					.build(),
-		elementLocator: HtmlElementLocatorService
+                    .forBrowser('phantomjs')
+                    .build(),
+        elementLocator: HtmlElementLocatorService
     };
     callback(world);
 };

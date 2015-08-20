@@ -14,11 +14,10 @@ var HtmlElementLocatorService = {
      * @return {string} Valid string to be used as a value within such HTML attributes as 'id' and 'class'.
      */
     getLocator: function(name, prefix, postfix, delimiter) {
-        var prefix = prefix || '',
-            postfix = postfix || '',
-            delimiter = delimiter || '-',
-            name = prefix + ' ' + name + ' ' + postfix;
-        return name.trim().toLowerCase().replace(/\s+/g, delimiter);
+        prefix = prefix || '';
+        postfix = postfix || '';
+        delimiter = delimiter || '-';
+        return String.concat(prefix, name, postfix).trim().toLowerCase().replace(/\s+/g, delimiter);
     }
 };
 

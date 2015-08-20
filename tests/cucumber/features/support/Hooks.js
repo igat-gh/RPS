@@ -3,7 +3,7 @@ var hooks = function () {
 
     this.After(function (callback) {
         this.browser.quit();
-		setTimeout(callback, 10);
+        setTimeout(callback, 10);
     });
 };
 

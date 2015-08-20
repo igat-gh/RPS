@@ -11,6 +11,6 @@ var Moment = require('moment');
 if (typeof Moment.durationFromHumanizedString !== 'function') {
     Moment.durationFromHumanizedString = function(duration) {
         var dateString = duration.split(' ');
-		return Moment.duration(+dateString[0], dateString[1]);
-    }
+        return Moment.duration(+dateString[0], dateString[1]);
+    };
 }
