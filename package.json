@@ -53,6 +53,6 @@
     "react": "^0.13.3",
     "react-loader": "^1.4.0",
     "react-router": "^0.13.3",
-    "superagent": "^1.2.0"
+    "superagent": "^3.7.0"
   }
 }
